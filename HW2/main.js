@@ -71,13 +71,13 @@ function getPorchAndFloor(num) {
         et = Math.ceil(et);
         pd = 1;
         console.log('Квартира находится в ' + pd + ' подъезде');
-        console.log('Квартира находится на ' + et + ' этаже');
+        console.log('На ' + et + ' этаже');
     }
     else {
         pd = Math.ceil(et / floors);
         et = Math.trunc(((num-1) % sumFlats)/flats + 1);
         console.log('Квартира находится в ' + pd + ' подъезде');
-        console.log('Квартира находится на ' + et + ' этаже');
+        console.log('На ' + et + ' этаже');
     }
 }
 
