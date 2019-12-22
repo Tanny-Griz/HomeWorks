@@ -70,14 +70,14 @@ function getPorchAndFloor(num) {
     if (num < sumFlats) {
         et = Math.ceil(et);
         pd = 1;
-        console.log(pd);
-        console.log(et);
+        console.log('Квартира находится в ' + pd + ' подъезде');
+        console.log('Квартира находится на ' + et + ' этаже');
     }
     else {
         pd = Math.ceil(et / floors);
         et = Math.trunc(((num-1) % sumFlats)/flats + 1);
-        console.log(pd);
-        console.log(et);
+        console.log('Квартира находится в ' + pd + ' подъезде');
+        console.log('Квартира находится на ' + et + ' этаже');
     }
 }
 
@@ -87,16 +87,16 @@ getPorchAndFloor(34);
 
 const foo = (number) => {
     if (number % 2 == 0) {
-        let rez = number.toString().split('').reduce(function (a, b) {
+        let result = number.toString().split('').reduce(function (a, b) {
             return +a + +b;
         });
-        console.log(rez);
+        console.log(result);
     }
     else {
-        let rez = number.toString().split('').reduce(function (a, b) {
+        let result = number.toString().split('').reduce(function (a, b) {
             return +a * +b;
         });
-        console.log(rez);
+        console.log(result);
     }
 }
 
@@ -108,19 +108,19 @@ foo(125) // 10
 const foo2 = (num) => {
     if (num%2 == 0) {
         let num2 = num.toString();
-        let sum = 0;
+        let result = 0;
         for (let i = 0; i < num2.length; i++) {
-            sum += Number(num2[i]);
+            result += Number(num2[i]);
         }
-        console.log(sum);
+        console.log(result);
     }
     else {
         let num2 = num.toString();
-        let sum = 1;
+        let result = 1;
         for (let i = 0; i < num2.length; i++) {
-            sum *= Number(num2[i]);
+            result *= Number(num2[i]);
         }
-        console.log(sum);
+        console.log(result);
     }
 }
 
