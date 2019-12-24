@@ -1,16 +1,17 @@
 //  1
 const sayHi = (t) => {
+    let name = prompt('Введите имя');
     if (t >= 6 && t <= 12) {
-        console.log('Доброе утро');
+        console.log(name + ' Доброе утро');
     } else if (t >= 12 && t <= 18) {
-        console.log('Добрый день');
+        console.log(name + ' Добрый день');
     } else if (t >= 18 && t <= 24) {
-        console.log('Добрый вечер');
+        console.log(name + ' Добрый вечер');
     } else if (t >= 0 && t <= 6) {
-        console.log('Доброй ночи');
+        console.log(name + ' Доброй ночи');
     }
     else {
-        console.log('Введите корректное число');
+        console.log(name + ' Введите корректное число');
     }
 }
 
@@ -100,13 +101,13 @@ const foo = (number) => {
     }
 }
 
-foo(312) // 6
-foo(125) // 10
+foo(6022) // 6
+foo(888) // 10
 
 
 // 5.2
 const foo2 = (num) => {
-    if (num%2 == 0) {
+    if (num %2 == 0) {
         let num2 = num.toString();
         let result = 0;
         for (let i = 0; i < num2.length; i++) {
