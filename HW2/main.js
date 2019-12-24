@@ -1,13 +1,13 @@
 //  1
 const sayHi = (t) => {
     let name = prompt('Введите имя');
-    if (t >= 6 && t <= 12) {
+    if (t >= 6 && t < 12) {
         console.log(name + ' Доброе утро');
-    } else if (t >= 12 && t <= 18) {
+    } else if (t >= 12 && t < 18) {
         console.log(name + ' Добрый день');
-    } else if (t >= 18 && t <= 24) {
+    } else if (t >= 18 && t < 24) {
         console.log(name + ' Добрый вечер');
-    } else if (t >= 0 && t <= 6) {
+    } else if (t >= 00 || t == 24 && t < 6) {
         console.log(name + ' Доброй ночи');
     }
     else {
@@ -15,7 +15,7 @@ const sayHi = (t) => {
     }
 }
 
-sayHi(18);
+sayHi(1);
 
 // 2
 let checkIsUserValid = (email, password) => {
