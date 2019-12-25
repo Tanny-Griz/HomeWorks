@@ -409,6 +409,7 @@ const getPizzasNames3 = () => {
 
 getPizzasNames3();
 
+console.log('--------------2--------------');
 
 // Создать функцию, которая вернет обьект с пиццей по id.
 // 2.1
@@ -439,7 +440,7 @@ getPizzaById2(3);
 
 //  2.3
 const getPizzaById3 = id => {
-    let pizzaId = [];
+    let pizzaId = '';
     pizzaList.forEach(function (item) {
         if (item.id == id) {
             pizzaId = item;
@@ -448,6 +449,38 @@ const getPizzaById3 = id => {
     });
 };
 
-getPizzaById3(6); 
+getPizzaById3(6);
 
+//  Создать функцию, которая вернет массив с пиццами в которых содержится ингридиент указанный в параметре функции.
+// 3.1
+let getPizzasByComposition = (number) => {
+    let result = [];
+    for (let key in pizzaList) {
+        let composition = pizzaList[key].composition;
+        for (let i = 0; i <= composition.length; i++) {
+            if (composition[i] == number) {
+                result.push(pizzaList[key]);
+            }
+        }
+    }
+    console.log(result);
+};
+
+getPizzasByComposition('моцарелла'); /// [{id: 2, img: "2.jpg", name: "Маргарита", composition:['моцарелла', ...]}, ...];
+
+// 3.2
+let getPizzasByComposition2 = (number) => {
+    let result = [];
+    pizzaList.forEach(function (item) {
+        let composition = item.composition;
+        for (let i = 0; i <= composition.length; i++) {
+            if (composition[i] == number) {
+                result.push(item);
+            }
+        }
+    });
+    console.log(result);
+};
+
+getPizzasByComposition2('моцарелла');
 
