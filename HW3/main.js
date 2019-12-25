@@ -502,6 +502,7 @@ const getPizzasByCalloricity = caloricity => {
 
 getPizzasByCalloricity(maxCaloricity); /// [{id: 2,name: "Маргарита", caloricity: 1200, ...]}, ...];
 
+// 4.2
 const maxCaloricity2 = 1400;
 
 const getPizzasByCalloricity2 = caloricity => {
@@ -517,3 +518,37 @@ const getPizzasByCalloricity2 = caloricity => {
 
 getPizzasByCalloricity2(maxCaloricity2);
 
+// 5 -
+
+// Создать функцию, которая вернет массив со всеми пиццами, у которых кол-во ингридиентов (compositions) больше чем maxCompositions.
+//  6.1
+const maxCompositions = 6;
+
+const sortByMaxCompositions = compositions => {
+    let result = [];
+    for (let key in pizzaList) {
+        let comp = pizzaList[key].composition;
+        if (comp.length > compositions) {
+            result.push(pizzaList[key]);
+        }
+    }
+    console.log(result);
+};
+
+sortByMaxCompositions(maxCompositions); /// [{id: 2,name: "Маргарита", caloricity: 1200, ...]}, ...];
+
+// 6.2 
+const maxCompositions2 = 9;
+
+const sortByMaxCompositions2 = compositions => {
+    let result = [];
+    pizzaList.forEach(function(item) {
+        let comp = item.composition;
+        if (comp.length > compositions) {
+            result.push(item);
+        }
+    })
+    console.log(result);
+};
+
+sortByMaxCompositions2(maxCompositions2);
