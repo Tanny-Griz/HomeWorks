@@ -484,3 +484,36 @@ let getPizzasByComposition2 = (number) => {
 
 getPizzasByComposition2('моцарелла');
 
+// Создать функцию, которая вернет массив с пиццами в которых каллории больше чем maxCaloricity.
+
+// 4.1 
+const maxCaloricity = 1100;
+
+const getPizzasByCalloricity = caloricity => {
+    let result = [];
+    for (let key in pizzaList) {
+        let cal =  pizzaList[key].caloricity;
+        if (cal > caloricity) {
+            result.push(pizzaList[key]);
+        }
+    }
+    console.log(result);
+};
+
+getPizzasByCalloricity(maxCaloricity); /// [{id: 2,name: "Маргарита", caloricity: 1200, ...]}, ...];
+
+const maxCaloricity2 = 1400;
+
+const getPizzasByCalloricity2 = caloricity => {
+    let result = [];
+    pizzaList.forEach(function (item) {
+        let cal =  item.caloricity;
+        if (cal > caloricity) {
+            result.push(item);
+        }
+    })
+    console.log(result);
+};
+
+getPizzasByCalloricity2(maxCaloricity2);
+
