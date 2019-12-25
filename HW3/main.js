@@ -518,7 +518,7 @@ const getPizzasByCalloricity2 = caloricity => {
 
 getPizzasByCalloricity2(maxCaloricity2);
 
-// 5 -
+// 5
 
 // Создать функцию, которая вернет массив со всеми пиццами, у которых кол-во ингридиентов (compositions) больше чем maxCompositions.
 //  6.1
