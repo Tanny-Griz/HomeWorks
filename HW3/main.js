@@ -375,32 +375,20 @@ const compositionList = [
     }
 ];
 
-// 1.1 Создать функцию, которая вернет массив с названиями пицц.
-// forEach()
+// Создать функцию, которая вернет массив с названиями пицц.
+// 1.1 (key in obj)
 const getPizzasNames = () => {
     let pizzaName = [];
-    pizzaList.forEach(function (item, index, array) {
-        pizzaName.push(item.name + ', ');
-    });
-    console.log(pizzaName);
-}
-
-getPizzasNames();
-
-// 1.2 (key in obj)
-const getPizzasNames2 = () => {
-    let pizzaName = [];
     for (let key in pizzaList) {
-        // pizzaName += pizzaList[key].name + ', ';
         pizzaName.push(pizzaList[key].name + ', ');
     }
     console.log(pizzaName);
 };
 
-getPizzasNames2(pizzaList);
+getPizzasNames(pizzaList);
 
-// 1.3 (i)
-const getPizzasNames3 = () => {
+// 1.2 (i)
+const getPizzasNames2 = () => {
     let pizzaName = [];
     for (let i = 0; i < pizzaList.length; i++) {
         pizzaName.push(pizzaList[i].name + ', ');
@@ -408,15 +396,58 @@ const getPizzasNames3 = () => {
     console.log(pizzaName);
 };
 
-getPizzasNames3(pizzaList);
+getPizzasNames2(pizzaList);
+
+// 1.3  forEach()
+const getPizzasNames3 = () => {
+    let pizzaName = [];
+    pizzaList.forEach(function (item) {
+        pizzaName.push(item.name + ', ');
+    });
+    console.log(pizzaName);
+}
+
+getPizzasNames3();
 
 
-// 2 Создать функцию, которая вернет обьект с пиццей по id.
-
+// Создать функцию, которая вернет обьект с пиццей по id.
+// 2.1
 const getPizzaById = id => {
-    
+    let pizzaId = '';
+    for (let key in pizzaList) {
+        if (pizzaList[key].id == id) {
+            pizzaId = pizzaList[key];
+            console.log(pizzaId);
+        }
+    }
 };
 
-getPizzaById(2) /// {id: 2, img: "2.jpg", name: "Маргарита"};
+getPizzaById(2); // {id: 2, img: "2.jpg", name: "Маргарита"};
+
+//  2.2
+const getPizzaById2 = id => {
+    let pizzaId = '';
+    for (let i = 0; i < pizzaList.length; i++) {
+        if (pizzaList[i].id == id) {
+            pizzaId = pizzaList[i];
+            console.log(pizzaId);
+        }
+    }
+};
+
+getPizzaById2(3);
+
+//  2.3
+const getPizzaById3 = id => {
+    let pizzaId = [];
+    pizzaList.forEach(function (item) {
+        if (item.id == id) {
+            pizzaId = item;
+            console.log(pizzaId);
+        }
+    });
+};
+
+getPizzaById3(6); 
 
 
