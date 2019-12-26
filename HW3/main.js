@@ -409,7 +409,7 @@ const getPizzasNames3 = () => {
 
 getPizzasNames3();
 
-console.log('--------------2--------------');
+console.log('------------------------2----------------------');
 
 // Создать функцию, которая вернет обьект с пиццей по id.
 // 2.1
@@ -451,6 +451,8 @@ const getPizzaById3 = id => {
 
 getPizzaById3(6);
 
+console.log('---------------------3-------------------------');
+
 //  Создать функцию, которая вернет массив с пиццами в которых содержится ингридиент указанный в параметре функции.
 // 3.1
 let getPizzasByComposition = (number) => {
@@ -483,6 +485,8 @@ let getPizzasByComposition2 = (number) => {
 };
 
 getPizzasByComposition2('моцарелла');
+
+console.log('---------------------4-------------------------');
 
 // Создать функцию, которая вернет массив с пиццами в которых каллории больше чем maxCaloricity.
 
@@ -518,7 +522,36 @@ const getPizzasByCalloricity2 = caloricity => {
 
 getPizzasByCalloricity2(maxCaloricity2);
 
-// 5
+console.log('---------------------5-------------------------');
+
+// Создать функцию, которая вернет массив со всеми пиццами, кроме пиццы с указанным id.
+// 5.1
+const getAllWithoutPizzaById = id => {
+    let result = [];
+    for (let key in pizzaList) {
+        if (pizzaList[key].id !== id) {
+            result.push(pizzaList[key]);
+        }
+    }
+    console.log(result);
+};
+
+getAllWithoutPizzaById(2); /// [{id: 3,name: "Маргарита", caloricity: 1200, ...]}, ...];
+
+// 5.2
+const getAllWithoutPizzaById2 = id => {
+    let result = [];
+    pizzaList.forEach(function(item) {
+       if (item.id !== id) {
+            result.push(item);
+        } 
+    })
+    console.log(result);
+};
+
+getAllWithoutPizzaById2(3);
+
+console.log('---------------------6-------------------------');
 
 // Создать функцию, которая вернет массив со всеми пиццами, у которых кол-во ингридиентов (compositions) больше чем maxCompositions.
 //  6.1
