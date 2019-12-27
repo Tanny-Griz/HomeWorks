@@ -179,9 +179,9 @@ const getMiddleSalary = (arr) => {
     arr.forEach(function (item) {
         sum += item.salary;
     });
-    console.log(employeeArr.length);
-    console.log(sum / (employeeArr.length));
-    return sum / (employeeArr.length);
+
+    console.log("Средняя ЗП: " + sum / (arr.length));
+    return sum / (arr.length);
 }
 
 getMiddleSalary(employeeConstructArr); /// 2388.181818181818
