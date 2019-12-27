@@ -161,6 +161,7 @@ console.log('-------------------------4------------------------------');
 const getFullNamesFromArr = (arr) => {
     let myArrNames = [];
     arr.forEach(function (item) {
+        // myArrNames.push(item.name + " " + item.surname);
         myArrNames.push(item.name + " " + item.surname);
     });
     console.log(myArrNames);
@@ -208,19 +209,6 @@ const getRandomEmployee = (arr) => {
 getRandomEmployee(employeeConstructArr);
 
 console.log(getRandomEmployee(employeeConstructArr));
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
