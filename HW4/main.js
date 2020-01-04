@@ -104,8 +104,8 @@ const employeeArr = [
 // Создать функцию - конструктор, которая будет иметь внутри все свойства обьекта emplyee из массива employeeArr
 // 1
 
-function Employee({ id, name, surname, salary, workExperience, isPrivileges, gender }) {
-    this.id = id || null;
+function Employee({id, name, surname, salary, workExperience, isPrivileges, gender}) {
+    this.id = id;
     this.name = name || 'No name';
     this.surname = surname;
     this.salary = salary;
@@ -114,6 +114,7 @@ function Employee({ id, name, surname, salary, workExperience, isPrivileges, gen
     this.gender = gender;
 }
 
+// const employee_a = new Employee(11, 'Alina', 'Akil', 1000, 10, true, 'famale');
 const employee_a = new Employee({
     id: 11,
     name: 'Alina',
@@ -145,13 +146,16 @@ console.log('-------------------------3------------------------------');
 let createEmployesFromArr = (arr) => {
     let myArr = [];
     arr.forEach(function (item) {
-        myArr.push(item);
+        console.log(item);
+        let employee = new Employee(item);
+        myArr.push(employee);
     });
-    console.log(myArr);
+    // console.log(myArr);
     return myArr;
 };
 
 const employeeConstructArr = createEmployesFromArr(employeeArr);
+
 
 // Создать функцию которая вернет массив со всеми полными именами каждого employee, содержащегося в employeeConstructArr;
 // 4
@@ -161,8 +165,7 @@ console.log('-------------------------4------------------------------');
 const getFullNamesFromArr = (arr) => {
     let myArrNames = [];
     arr.forEach(function (item) {
-        // myArrNames.push(item.name + " " + item.surname);
-        myArrNames.push(item.name + " " + item.surname);
+        myArrNames.push(item.getFullName());
     });
     console.log(myArrNames);
 }
@@ -210,5 +213,31 @@ getRandomEmployee(employeeConstructArr);
 
 console.log(getRandomEmployee(employeeConstructArr));
 
+console.log('-------------------------------------------------------');
 
+var x = 1;
+var y = x;
+x = 2;
+console.log(y) // 1
 
+var o1 = {a: 1};
+var o2 = o1;
+o1.a = 2;
+console.log( o1.a ); // 2
+
+function createUser(name, age) {
+    return {
+        name: name,
+        age: age,
+        dI: function() {
+            console.log(this.name + " " + this.age);
+        },
+        dCar: function(car) {
+            console.log(this.name + " drive " + car.name);
+        }
+    };
+}
+
+let tom = new createUser("Tom", 32);
+tom.dI();
+tom.dCar({name: "KIA"});
