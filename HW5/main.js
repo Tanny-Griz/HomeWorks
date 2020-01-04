@@ -76,11 +76,11 @@ const studentsArr = [
 
 let newStudentaArr = [];
 
-function CreateStudent({name, surname, ratingPoint, schoolPoint}) {
+function CreateStudent({ name, surname, ratingPoint, schoolPoint }) {
     this.id = newStudentaArr.length;
     this.name = name;
     this.surname = surname;
-    this.ratingPoint  = ratingPoint ;
+    this.ratingPoint = ratingPoint;
     this.schoolPoint = schoolPoint;
     newStudentaArr.push(this);
 }
@@ -101,7 +101,7 @@ const setAllCreatedStudentsByConstructor = (studentsArr) => {
     let onContract = [];
 
     arrOfStudents.forEach(function (item) {
-        if(item.ratingPoint >= 800) {
+        if (item.ratingPoint >= 800) {
             item.isSelfPayment = false; // бюджетники
             studentsOnBudget.push(item);
         }
@@ -113,7 +113,7 @@ const setAllCreatedStudentsByConstructor = (studentsArr) => {
     console.log(studentsOnBudget);
 
     // сортировка бюджетников по ratingPoint и schoolPoint
-    studentsOnBudget.sort(function(a, b) {
+    studentsOnBudget.sort(function (a, b) {
         if (a.ratingPoint == b.ratingPoint) {
             if (a.schoolPoint > b.schoolPoint) {
                 b.isSelfPayment = true; // того, у кого schoolPoint меньше - на контракт
@@ -160,7 +160,7 @@ function CustomString() {
         console.log(str.charAt(0).toUpperCase() + str.slice(1));
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
-    
+
     this.ucWords = str => {
         let newArr = str.split(' ');
         let newStr = [];
@@ -194,8 +194,8 @@ function Validator() {
             return false
         }
         else {
-           console.log('true');
-           return true
+            console.log('true');
+            return true
         }
     };
     this.checkIsDomain = str => {
@@ -215,10 +215,10 @@ function Validator() {
         if ((date.getFullYear() == arrDate[2]) && (date.getMonth() == arrDate[1]) && (date.getDate() == arrDate[0])) {
             console.log('true')
             return true;
-          } else {
+        } else {
             console.log("Введена некорректная дата!");
             return false;
-          }
+        }
     }
     this.checkIsPhone = str => {
         if (str.includes(+38)) {
