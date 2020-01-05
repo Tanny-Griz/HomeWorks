@@ -67,8 +67,8 @@ const studentsArr = [
         schoolPoint: 200,
     },
     {
-        name: 'test',
-        surname: 'tteesstt',
+        name: 'Test',
+        surname: 'Testname',
         ratingPoint: 1000,
         schoolPoint: 1400,
     },
