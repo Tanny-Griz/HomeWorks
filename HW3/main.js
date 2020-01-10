@@ -414,7 +414,7 @@ console.log('---------------------2------------------------');
 // Создать функцию, которая вернет обьект с пиццей по id.
 // 2.1
 const getPizzaById = id => {
-    let pizzaId = '';
+    let pizzaId = {};
     for (let key in pizzaList) {
         if (pizzaList[key].id == id) {
             pizzaId = pizzaList[key];
@@ -450,6 +450,10 @@ const getPizzaById3 = id => {
 };
 
 getPizzaById3(6);
+
+//  2.4
+let pizzaId = pizzaList.find(item => item.id == 6);
+console.log(pizzaId)
 
 console.log('---------------------3-------------------------');
 

@@ -74,33 +74,33 @@ const studentsArr = [
     },
 ];
 
-let newStudentaArr = [];
+let newStudentsArr = [];
 
 function CreateStudent({ name, surname, ratingPoint, schoolPoint }) {
-    this.id = newStudentaArr.length;
     this.name = name;
     this.surname = surname;
     this.ratingPoint = ratingPoint;
     this.schoolPoint = schoolPoint;
-    newStudentaArr.push(this);
 }
+
+const sudentObj = new CreateStudent(studentsArr[0]);
+console.log(sudentObj);
 
 const setAllCreatedStudentsByConstructor = (studentsArr) => {
     // массив студентов, созданный конструктором CreateStudent
-    let arrOfStudents = [];
-
     studentsArr.forEach(function (item) {
         let student = new CreateStudent(item);
-        arrOfStudents.push(student);
+        student.id = studentsArr.indexOf(item);
+        newStudentsArr.push(student);
     })
-    console.log(arrOfStudents);
+    console.log(newStudentsArr);
 
     // студенты которые на бюджете
     let studentsOnBudget = [];
     // студенты которые на контракте
     let onContract = [];
 
-    arrOfStudents.forEach(function (item) {
+    newStudentsArr.forEach(function (item) {
         if (item.ratingPoint >= 800) {
             item.isSelfPayment = false; // бюджетники
             studentsOnBudget.push(item);
