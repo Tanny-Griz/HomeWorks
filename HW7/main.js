@@ -161,7 +161,9 @@ class Intern extends CreateStudent {
         // все свойства student
         super(student)
         // свое свойство
-        this.companyName = companyName
+        this.companyName = companyName,
+            this.startYear,
+            this.endYear
     }
     getFullInternInfo() {
         let studentInfo = '';
@@ -173,13 +175,20 @@ class Intern extends CreateStudent {
     }
     // 6. выдает
     get currentCourse() {
-        return this.course;
+        return `текущий курс: ${this.course}, год поступления ${this.startYear}, год окончания ${this.endYear}`
     };
     // 6. передаем курс кот-ый хотим перезаписать в value
     set currentCourse(value) {
+        // получили курс
         this.course = value
+        // получили текущий год
+        let todayNum = new Date().getFullYear(); //2020
+        // число курсов
+        let coursCount = 4;
+        // получили год поступления;
+        this.startYear = todayNum - this.course;
+        this.endYear = this.startYear + coursCount;
     };
-
 }
 
 const intern = new Intern(newStudentsArr[1], 'Google');
@@ -191,16 +200,13 @@ console.log(intern.getFullInternInfo());
 
 // 6 Создать в Intern геттер и сеттер с именем currentCourse (get currentCourse, set currentCourse). Когда вы используете геттер, то вы должны получить курс на котором вы учитесь в данный момент ( пробуем new Date().getYear() и смотрим на свойство course ). Когда вы используете сеттер, вы передаете число - курс который вы хотите перезаписать. Логика должна принять это число и сравнить с настоящим годом ( пробуем new Date().getYear() ). Потом данный сеттер должен записать startYear и endYear, а если их нет, то создать их согласно вашим вычислениям в сетере. Минимальный курс - 1, максимальный курс - 4
 
-let d = new Date().getYear();
-// console.log(d)
-
-// console.log(intern.currentCourse = 4);
-
+intern.currentCourse = 10;
+console.log(intern.currentCourse);
 
 
 let wer = [4, 6, 8, 11];
 let result = wer.findIndex((element => element == 8));
-console.log(result); // 2
+//console.log(result); // 2
 
 
 
