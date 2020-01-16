@@ -162,8 +162,8 @@ class Intern extends CreateStudent {
         super(student)
         // свое свойство
         this.companyName = companyName,
-            this.startYear,
-            this.endYear
+        this.startYear,
+        this.endYear
     }
     getFullInternInfo() {
         let studentInfo = '';
