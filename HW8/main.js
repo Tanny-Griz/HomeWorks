@@ -92,7 +92,7 @@ class Room {
         return this.newKidsArr.length
     }
     get femaleCount() {
-        let result = newKidsArr.reduce((sum, item) => {
+        let result = this.newKidsArr.reduce((sum, item) => {
             if (item.gender === 'female') {
                 return ++sum
             }
@@ -101,7 +101,7 @@ class Room {
         return result
     }
     get maleCount() {
-        let result = newKidsArr.reduce((sum, item) => {
+        let result = this.newKidsArr.reduce((sum, item) => {
             if (item.gender === 'male') {
                 return ++sum
             }
@@ -110,15 +110,11 @@ class Room {
         return result
     }
     get lastKid() {
-        let lastKidObj = {}
-        for (let key in newKidsArr) {
-            lastKidObj = newKidsArr[key]
-        }
-        return lastKidObj
+        return this.newKidsArr[this.newKidsArr.length - 1];
     }
     set lastKid(kid) {
         kid = new Kid(kid);
-        newKidsArr.push(kid);
+        this.newKidsArr.push(kid);
     }
 }
 
