@@ -65,8 +65,6 @@ const kidsArr = [
     },
 ];
 
-let newKidsArr = [];
-
 class Kid {
     constructor({ name, age, gender }) {
         this.id = ++Kid.nextId // генерируем id
@@ -77,12 +75,13 @@ class Kid {
     static nextId = 0
 }
 
-kidsArr.forEach(function(item) {
-    let kid = new Kid(item);
-    newKidsArr.push(kid);
-})
+let newKidsArr = kidsArr.map((item) => {
+    item = new Kid(item);
+     return item
+});
 
 console.log(newKidsArr)
+console.log(newKidsArr[1])
 
 class Room {
     constructor(newKidsArr, roomNumber) {
@@ -90,25 +89,25 @@ class Room {
         this.roomNumber = roomNumber;
     }
     get kidsCount() {
-        return newKidsArr.length
+        return this.newKidsArr.length
     }
     get femaleCount() {
-        let f = 0;
-        newKidsArr.forEach(function(item) {
-            if (item.gender == 'female') {
-                f++
+        let result = newKidsArr.reduce((sum, item) => {
+            if (item.gender === 'female') {
+                return ++sum
             }
-        })
-        return f   
+            return sum
+        }, 0)
+        return result
     }
     get maleCount() {
-        let m = 0;
-        newKidsArr.forEach(function(item) {
-            if (item.gender == 'male') {
-                m++
+        let result = newKidsArr.reduce((sum, item) => {
+            if (item.gender === 'male') {
+                return ++sum
             }
-        })
-        return m 
+            return sum
+        }, 0)
+        return result
     }
     get lastKid() {
         let lastKidObj = {}
@@ -123,15 +122,42 @@ class Room {
     }
 }
 
-const room = new Room(newKidsArr[1], 101)
+const room = new Room(newKidsArr, 101)
 
 // const room = new Room(kidsArr);
-console.log(room)
+console.log('--------кол-во детей в комнате-------')
 console.log(room.kidsCount); // 4
+console.log('--------кол-во девочек в комнате-------')
 console.log(room.femaleCount); // 1
+console.log('--------кол-во мальчиков в комнате-------')
 console.log(room.maleCount); // 3
+console.log('--------последний ребенок-------')
 console.log(room.lastKid); // Kid {id: 4, name: "Mitya", age: 8, gender: "male"}
 room.lastKid = { name: 'Kolya', age: 9, gender: 'male' }; // 
+console.log('--------последний ребенок после добавления-------')
 console.log(room.lastKid); // Kid {id: 5, name: "Kolya", age: 9, gender: "male"}
+console.log('--------кол-во детей в комнате-------')
 console.log(room.kidsCount); // 5
+
+// 4 Содать функцию , которая при каждом вызове будет показывать разницу в секундах между временем когда ее вызывали последний раз и теперешним. Вызываем первый раз, то ретерним строку 'Enabled'
+
+let timerFunc = () => {
+    let time;
+    return () => {
+        if (!time) {
+            time = new Date().getTime();
+            return 'Enabled';
+        }
+        else {
+            let olderTime = time;
+            let temp = new Date().getTime();
+            time = temp;
+            return temp - olderTime;
+        }
+    }
+};
+
+let getTime = timerFunc();
+console.log(getTime())
+
 
