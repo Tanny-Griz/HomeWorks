@@ -112,27 +112,47 @@ console.log(sortByCompanyType(cutomerInstancessArr));
 console.log('----------------6-----------------');
 
 function Customer2(customer) {
-    this.id = arr2.length;
     Object.assign(this, customer);
 }
 
-let arr2 = [];
-
-function pushCustomer2() {
-
-    arrOfUsers.forEach(function (item) {
-        let newCustomer = new Customer2(item);
-        let customerAccHist = item.accountHistory;
-        newCustomer.sumAmount = customerAccHist.reduce(function(p,c){return +p + +c.amount;},'');
-        arr2.push(newCustomer);
-    });
-    
-}
-pushCustomer2();
-
-// Сортировка по возрастанию
-arr2.sort(function (a, b) {
-    return a.sumAmount - b.sumAmount;
+let arrSum = arrOfUsers.map(function (item) {
+    let newCustomer = new Customer2(item);
+    let customerAccHist = item.accountHistory;
+    newCustomer.sumAmount = customerAccHist.reduce(function (p, c) {
+        return p + parseFloat(c.amount);
+    }, 0);
+    return newCustomer.sumAmount
 });
 
-console.log(arr2);
+console.log(arrSum)
+
+// Сортировка по возрастанию
+let sortAscending = arrSum.sort(function (a, b) {
+    if (a < b) {
+        return -1;
+    }
+});
+
+console.log(sortAscending);
+
+// 7 Содать функцию которая вернет отсартированный массив кастомеров по их общим тратам (свойство accountHistory смотрим на amount). Сортировка по параметру функции. Параметров может быть 2 вида ('asc', 'desc').
+
+function sortWithParam(param) {
+    if (param === 'asc') {
+        let sortAscending = arrSum.sort(function (a, b) {
+            if (a < b) {
+                return -1
+            }
+        })
+    }
+    else if (param === 'desc') {
+        let sortAscending = arrSum.sort(function (a, b) {
+            if (a > b) {
+                return -1
+            }
+        })
+    }
+    return sortAscending
+}
+console.log(sortWithParam('desc'));
+

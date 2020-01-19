@@ -6,26 +6,26 @@ class Condidate {
         Object.assign(this, condidate);
     }
     get state() {
-        return this.address.split(',').slice(2, 3).join()
+        return this.address.split(',').slice(2, 3).join();
     }
     get registeredDate(){
-        let result = new Date(this.registered.split(' ')[0])
-        return result
+        let result = new Date(this.registered.split(' ')[0]);
+        return result;
     }
     get allFriends() {
-        let userFriends = []
-        for (let key in this.friends) {
-            userFriends.push(this.friends[key].name.split(' ')[0]) 
-        }
-        return userFriends.join(', ')
+        let userFriends = this.friends.map(friend => {
+            return friend.name.split(' ')[0];
+        })
+        return userFriends.join(', ');
     }
     get addressInfo() {
-        let street = this.address.split(', ')[0]
-        let city = this.address.split(', ')[1]
-        let state = this.address.split(', ')[2]
-        let postalCode = this.address.split(', ')[3]
-        let userAddress = Object.assign({}, {street: street, city: city, state: state, postalCode: postalCode})
-        return userAddress
+        let address = this.address.split(',');
+        return {
+            street: address[0],
+            city: address[1],
+            state: address[2],
+            postalCode: address[3]
+        }
     }
 }
 
@@ -48,12 +48,10 @@ function removeUser(arr, index) {
 console.log(removeUser(condidateArr, 3));
 
 // 4 Создать геттер allFriends, котрый вернет строкой имена всех друзей, но без фамилии. Используем join.
-
 console.log(condidate.allFriends)
 
 
 // 5 Создать функцию которая вернет все ключи обьекта переданного параметром
-
 function getAllKeys(param) {
     let userKeys = []
     for (let key in param) {
@@ -63,27 +61,22 @@ function getAllKeys(param) {
 }
 console.log(getAllKeys(condidateArr[0]));
 
-// 
-
-Object.keys(condidateArr[0])
-console.log(Object.keys(condidateArr[0]))
+// 5.1
+let userKeys = Object.keys(condidateArr[0]);
+console.log(userKeys);
 
 
 // 6 Создать функцию которая вернет все значения обьекта переданного параметром
-
-console.log(Object.values(condidateArr[0]))
+let userValues = Object.values(condidateArr[0]);
+console.log(userValues);
 
 // 7 Создать геттер addressInfo, котрый вернет объектом информацию об адресе кондидата.
-
 console.log(condidate.addressInfo);
 
 // 8 Содать функцию,где мы первым параметром передадим объект с новым кандидатом, а вторым id любого кондидата в массиве condidateArr. Функция должна будет вставить кандидата созданного через конструктор Condidate на основе данных из первого параметра в массив перед кондидатом у которого id равно тому что передали в параметре
 
 function foo(condidate, id) {
-    condidate = new Condidate(condidate);
-    arr = condidateArr.splice(id - 1, 0, condidate)
-    console.log(condidateArr)
-    return arr
+    
 }
 
 foo(condidateArr[0], 6)
