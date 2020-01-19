@@ -183,11 +183,16 @@ class Intern extends CreateStudent {
         this.course = value
         // получили текущий год
         let todayNum = new Date().getFullYear(); //2020
-        // число курсов
+        // максимальный курс - 4
         let coursCount = 4;
         // получили год поступления;
-        this.startYear = todayNum - this.course;
-        this.endYear = this.startYear + coursCount;
+        if (this.course <= 4) {
+            this.startYear = todayNum - this.course;
+            this.endYear = this.startYear + coursCount;
+        }
+        else {
+            console.log('Введите корректно курс!')
+        }
     };
 }
 
@@ -200,7 +205,7 @@ console.log(intern.getFullInternInfo());
 
 // 6 Создать в Intern геттер и сеттер с именем currentCourse (get currentCourse, set currentCourse). Когда вы используете геттер, то вы должны получить курс на котором вы учитесь в данный момент ( пробуем new Date().getYear() и смотрим на свойство course ). Когда вы используете сеттер, вы передаете число - курс который вы хотите перезаписать. Логика должна принять это число и сравнить с настоящим годом ( пробуем new Date().getYear() ). Потом данный сеттер должен записать startYear и endYear, а если их нет, то создать их согласно вашим вычислениям в сетере. Минимальный курс - 1, максимальный курс - 4
 
-intern.currentCourse = 10;
+intern.currentCourse = 3;
 console.log(intern.currentCourse);
 
 
