@@ -41,16 +41,16 @@ console.log(uniqCompanyArray4);
 
 // 3 Создать функцию которая выведет мне массив id всех кондидатов, которые были зарагестрированны в том же году что и год указанный в параметре. Помним что сначала желательно отформатировать дату как в предыдущем дз.
 //3.1
+console.log('----------3-----------');
 function getUsersByYear(year) {
-    let registeredArr = []
-    condidateArr.filter((cond) => {
-        // отфильтровали по нужной дате
+    let usersByYear = condidateArr.filter((cond) => {
         let result = new Date(cond.registered.split(' ')[0]);
         if (result.getFullYear() === year) {
-            registeredArr.push(cond._id)
+            return cond
         }
     })
-    return registeredArr
+    let usersIdByYear = usersByYear.map(cond => cond._id)
+    return usersIdByYear
 }
 console.log(getUsersByYear(2017))
 
@@ -70,17 +70,16 @@ console.log(getUsersByYear2(2017))
 // 4 Создать функцию которая вернет массив с кондидатами, отфильтрованных по кол-ву непрочитанных сообщений. Смотрим св-во greeting, там указанно это количество в строке, Вам надо достать это число из строки и сверять с тем что в параметер вашей функции.
 
 function getCondidatesByUnreadMsg(num) {
-    let msgArr = []
-    condidateArr.map((cond) => {
+    let msgArr = condidateArr.filter((cond) => {
         let result = cond.greeting.split('!')[1].trim().split(' ')[2];
         if (+result === num) {
-            msgArr.push(cond)
+            return cond
         }
     })
     return msgArr
 }
 
-console.log(getCondidatesByUnreadMsg(9))
+console.log(getCondidatesByUnreadMsg(8))
 
 // 5 Создать функцию которая вернет массив по свойству gender.
 
@@ -112,8 +111,8 @@ console.log(resJoin)
 
 // reduce
 Array.prototype.myReduce = function(cb, arg) {
-    for (let index in this) {
-        arg = cb(arg, this[index])
+    for (let i = 0; i < this.length; i++) {
+        arg = cb(arg, this[i])
     }
     return arg
 }
@@ -122,12 +121,6 @@ let resReduce = arrNum.myReduce((total, curr) => {
     return total + curr
 }, 0)
 console.log(resReduce)
-
-
-
-
-
-
 
 
 // filter
