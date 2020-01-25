@@ -83,3 +83,19 @@ let promises = [getBooks(1), getBooks(2), getBooks(3), getBooks(4) ,getBooks(5)]
 Promise.all(promises).then(resultsArr => {
     console.log(resultsArr);
 });
+
+// 3
+async function getBooks2() {
+    let resultsArr = []
+    const getBooks = async (n = 1) => {
+        let books = await fetch(`https://www.googleapis.com/books/v1/volumes?q=quilting=${n}`);
+        books = await books.json()
+        return books.items
+    }
+
+    for (let i = 1; i <= 5; i++) {
+        await getBooks(i).then(val => result = resultsArr.concat(val))
+    }
+
+    console.log(resultsArr)
+}

@@ -9,16 +9,14 @@ const foo = async () => {
 
     let photosArr = await fetch('http://jsonplaceholder.typicode.com/photos')
     photosArr = await photosArr.json()
-    for (let user in users) {
-        let filterAlbum = albumArr.filter(item => users[user].id === item.userId)
-        for (let id in albumArr) {
-            let filterphotosArr = photosArr.filter(item => albumArr[id].id === item.albumId)
-            albumArr[id].photos = filterphotosArr
+    for (let prop of users) {
+        let filterAlbum = albumArr.filter(item => prop.id === item.userId)
+        for (let prop of albumArr) {
+            let filterphotosArr = photosArr.filter(item => prop.id === item.albumId)
+            prop.photos = filterphotosArr
         }
-        users[user].albums = filterAlbum
+        prop.albums = filterAlbum
     }
     console.log(users)
 }
 foo()
-
-
