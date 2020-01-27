@@ -1,0 +1,209 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot?ke09ed');
+  src: url('../fonts/icomoon.eot?ke09ed#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?ke09ed') format('truetype'),
+    url('../fonts/icomoon.woff?ke09ed') format('woff'),
+    url('../fonts/icomoon.svg?ke09ed#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-car:before {
+  content: "\e900";
+}
+
+.icon-shopping-cart_216477:before {
+  content: "\e906";
+}
+
+.icon-clock:before {
+  content: "\e90d";
+}
+
+.icon-Instagram:before {
+  content: "\e901";
+}
+
+.icon-mail:before {
+  content: "\e904";
+}
+
+.icon-call:before {
+  content: "\e903";
+}
+
+.icon-location:before {
+  content: "\e90a";
+}
+
+.icon-search:before {
+  content: "\e902";
+}
+
+.icon-fb:before {
+  content: "\e905";
+}
+
+img {
+  max-width: 100%;
+  display: inline-block;
+  height: auto;
+  vertical-align: top;
+}
+
+a {
+  color: inherit;
+  &:hover {
+    color: #fff;
+  }
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.holder-contacts {
+  background-color: #353b44;
+  color: #fff;
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0.9rem;
+
+    &:hover {
+      color: #acd263;
+    }
+  }
+  .icon-shopping-cart_216477 {
+    font-size: 1.8rem;
+  }
+  .form-inline {
+    position: relative;
+    padding: 0.7rem;
+    button {
+      position: absolute;
+      right: 0;
+      i {
+        color: #8f8f8f
+      }
+      
+    }
+  }
+}
+
+.logo img {
+  color: red;
+}
+
+.btn-outline-success {
+  color: #fff;
+  border: none;
+
+  &:hover {
+    color: #acd263;
+    background-color: #434b56;
+  }
+
+}
+
+main {
+  h1 {
+    color: #434b56;
+  }
+}
+
+.card {
+  text-align: center;
+  padding: 0.8rem;
+  height: 34rem;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0);
+  background-color: #f6f6f6;
+
+  .pizza-card {
+    &__name {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 5rem;
+      padding: 0.5rem 0;
+    }
+    &__composition {
+      width: 16rem;
+      height: 5rem;
+      overflow: hidden;
+      color: #686868;
+      font-style: italic;
+    }
+    &__caloricity {
+      font-weight: bold;
+    }
+    &__price {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: green;
+    }
+    &__button {
+      background-color: #7aa14d;
+      text-transform: uppercase;
+      font-weight: bold;
+      border: none;
+      color: #fff;
+      padding: 0.5rem 0;
+  
+      &:hover {
+        background-color: #88a863;
+      }
+    }
+  }
+
+  li {
+    display: inline-block;
+  }
+
+  .card-img-top {
+    margin: 0 auto;
+    width: 235px;
+    height: 235px;
+  }
+}
+
+footer {
+  i {
+    font-size: 1.4rem;
+  }
+
+  a {
+    padding: 0.5rem;
+  }
+}

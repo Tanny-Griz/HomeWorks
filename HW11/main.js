@@ -26,6 +26,21 @@ async function foo() {
 }
 foo()
 
+// 3
+let count3 = 2;
+
+function func1() {
+    return new Promise(resolve => setTimeout(() => resolve(count3 *= 2), 3000));
+}
+function func2() {
+    return new Promise(resolve => setTimeout(() => resolve(count3 += 1), 2000));
+}
+
+async function foo5() {
+    func1().then(res => func2()).then(res => console.log(res))
+}
+foo5();
+
 // 2 .then
 let count2 = 3
 function bar() {
