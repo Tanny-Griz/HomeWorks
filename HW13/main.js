@@ -1,10 +1,11 @@
 // создаем карточку товара
 const renderCard = (pizza) => {
+    const holdCard = document.createElement('div')
+    holdCard.className = 'hold-card'
     const card = document.createElement('div')
     card.className = 'card';
-    // card.style.width = "33.33%";
-    // card.style.margin = '1rem';
     card.id = `pizza${pizza.id}`;
+    holdCard.appendChild(card);
     // img
     const img = document.createElement('div');
     img.innerHTML = `<img src="img/${pizza.img}" alt="icon">`
@@ -41,7 +42,7 @@ const renderCard = (pizza) => {
     button.onclick = function (e) {
         console.log(this)
     }
-    return card
+    return holdCard
 }
 
 // рендерим в див

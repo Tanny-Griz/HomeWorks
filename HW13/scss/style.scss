@@ -123,6 +123,7 @@ a {
       &:hover {
         background-color: #fff;
       }
+
       i {
         color: #8f8f8f;
       }
@@ -140,13 +141,35 @@ main {
   }
 }
 
+.holder-pizzas-list {
+  margin: 0 -15px;
+}
+
+.hold-card {
+  width: 100%;
+  padding: 0 15px;
+  @media screen and (min-width: 575px) {
+    width: 50%;
+  }
+  @media screen and (min-width: 768px) {
+    width: 33.33%;
+  }
+  @media screen and (min-width: 992px) {
+    width: 25%;
+  }
+}
+
 .card {
   text-align: center;
   padding: 0.8rem;
-  width: 33.33%;
-  margin: 1rem;
+  width: 100%;
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0);
-
+  &:hover{
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0);
+  }
+  h3 {
+    font-size: 1.35rem;
+  }
   .pizza-card {
     &__name {
       display: flex;
@@ -189,7 +212,7 @@ main {
   }
 
   li {
-    display: inline-block; 
+    display: inline-block;
     // margin-bottom: 0.25rem;
   }
 

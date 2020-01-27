@@ -96,12 +96,31 @@ a:hover {
 main h1 {
   color: #434b56; }
 
+.holder-pizzas-list {
+  margin: 0 -15px; }
+
+.hold-card {
+  width: 100%;
+  padding: 0 15px; }
+  @media screen and (min-width: 575px) {
+    .hold-card {
+      width: 50%; } }
+  @media screen and (min-width: 768px) {
+    .hold-card {
+      width: 33.33%; } }
+  @media screen and (min-width: 992px) {
+    .hold-card {
+      width: 25%; } }
+
 .card {
   text-align: center;
   padding: 0.8rem;
-  width: 33.33%;
-  margin: 1rem;
+  width: 100%;
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0); }
+  .card:hover {
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0); }
+  .card h3 {
+    font-size: 1.35rem; }
   .card .pizza-card__name {
     display: flex;
     justify-content: center;
