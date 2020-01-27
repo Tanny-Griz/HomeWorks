@@ -83,19 +83,15 @@ a:hover {
     padding: 0.7rem; }
     .holder-contacts .form-inline button {
       position: absolute;
-      right: 0; }
+      right: 0.7rem;
+      border: none; }
+      .holder-contacts .form-inline button:hover {
+        background-color: #fff; }
       .holder-contacts .form-inline button i {
         color: #8f8f8f; }
 
 .logo img {
   color: red; }
-
-.btn-outline-success {
-  color: #fff;
-  border: none; }
-  .btn-outline-success:hover {
-    color: #acd263;
-    background-color: #434b56; }
 
 main h1 {
   color: #434b56; }
@@ -104,8 +100,7 @@ main h1 {
   text-align: center;
   padding: 0.8rem;
   height: 34rem;
-  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0);
-  background-color: #f6f6f6; }
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0); }
   .card .pizza-card__name {
     display: flex;
     justify-content: center;

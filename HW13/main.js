@@ -6,10 +6,10 @@ const renderCard = (pizza) => {
     card.style.margin = '1rem';
     card.id = `pizza${pizza.id}`;
     card.onmousemove = function () {
-        this.style.backgroundColor = '#fff';
+        this.style.boxShadow = '0 0px 10px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0)';
     }
     card.onmouseleave = function () {
-        this.style.backgroundColor =null;
+        this.style.boxShadow = null;
     }
     // img
     const img = document.createElement('div');

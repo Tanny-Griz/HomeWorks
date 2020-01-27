@@ -71,6 +71,7 @@ img {
 
 a {
   color: inherit;
+
   &:hover {
     color: #fff;
   }
@@ -105,36 +106,32 @@ a {
       color: #acd263;
     }
   }
+
   .icon-shopping-cart_216477 {
     font-size: 1.8rem;
   }
+
   .form-inline {
     position: relative;
     padding: 0.7rem;
+
     button {
       position: absolute;
-      right: 0;
-      i {
-        color: #8f8f8f
+      right: 0.7rem;
+      border: none;
+
+      &:hover {
+        background-color: #fff;
       }
-      
+      i {
+        color: #8f8f8f;
+      }
     }
   }
 }
 
 .logo img {
   color: red;
-}
-
-.btn-outline-success {
-  color: #fff;
-  border: none;
-
-  &:hover {
-    color: #acd263;
-    background-color: #434b56;
-  }
-
 }
 
 main {
@@ -148,7 +145,6 @@ main {
   padding: 0.8rem;
   height: 34rem;
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0);
-  background-color: #f6f6f6;
 
   .pizza-card {
     &__name {
@@ -158,6 +154,7 @@ main {
       height: 5rem;
       padding: 0.5rem 0;
     }
+
     &__composition {
       width: 16rem;
       height: 5rem;
@@ -165,14 +162,17 @@ main {
       color: #686868;
       font-style: italic;
     }
+
     &__caloricity {
       font-weight: bold;
     }
+
     &__price {
       font-weight: bold;
       font-size: 1.2rem;
       color: green;
     }
+
     &__button {
       background-color: #7aa14d;
       text-transform: uppercase;
@@ -180,7 +180,7 @@ main {
       border: none;
       color: #fff;
       padding: 0.5rem 0;
-  
+
       &:hover {
         background-color: #88a863;
       }
