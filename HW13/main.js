@@ -2,15 +2,9 @@
 const renderCard = (pizza) => {
     const card = document.createElement('div')
     card.className = 'card';
-    card.style.width = "18rem";
-    card.style.margin = '1rem';
+    // card.style.width = "33.33%";
+    // card.style.margin = '1rem';
     card.id = `pizza${pizza.id}`;
-    card.onmousemove = function () {
-        this.style.boxShadow = '0 0px 10px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0)';
-    }
-    card.onmouseleave = function () {
-        this.style.boxShadow = null;
-    }
     // img
     const img = document.createElement('div');
     img.innerHTML = `<img src="img/${pizza.img}" alt="icon">`
@@ -24,17 +18,9 @@ const renderCard = (pizza) => {
     card.appendChild(pizzaName);
     // p composition
     const composition = document.createElement('div');
-    composition.innerHTML = '<ul>'+ 'Состав: ' + pizza.composition.map(c => `<li>${c}</li>`).join(", ") + '</ul>';
+    composition.innerHTML = '<ul>'+ 'Состав: ' + pizza.composition.map(c => `<li>${c},</li>`).join(' ') + '</ul>';
     composition.className = 'pizza-card__composition';
-    composition.onmousemove = function () {
-        this.style.weight = '16rem';
-        this.style.height = '14rem';
-    }
-    composition.onmouseleave = function () {
-        this.style.weight = null;
-        this.style.height = '5rem';
-        console.log('leave')
-    }
+
     card.appendChild(composition);
     // p caloricity
     const caloricity = document.createElement('p')

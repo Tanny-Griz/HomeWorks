@@ -99,7 +99,8 @@ main h1 {
 .card {
   text-align: center;
   padding: 0.8rem;
-  height: 34rem;
+  width: 33.33%;
+  margin: 1rem;
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0); }
   .card .pizza-card__name {
     display: flex;
@@ -108,11 +109,10 @@ main h1 {
     height: 5rem;
     padding: 0.5rem 0; }
   .card .pizza-card__composition {
-    width: 16rem;
-    height: 5rem;
-    overflow: hidden;
     color: #686868;
-    font-style: italic; }
+    flex-grow: 1;
+    font-style: italic;
+    height: auto !important; }
   .card .pizza-card__caloricity {
     font-weight: bold; }
   .card .pizza-card__price {
@@ -131,9 +131,7 @@ main h1 {
   .card li {
     display: inline-block; }
   .card .card-img-top {
-    margin: 0 auto;
-    width: 235px;
-    height: 235px; }
+    margin: 0 auto; }
 
 footer i {
   font-size: 1.4rem; }

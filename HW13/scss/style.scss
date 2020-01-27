@@ -143,7 +143,8 @@ main {
 .card {
   text-align: center;
   padding: 0.8rem;
-  height: 34rem;
+  width: 33.33%;
+  margin: 1rem;
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0);
 
   .pizza-card {
@@ -156,11 +157,11 @@ main {
     }
 
     &__composition {
-      width: 16rem;
-      height: 5rem;
-      overflow: hidden;
+      // min-height: 6.25rem;
       color: #686868;
+      flex-grow: 1;
       font-style: italic;
+      height: auto !important;
     }
 
     &__caloricity {
@@ -188,13 +189,12 @@ main {
   }
 
   li {
-    display: inline-block;
+    display: inline-block; 
+    // margin-bottom: 0.25rem;
   }
 
   .card-img-top {
     margin: 0 auto;
-    width: 235px;
-    height: 235px;
   }
 }
 
