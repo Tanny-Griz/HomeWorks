@@ -110,26 +110,53 @@ a {
   .icon-shopping-cart_216477 {
     font-size: 1.8rem;
   }
-
-  .form-inline {
+  .div {
     position: relative;
-    padding: 0.7rem;
-
-    button {
+  }
+  .btn {
       position: absolute;
-      right: 0.7rem;
+      top: 0;
+      right: 0;
       border: none;
-
-      &:hover {
-        background-color: #fff;
-      }
-
+      box-shadow: inherit;
       i {
         color: #8f8f8f;
       }
     }
+
+  .form-control {
+    padding-right: 0rem;
+    &:focus {
+      color: #495057;
+      background-color: #fff;
+      border-color: inherit;
+      outline: 0;
+      box-shadow: inherit;
+    }
+    
   }
 }
+
+// input[type=search]::-ms-clear {
+//   display: none;
+//   width: 0;
+//   height: 0;
+// }
+
+// input[type=search]::-ms-reveal {
+//   display: none;
+//   width: 0;
+//   height: 0;
+// }
+
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration {
+  display: none;
+}
+
 
 .logo img {
   color: red;
@@ -149,13 +176,16 @@ main {
   width: 50%;
   padding: 0 7px;
   margin-bottom: 1.5rem;
+
   @media screen and (min-width: 575px) {
     width: 33.33%;
   }
+
   @media screen and (min-width: 768px) {
-    
+
     padding: 0 15px;
   }
+
   @media screen and (min-width: 992px) {
     width: 25%;
   }
@@ -167,15 +197,19 @@ main {
   width: 100%;
   min-height: 100%;
   transition: box-shadow 0.3s ease-in-out;
-  &:hover{
+
+  &:hover {
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0);
   }
+
   h3 {
     font-size: 1.35rem;
+
     @media screen and (min-width: 768px) {
       font-size: 1.8rem;
     }
   }
+
   .pizza-card {
     &__name {
       display: flex;
@@ -190,9 +224,11 @@ main {
       flex-grow: 1;
       font-style: italic;
       height: auto !important;
+
       @media screen and (min-width: 575px) {
         font-size: 0.8rem;
       }
+
       @media screen and (min-width: 768px) {
         font-size: 1rem;
       }
@@ -204,8 +240,12 @@ main {
 
     &__price {
       font-weight: bold;
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: green;
+
+      @media screen and (min-width: 768px) {
+        font-size: 1.2rem;
+      }
     }
 
     &__button {
@@ -216,10 +256,12 @@ main {
       color: #fff;
       padding: 0.2rem 0;
       font-size: 0.8rem;
+
       @media screen and (min-width: 768px) {
         padding: 0.5rem 0;
         font-size: 1rem;
       }
+
       &:hover {
         background-color: #88a863;
       }
@@ -232,16 +274,43 @@ main {
   }
 
   .card-img-top {
-    margin: 0 auto;
+    min-height: 138px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media screen and (min-width: 400px) {
+      min-height: 163px;
+    }
+    @media screen and (min-width: 768px) {
+      min-height: 182.41px;
+      font-size: 2rem;
+    }
   }
 }
 
 footer {
+  h2 {
+    font-size: 1.3rem;
+
+    @media screen and (min-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
   i {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+
+    @media screen and (min-width: 768px) {
+      font-size: 1.7rem;
+    }
   }
 
   a {
     padding: 0.5rem;
+    font-size: 0.9rem;
+
+    @media screen and (min-width: 768px) {
+      font-size: 1rem;
+    }
   }
 }

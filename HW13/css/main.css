@@ -78,17 +78,30 @@ a:hover {
       color: #acd263; }
   .holder-contacts .icon-shopping-cart_216477 {
     font-size: 1.8rem; }
-  .holder-contacts .form-inline {
-    position: relative;
-    padding: 0.7rem; }
-    .holder-contacts .form-inline button {
-      position: absolute;
-      right: 0.7rem;
-      border: none; }
-      .holder-contacts .form-inline button:hover {
-        background-color: #fff; }
-      .holder-contacts .form-inline button i {
-        color: #8f8f8f; }
+  .holder-contacts .div {
+    position: relative; }
+  .holder-contacts .btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    box-shadow: inherit; }
+    .holder-contacts .btn i {
+      color: #8f8f8f; }
+  .holder-contacts .form-control {
+    padding-right: 0rem; }
+    .holder-contacts .form-control:focus {
+      color: #495057;
+      background-color: #fff;
+      border-color: inherit;
+      outline: 0;
+      box-shadow: inherit; }
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration {
+  display: none; }
 
 .logo img {
   color: red; }
@@ -147,8 +160,11 @@ main h1 {
     font-weight: bold; }
   .card .pizza-card__price {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: green; }
+    @media screen and (min-width: 768px) {
+      .card .pizza-card__price {
+        font-size: 1.2rem; } }
   .card .pizza-card__button {
     background-color: #7aa14d;
     text-transform: uppercase;
@@ -166,11 +182,33 @@ main h1 {
   .card li {
     display: inline-block; }
   .card .card-img-top {
-    margin: 0 auto; }
+    min-height: 138px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    @media screen and (min-width: 400px) {
+      .card .card-img-top {
+        min-height: 163px; } }
+    @media screen and (min-width: 768px) {
+      .card .card-img-top {
+        min-height: 182.41px;
+        font-size: 2rem; } }
 
+footer h2 {
+  font-size: 1.3rem; }
+  @media screen and (min-width: 768px) {
+    footer h2 {
+      font-size: 2rem; } }
 footer i {
-  font-size: 1.4rem; }
+  font-size: 1.2rem; }
+  @media screen and (min-width: 768px) {
+    footer i {
+      font-size: 1.7rem; } }
 footer a {
-  padding: 0.5rem; }
+  padding: 0.5rem;
+  font-size: 0.9rem; }
+  @media screen and (min-width: 768px) {
+    footer a {
+      font-size: 1rem; } }
 
 /*# sourceMappingURL=main.css.map */
