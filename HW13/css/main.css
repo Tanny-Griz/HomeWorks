@@ -101,11 +101,14 @@ main h1 {
 
 .hold-card {
   width: 50%;
-  padding: 0 15px;
+  padding: 0 7px;
   margin-bottom: 1.5rem; }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 575px) {
     .hold-card {
       width: 33.33%; } }
+  @media screen and (min-width: 768px) {
+    .hold-card {
+      padding: 0 15px; } }
   @media screen and (min-width: 992px) {
     .hold-card {
       width: 25%; } }
@@ -120,17 +123,26 @@ main h1 {
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0); }
   .card h3 {
     font-size: 1.35rem; }
+    @media screen and (min-width: 768px) {
+      .card h3 {
+        font-size: 1.8rem; } }
   .card .pizza-card__name {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 5rem;
     padding: 0.5rem 0; }
   .card .pizza-card__composition {
+    font-size: 0.7rem;
     color: #686868;
     flex-grow: 1;
     font-style: italic;
     height: auto !important; }
+    @media screen and (min-width: 575px) {
+      .card .pizza-card__composition {
+        font-size: 0.8rem; } }
+    @media screen and (min-width: 768px) {
+      .card .pizza-card__composition {
+        font-size: 1rem; } }
   .card .pizza-card__caloricity {
     font-weight: bold; }
   .card .pizza-card__price {
@@ -143,7 +155,12 @@ main h1 {
     font-weight: bold;
     border: none;
     color: #fff;
-    padding: 0.5rem 0; }
+    padding: 0.2rem 0;
+    font-size: 0.8rem; }
+    @media screen and (min-width: 768px) {
+      .card .pizza-card__button {
+        padding: 0.5rem 0;
+        font-size: 1rem; } }
     .card .pizza-card__button:hover {
       background-color: #88a863; }
   .card li {
