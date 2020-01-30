@@ -110,30 +110,45 @@ a {
   .icon-shopping-cart_216477 {
     font-size: 1.8rem;
   }
+
   .div {
     position: relative;
   }
+
   .btn {
-      position: absolute;
-      top: 0;
-      right: 0;
-      border: none;
-      box-shadow: inherit;
-      i {
-        color: #8f8f8f;
-      }
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    box-shadow: inherit;
+
+    i {
+      color: #8f8f8f;
     }
+  }
 
   .form-control {
     padding-right: 0rem;
-    &:focus {
-      color: #495057;
-      background-color: #fff;
-      border-color: inherit;
-      outline: 0;
-      box-shadow: inherit;
-    }
-    
+    // &:focus {
+    //   color: #495057;
+    //   background-color: #fff;
+    //   border-color: inherit;
+    //   outline: 0;
+    //   box-shadow: inherit;
+    // }
+
+  }
+}
+
+.form-control,
+.btn,
+.custom-select {
+  &:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: inherit;
+    outline: 0;
+    box-shadow: inherit;
   }
 }
 
@@ -168,11 +183,18 @@ main {
   }
 }
 
+.hold-filter {
+  .btn {
+    border-color: #495057;
+  }
+}
+
 .holder-pizzas-list {
   margin: 0 -15px;
 }
 
 .hold-card {
+  position: relative;
   width: 50%;
   padding: 0 7px;
   margin-bottom: 1.5rem;
@@ -216,6 +238,11 @@ main {
       justify-content: center;
       align-items: center;
       padding: 0.5rem 0;
+    }
+
+    &__favor {
+      position: absolute;
+      right: 20px;
     }
 
     &__composition {
@@ -266,6 +293,13 @@ main {
         background-color: #88a863;
       }
     }
+
+    &__favor {
+      button {
+        border: none;
+        background-color: inherit;
+      }
+    }
   }
 
   li {
@@ -278,12 +312,13 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+
     @media screen and (min-width: 400px) {
       min-height: 163px;
     }
+
     @media screen and (min-width: 768px) {
       min-height: 182.41px;
-      font-size: 2rem;
     }
   }
 }
@@ -311,6 +346,37 @@ footer {
 
     @media screen and (min-width: 768px) {
       font-size: 1rem;
+    }
+  }
+}
+
+
+.pink {
+  color: #225e45;
+  font-weight: bold;
+}
+
+.banner {
+  
+  .holder-banner {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 33%;
+  }
+  .holder-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #CCC;
+    border-radius: 15px;
+
+    .slide-img {
+      min-height: 182.41px;
+      width: 30%;
+
     }
   }
 }

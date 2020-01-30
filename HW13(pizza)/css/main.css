@@ -90,12 +90,15 @@ a:hover {
       color: #8f8f8f; }
   .holder-contacts .form-control {
     padding-right: 0rem; }
-    .holder-contacts .form-control:focus {
-      color: #495057;
-      background-color: #fff;
-      border-color: inherit;
-      outline: 0;
-      box-shadow: inherit; }
+
+.form-control:focus,
+.btn:focus,
+.custom-select:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: inherit;
+  outline: 0;
+  box-shadow: inherit; }
 
 input::-webkit-search-decoration,
 input::-webkit-search-cancel-button,
@@ -109,10 +112,14 @@ input::-webkit-search-results-decoration {
 main h1 {
   color: #434b56; }
 
+.hold-filter .btn {
+  border-color: #495057; }
+
 .holder-pizzas-list {
   margin: 0 -15px; }
 
 .hold-card {
+  position: relative;
   width: 50%;
   padding: 0 7px;
   margin-bottom: 1.5rem; }
@@ -144,6 +151,9 @@ main h1 {
     justify-content: center;
     align-items: center;
     padding: 0.5rem 0; }
+  .card .pizza-card__favor {
+    position: absolute;
+    right: 20px; }
   .card .pizza-card__composition {
     font-size: 0.7rem;
     color: #686868;
@@ -179,6 +189,9 @@ main h1 {
         font-size: 1rem; } }
     .card .pizza-card__button:hover {
       background-color: #88a863; }
+  .card .pizza-card__favor button {
+    border: none;
+    background-color: inherit; }
   .card li {
     display: inline-block; }
   .card .card-img-top {
@@ -191,8 +204,7 @@ main h1 {
         min-height: 163px; } }
     @media screen and (min-width: 768px) {
       .card .card-img-top {
-        min-height: 182.41px;
-        font-size: 2rem; } }
+        min-height: 182.41px; } }
 
 footer h2 {
   font-size: 1.3rem; }
@@ -210,5 +222,26 @@ footer a {
   @media screen and (min-width: 768px) {
     footer a {
       font-size: 1rem; } }
+
+.pink {
+  color: #225e45;
+  font-weight: bold; }
+
+.banner .holder-banner {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 33%; }
+.banner .holder-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #CCC;
+  border-radius: 15px; }
+  .banner .holder-slider .slide-img {
+    min-height: 182.41px;
+    width: 30%; }
 
 /*# sourceMappingURL=main.css.map */

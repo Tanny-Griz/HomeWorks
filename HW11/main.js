@@ -114,3 +114,19 @@ async function getBooks2() {
 
     console.log(resultsArr)
 }
+
+
+async function myBooks() {
+    let resultsArr = []
+    const getBooks = async (n = 1) => {
+        let books = await fetch(`https://www.googleapis.com/books/v1/volumes?q=quilting=${n}`);
+        books = await books.json()
+        return books.items
+    }
+
+    for (let i = 1; i <= 5; i++) {
+        await getBooks(i).then(val => result = resultsArr.concat(val))
+    }
+
+    console.log(resultsArr)
+}

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="shortcut icon" href="img/Avo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/Avo.png" type="image/x-icon" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -21,11 +21,16 @@
           <div class="row align-items-center">
             <div class="col-lg-1 md-12 md-center sm-12 p-0 text-center">
               <div class="logo">
-                <a href="index.html"><img src="https://cdn3.iconfinder.com/data/icons/food-set-3/91/Food_C230-64.png" alt="icon"/></a>
+                <a href="index.html"
+                  ><img
+                    src="https://cdn3.iconfinder.com/data/icons/food-set-3/91/Food_C230-64.png"
+                    alt="icon"
+                /></a>
               </div>
             </div>
             <div
-              class="col-lg-7 md-12 md-center sm-12 py-2 d-flex justify-content-center">
+              class="col-lg-7 md-12 md-center sm-12 py-2 d-flex justify-content-center"
+            >
               <nav class="main-nav">
                 <ul class="d-flex">
                   <li>
@@ -36,25 +41,29 @@
                   </li>
                   <li>
                     <a href="tel:+380990000000"
-                      ><i class="icon-call"></i> +38099-00-00-000</a>
+                      ><i class="icon-call"></i> +38099-00-00-000</a
+                    >
                   </li>
                 </ul>
               </nav>
             </div>
             <div
-              class="col-lg-4 md-12 md-center sm-12 sm-center py-2 d-flex justify-content-center">
+              class="col-lg-4 md-12 md-center sm-12 sm-center py-2 d-flex justify-content-center"
+            >
               <nav class="main-nav">
                 <ul>
                   <li>
                     <div class="div">
-                      <input class="form-control" id="nameInput" type="search" placeholder="Search"/>
-                      <button
-                        class="btn my-sm-0"
-                        type="button">
+                      <input
+                        class="form-control"
+                        id="inputFind"
+                        type="search"
+                        placeholder="Search"
+                      />
+                      <button class="btn my-sm-0" type="button">
                         <i class="icon-search"></i>
                       </button>
                     </div>
-                      
                   </li>
                   <li>
                     <a href="#"><i class="icon-shopping-cart_216477"></i></a>
@@ -68,12 +77,50 @@
     </header>
     <main>
       <div class="container">
+        <div class="row banner">
+          
+          <div class="holder-banner">
+            <!-- <button class="arrow prev">⇦</button> -->
+            <!-- <div class="slide-img col-sm-6 col-md-4">
+
+            </div>
+            <div class="slide-text col-sm-6 col-md-8">
+
+            </div> -->
+            <!-- <button class="arrow next">⇨</button> -->
+          </div>
+
+        </div>
         <div class="holder-top mt-3 mb-3">
           <div class="row d-flex justify-content-between align-items-center">
-            <div class="col-sm-12 col-sm-text-center col-md-6">
+            <div class="col-sm-12 col-sm-text-center md-12 col-lg-2">
               <h1>Pizza</h1>
             </div>
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-md-6 col-lg-5">
+              <div class="hold-filter d-flex">
+                <select class="custom-select mr-2" id="select-filter">
+                  <option selected>Диапазон:</option>
+                  <option value="1">По Каллориям</option>
+                  <option value="2">По Цене</option>
+                </select>
+                <input
+                  class="form-control"
+                  id="inputFrom"
+                  type="text"
+                  placeholder="От"
+                />
+                <span> - </span>
+                <input
+                  class="form-control"
+                  id="inputTo"
+                  type="text"
+                  placeholder="До"
+                />
+                <button class="btn ml-2" id="btn-find">OK</button>
+                <button class="btn ml-2" id="btn-reset">Сброс</button>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-5">
               <div class="d-flex">
                 <select class="custom-select" id="select">
                   <option selected>Сортировать:</option>
@@ -85,9 +132,7 @@
           </div>
         </div>
         <div class="holder-pizzas-list d-flex flex-wrap justify-content-center">
-          <div class="hold-card">
-            
-          </div>
+          <div class="hold-card"></div>
         </div>
       </div>
       <footer>
@@ -137,11 +182,14 @@
         </div>
       </footer>
     </main>
+
+
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
       crossorigin="anonymous"
     ></script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
       integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
