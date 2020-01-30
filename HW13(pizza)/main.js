@@ -1,3 +1,36 @@
+const pizzaCardContainer = document.querySelector('.pizza-info')
+const pizzaCardElement = document.getElementById('pizzaContainer')
+
+pizzaCardContainer.addEventListener('click', function(e) {
+    const elemClassName = e.target.className;
+    if(elemClassName === 'pizza-info') {
+        this.style.display = 'none'
+    }
+
+})
+
+const renderPizzaCard = (pizza) => {
+    const template = `
+    <h1>name of pizza</h1>
+    <span>Name: ${name}</span>
+    <ul>
+      ${
+          pizza.composition.map(composition => {
+              return `<li>${composition}</li>`
+          }).join('')
+      }
+    </ul>
+    <p>Каллории</p>
+    <p>Цена</p>
+    `
+    pizzaCardElement.innerHTML = template;
+}
+
+let p = pizzaList[1];
+renderPizzaCard(p)
+
+
+
 // создаем карточку товара
 const renderCard = (pizza) => {
     const holdCard = document.createElement('div');
@@ -5,6 +38,10 @@ const renderCard = (pizza) => {
     const card = document.createElement('div');
     card.className = 'card';
     card.id = `pizza${pizza.id}`;
+    card.onclick = function() {
+        renderPizzaCard(pizza);
+        pizzaCardContainer.style.display = 'flex';
+    }
     holdCard.appendChild(card);
     // img
     const img = document.createElement('div');
@@ -97,7 +134,10 @@ input.addEventListener('input', function (e) {
             }
             return comp
         })
-        return { ...pizza, composition }
+        return {
+            ...pizza,
+            composition
+        }
     })
     renderHolderPizzasList(newArr)
 })
@@ -158,41 +198,41 @@ const addToFavor = document.getElementById('addToFavor');
 
 // 5. Добавить баннер - слайдер, где автоматически будут каждую секунду показываться пицца с полем priceOfTheDay: true, которое вы можете сами добавить любым на ваш быбор пиццам в самом коде. Можете имспользовать мой обновленный массив пицц. Банер должен распологаться выше карточек с пиццами. Дизайн произвольный. Разрешено использовать в качесиве слайдера любую библиотеку.
 
-const renderSlider = (pizza) => {
+// const renderSlider = (pizza) => {
 
-    const holderSlider = document.createElement('div');
-    holderSlider.className = 'row holder-slider';
+//     const holderSlider = document.createElement('div');
+//     holderSlider.className = 'row holder-slider';
 
-    const slideImg = document.createElement('div');
-    slideImg.className = 'col-4 slide-img';
+//     const slideImg = document.createElement('div');
+//     slideImg.className = 'col-4 slide-img';
 
-    const slideText = document.createElement('div');
-    slideText.className = 'col-8 slide-text';
-    slideText.innerText = "Предложение дня!";
+//     const slideText = document.createElement('div');
+//     slideText.className = 'col-8 slide-text';
+//     slideText.innerText = "Предложение дня!";
 
-    const img = document.createElement('img');
-    img.alt = 'icon';
-    img.classList.add('simg');
-    img.src = 'img/' + pizza.img;
+//     const img = document.createElement('img');
+//     img.alt = 'icon';
+//     img.classList.add('simg');
+//     img.src = 'img/' + pizza.img;
 
-    slideImg.appendChild(img);
-    holderSlider.appendChild(slideImg);
-    holderSlider.appendChild(slideText);
+//     slideImg.appendChild(img);
+//     holderSlider.appendChild(slideImg);
+//     holderSlider.appendChild(slideText);
 
-    return holderSlider
-}
+//     return holderSlider
+// }
 
-const renderSliders = (arrayOfPizza) => {
-    const holderBanner = document.querySelector('.holder-banner');
-    holderBanner.innerHTML = ''
-    arrayOfPizza.filter(pizza => {
-        if (pizza.priceOfTheDay == true) {
-            const slide = renderSlider(pizza);
-            holderBanner.appendChild(slide);
-        }
-    })
-}
-renderSliders(pizzaList)
+// const renderSliders = (arrayOfPizza) => {
+//     const holderBanner = document.querySelector('.holder-banner');
+//     holderBanner.innerHTML = ''
+//     arrayOfPizza.filter(pizza => {
+//         if (pizza.priceOfTheDay == true) {
+//             const slide = renderSlider(pizza);
+//             holderBanner.appendChild(slide);
+//         }
+//     })
+// }
+// renderSliders(pizzaList)
 
 // let count = 0;
 
@@ -202,3 +242,4 @@ renderSliders(pizzaList)
 //     count++
 // }
 // setInterval(goSlider, 2000);
+
