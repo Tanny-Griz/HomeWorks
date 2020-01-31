@@ -256,17 +256,17 @@ const addToFavor = document.getElementById('addToFavor');
 
 const renderSlide = (pizza) => {
     const holderSlider = document.createElement('div');
-    holderSlider.className = 'row holder-slider-item';
+    holderSlider.className = 'row holder-slider-item text-center';
     // img
     const slideImg = document.createElement('div');
-    slideImg.className = 'col-4 slide-img';
+    slideImg.className = 'col-sm-12 col-md-6 slide-img';
     const img = document.createElement('img');
     img.alt = 'icon';
     img.classList.add('simg');
     img.src = 'img/' + pizza.img;
     // text
     const slideText = document.createElement('div');
-    slideText.className = 'col-8 slide-text';
+    slideText.className = 'col-sm-12 col-md-6 slide-text';
     slideText.innerHTML = `
                         <p>Предложение дня!</p>
                         <p>3 по цене 2</p>

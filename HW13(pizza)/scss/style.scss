@@ -358,19 +358,29 @@ main {
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 10rem;
+    min-height: 13rem;
     padding: 0.8rem;
     border: 1px solid #CCC;
     border-radius: 0.2rem;
     background: #ffffff;
     .holder-slider-item {
-      width: 40%;
+      width: 100%;
+      @media screen and (min-width: 768px) {
+        width: 70%;
+      }
+      @media screen and (min-width: 992px) {
+        width: 40%;
+      }
       .slide-text {
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
       }
     }
   }
 }
+
 // end slider
 
 // modal
