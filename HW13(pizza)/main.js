@@ -1,37 +1,88 @@
-const pizzaCardContainer = document.querySelector('.pizza-info')
-const pizzaCardElement = document.getElementById('pizzaContainer')
+// ----- modal-----
+const pizzaCardContainer = document.querySelector('.pizza-info');
+const modal = document.getElementById('modal-content');
 
+// const hideBtn = document.querySelector('.pizza-info__hide');
+// const close = document.querySelector('.pizza-info__close');
+
+
+// при клике на модальное окно
 pizzaCardContainer.addEventListener('click', function(e) {
+    // считываем класс у эл-та
     const elemClassName = e.target.className;
-    if(elemClassName === 'pizza-info') {
+    console.log(elemClassName)
+    // если он = pizza-info'
+    if(
+        elemClassName === 'pizza-info' ||
+        elemClassName === 'pizza-info__hide' ||
+        elemClassName === 'pizza-info__close'
+       ) {
+        // прячем и на оборот
         this.style.display = 'none'
     }
-
 })
+
+// закрытие модалки
+// function closeModal() {
+//     modal.classList.add('hide');
+//     document.onkeydown = null;
+// }
+
+// close.onclick = closeModal;
+// hideBtn.onclick = closeModal;
+
+
+// open_btn.onclick = function() {
+//     modal.classList.remove('hide');
+//     document.onkeydown = function(e) {
+//     	console.log(e);
+// 	if(e.keyCode == 27){
+// 		modal.classList.add('hide');
+// 		document.onkeydown = null;
+// 	}
+// }
+// }
+
+// close.onclick = function() {
+//     modal.classList.add('hide');
+//     document.onkeydown = null;
+// }
+
+// hide_btn.onclick = function() {
+//     modal.classList.add('hide');
+//     document.onkeydown = null;
+// }
 
 const renderPizzaCard = (pizza) => {
     const template = `
-    <h1>name of pizza</h1>
-    <span>Name: ${name}</span>
-    <ul>
-      ${
-          pizza.composition.map(composition => {
-              return `<li>${composition}</li>`
-          }).join('')
-      }
-    </ul>
-    <p>Каллории</p>
-    <p>Цена</p>
+            <div class="pizza-info__header">
+                <a href="#close" title="Close" class="pizza-info__close">X</a>
+                <h3>${pizza.name}</h3>
+            </div>
+            <div class="modal-body">
+            <p>Состав: </p>
+            <ul>
+                ${
+                    pizza.composition.map(composition => {
+                        return `<li class="d-inline-flex">${composition}, </li>`
+                    }).join('')
+                }
+            </ul>
+            </div>
+            <div class="modal-footer">
+                <p>Каллории: ${pizza.caloricity}</p>
+                <p>Цена: ${pizza.price} грн.</p>
+                <button class="pizza-info__hide">Hide</button>
+            </div>
     `
-    pizzaCardElement.innerHTML = template;
+    modal.innerHTML = template;
 }
 
 let p = pizzaList[1];
 renderPizzaCard(p)
+// ----- end modal-----
 
-
-
-// создаем карточку товара
+// ---- card ---- создаем карточку товара
 const renderCard = (pizza) => {
     const holdCard = document.createElement('div');
     holdCard.className = 'hold-card';
@@ -89,6 +140,8 @@ const renderCard = (pizza) => {
     return holdCard;
 }
 
+// ---- end card ----
+
 // рендерим в див
 const renderHolderPizzasList = (arrayOfPizza) => {
     const mainElement = document.querySelector('.holder-pizzas-list');
@@ -120,10 +173,11 @@ const input = document.getElementById('inputFind');
 
 input.addEventListener('input', function (e) {
     let newArr = [...pizzaList].filter(pizza => {
-        if (pizza.name.toLowerCase().includes(e.target.value.toLowerCase())) {
+        let eTargetValue = e.target.value.toLowerCase();
+        if (pizza.name.toLowerCase().includes(eTargetValue)) {
             return true
         }
-        if (pizza.composition.join(' ').toLowerCase().includes(e.target.value.toLowerCase())) {
+        if (pizza.composition.join(' ').toLowerCase().includes(eTargetValue)) {
             return true
         }
     })
@@ -134,10 +188,7 @@ input.addEventListener('input', function (e) {
             }
             return comp
         })
-        return {
-            ...pizza,
-            composition
-        }
+        return {...pizza, composition}
     })
     renderHolderPizzasList(newArr)
 })
@@ -198,48 +249,59 @@ const addToFavor = document.getElementById('addToFavor');
 
 // 5. Добавить баннер - слайдер, где автоматически будут каждую секунду показываться пицца с полем priceOfTheDay: true, которое вы можете сами добавить любым на ваш быбор пиццам в самом коде. Можете имспользовать мой обновленный массив пицц. Банер должен распологаться выше карточек с пиццами. Дизайн произвольный. Разрешено использовать в качесиве слайдера любую библиотеку.
 
-// const renderSlider = (pizza) => {
+const renderSlide = (pizza) => {
+    const holderSlider = document.createElement('div');
+    holderSlider.className = 'row holder-slider-item';
+    // img
+    const slideImg = document.createElement('div');
+    slideImg.className = 'col-4 slide-img';
+    const img = document.createElement('img');
+    img.alt = 'icon';
+    img.classList.add('simg');
+    img.src = 'img/' + pizza.img;
+    // text
+    const slideText = document.createElement('div');
+    slideText.className = 'col-8 slide-text';
+    slideText.innerHTML = `
+                        <p>Предложение дня!</p>
+                        <p>3 по цене 2</p>
+                        `;
+    // в див slide-img засунем img
+    slideImg.appendChild(img);
+    holderSlider.appendChild(slideImg);
+    holderSlider.appendChild(slideText);
 
-//     const holderSlider = document.createElement('div');
-//     holderSlider.className = 'row holder-slider';
+    return holderSlider
+}
 
-//     const slideImg = document.createElement('div');
-//     slideImg.className = 'col-4 slide-img';
+let indexOfName = 0;
 
-//     const slideText = document.createElement('div');
-//     slideText.className = 'col-8 slide-text';
-//     slideText.innerText = "Предложение дня!";
+// массив с отфильтрованными пиццами по priceOfTheDay
+const pizzaOfTheDay = pizzaList.filter(pizza => {
+    if (pizza.priceOfTheDay == true) {
+        return true
+    }
+})
+// console.log(pizzaOfTheDay);
 
-//     const img = document.createElement('img');
-//     img.alt = 'icon';
-//     img.classList.add('simg');
-//     img.src = 'img/' + pizza.img;
 
-//     slideImg.appendChild(img);
-//     holderSlider.appendChild(slideImg);
-//     holderSlider.appendChild(slideText);
+// заходит первая пицца
+const renderSlideContainer = (pizza) => {
+    const sliderContainer = document.querySelector('.slider');
+    sliderContainer.innerHTML = '';
+    if (pizza.priceOfTheDay == true) {
+        const slide = renderSlide(pizza);
+        sliderContainer.appendChild(slide);
+    }
+}
 
-//     return holderSlider
-// }
+renderSlideContainer(pizzaOfTheDay[indexOfName]); // отрисовываем первую, без интервала
 
-// const renderSliders = (arrayOfPizza) => {
-//     const holderBanner = document.querySelector('.holder-banner');
-//     holderBanner.innerHTML = ''
-//     arrayOfPizza.filter(pizza => {
-//         if (pizza.priceOfTheDay == true) {
-//             const slide = renderSlider(pizza);
-//             holderBanner.appendChild(slide);
-//         }
-//     })
-// }
-// renderSliders(pizzaList)
+setInterval(() => {
+    // если индекс = последнему (концу) массива, то индексу снова присваиваем 0, иначе +1
+    indexOfName = indexOfName === pizzaOfTheDay.length - 1 ? 0 : indexOfName + 1
+    renderSlideContainer(pizzaOfTheDay[indexOfName]); // через каждые 2 сек отрысов по очереди 
+}, 2000);
 
-// let count = 0;
 
-// function goSlider() {
-//     let newArr = [...pizzaList];
-//     renderSliders(newArr[count]);
-//     count++
-// }
-// setInterval(goSlider, 2000);
 
