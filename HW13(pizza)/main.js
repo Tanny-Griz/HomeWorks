@@ -2,10 +2,6 @@
 const pizzaCardContainer = document.querySelector('.pizza-info');
 const modal = document.getElementById('modal-content');
 
-// const hideBtn = document.querySelector('.pizza-info__hide');
-// const close = document.querySelector('.pizza-info__close');
-
-
 // при клике на модальное окно
 pizzaCardContainer.addEventListener('click', function(e) {
     // считываем класс у эл-та
@@ -23,35 +19,10 @@ pizzaCardContainer.addEventListener('click', function(e) {
 })
 
 // закрытие модалки
-// function closeModal() {
-//     modal.classList.add('hide');
-//     document.onkeydown = null;
-// }
-
-// close.onclick = closeModal;
-// hideBtn.onclick = closeModal;
-
-
-// open_btn.onclick = function() {
-//     modal.classList.remove('hide');
-//     document.onkeydown = function(e) {
-//     	console.log(e);
-// 	if(e.keyCode == 27){
-// 		modal.classList.add('hide');
-// 		document.onkeydown = null;
-// 	}
-// }
-// }
-
-// close.onclick = function() {
-//     modal.classList.add('hide');
-//     document.onkeydown = null;
-// }
-
-// hide_btn.onclick = function() {
-//     modal.classList.add('hide');
-//     document.onkeydown = null;
-// }
+function closeModal() {
+    modal.classList.add('hide');
+    document.onkeydown = null;
+}
 
 const renderPizzaCard = (pizza) => {
     const template = `
@@ -59,19 +30,26 @@ const renderPizzaCard = (pizza) => {
                 <a href="#close" title="Close" class="pizza-info__close">X</a>
                 <h3>${pizza.name}</h3>
             </div>
-            <div class="modal-body">
-            <p>Состав: </p>
-            <ul>
-                ${
-                    pizza.composition.map(composition => {
-                        return `<li class="d-inline-flex">${composition}, </li>`
-                    }).join('')
-                }
-            </ul>
+            <div class="row pizza-info__body">
+                <div class="col-6">
+                    <span>Состав: </span>
+                    <div class="pizza-info__composition">
+                        <ul>
+                            ${
+                                pizza.composition.map(composition => {
+                                    return `<li class="d-inline-flex">${composition}, </li>`
+                                }).join('')
+                            }
+                        </ul>
+                    </div>
+                    <p>Каллории: ${pizza.caloricity}</p>
+                    <p class="pizza-info__price">Цена: ${pizza.price} грн.</p>
+                </div>
+                <div class="col-6">
+                    <img src="img/${pizza.img}" alt="icon">
+                </div>
             </div>
-            <div class="modal-footer">
-                <p>Каллории: ${pizza.caloricity}</p>
-                <p>Цена: ${pizza.price} грн.</p>
+            <div class="pizza-info__footer">
                 <button class="pizza-info__hide">Hide</button>
             </div>
     `
@@ -305,3 +283,32 @@ setInterval(() => {
 
 
 
+select.onchange = function () {
+    const newArr = [...pizzaList];
+    newArr.sort((a, b) => {
+        // по возраст
+        if (a.price < b.price) {
+            // если выбранный селект = 1
+            if(this.value === '1') {
+                return -1 // вернем от больш к меньш
+            }
+            // если выбранный селект = 2 ( или что-то другое, не 1:) )
+            else {
+                return 1 //вернем наоборот
+            }
+        } 
+        
+        // по убыв
+        if (a.price > b.price) {
+            if(this.value === '1') {
+                return 1
+            }
+            else {
+                return -1
+            }
+        }
+
+        if (a.price === b.price) return 0
+    })
+    renderHolderPizzasList(newArr);
+}

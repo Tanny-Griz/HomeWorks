@@ -350,14 +350,13 @@ main {
 // modal
 .pizza-info {
   display: none;
-  position: fixed;
+  position: relative;
   z-index: 3;
   top: 10%;
-  left: 50%;
-  transform: translateX(50%);
+  left: 30%;
   &__card {
-    width: 70%;
-    position: relative;
+    width: 25rem;
+    position: absolute;
     padding: 5px 20px 13px 20px;
     border-radius: 10px;
     background: rgb(255, 254, 254);
@@ -368,6 +367,14 @@ main {
     h3 {
       text-align: center;
       font-size: 2rem;
+    }
+  }
+  &__body {
+    span {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #245324;
+      margin-bottom: 1rem;
     }
   }
   &__close {
@@ -384,6 +391,14 @@ main {
     border-radius: 12px;
     box-shadow: 1px 1px 3px #000;
     &:hover { background: rgb(9, 26, 10); }
+  }
+  &__composition {
+    padding-bottom: 1rem;
+  }
+  &__price {
+    color: #2f882f;
+    font-size: 1.2rem;
+    font-weight: bold;
   }
 
 }
