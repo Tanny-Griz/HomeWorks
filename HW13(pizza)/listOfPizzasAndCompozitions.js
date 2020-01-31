@@ -179,7 +179,7 @@ const compositionList = [{
 },
 {
     id: 2,
-    name: "Крветки",
+    name: "Креветки",
     caloricity: 37,
     price: 35,
 },

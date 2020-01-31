@@ -17,13 +17,7 @@ pizzaCardContainer.addEventListener('click', function(e) {
         this.style.display = 'none'
     }
 })
-
-// закрытие модалки
-function closeModal() {
-    modal.classList.add('hide');
-    document.onkeydown = null;
-}
-
+// рендер модалки карты
 const renderPizzaCard = (pizza) => {
     const template = `
             <div class="pizza-info__header">
@@ -55,10 +49,43 @@ const renderPizzaCard = (pizza) => {
     `
     modal.innerHTML = template;
 }
-
-let p = pizzaList[1];
-renderPizzaCard(p)
 // ----- end modal-----
+
+// рендер модалки создания пиццы
+const modalCreate = document.getElementById('modal-content-create');
+
+const renderMyPizzaCreate = (pizza) => {
+    const template = `
+            <div class="pizza-info__header">
+                <a href="#close" title="Close" class="pizza-info__close">X</a>
+                <h3>${pizza.name}</h3>
+            </div>
+            <div class="row pizza-info__body">
+                <div class="col-6">
+                    <span>Состав: </span>
+                    <div class="pizza-info__composition">
+                        <ul>
+                            ${
+                                pizza.composition.map(composition => {
+                                    return `<li class="d-inline-flex">${composition}, </li>`
+                                }).join('')
+                            }
+                        </ul>
+                    </div>
+                    <p>Каллории: ${pizza.caloricity}</p>
+                    <p class="pizza-info__price">Цена: ${pizza.price} грн.</p>
+                </div>
+                <div class="col-6">
+                    <img src="img/${pizza.img}" alt="icon">
+                </div>
+            </div>
+            <div class="pizza-info__footer">
+                <button class="pizza-info__hide">Hide</button>
+            </div>
+    `
+    modalCreate.innerHTML = template;
+}
+
 
 // ---- card ---- создаем карточку товара
 const renderCard = (pizza) => {
@@ -280,3 +307,8 @@ setInterval(() => {
     indexOfName = indexOfName === pizzaOfTheDay.length - 1 ? 0 : indexOfName + 1
     renderSlideContainer(pizzaOfTheDay[indexOfName]); // через каждые 2 сек отрысов по очереди 
 }, 2000);
+
+
+// Создание новой пиццы
+console.log(compositionList)
+
