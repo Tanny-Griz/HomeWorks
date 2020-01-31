@@ -280,35 +280,3 @@ setInterval(() => {
     indexOfName = indexOfName === pizzaOfTheDay.length - 1 ? 0 : indexOfName + 1
     renderSlideContainer(pizzaOfTheDay[indexOfName]); // через каждые 2 сек отрысов по очереди 
 }, 2000);
-
-
-
-select.onchange = function () {
-    const newArr = [...pizzaList];
-    newArr.sort((a, b) => {
-        // по возраст
-        if (a.price < b.price) {
-            // если выбранный селект = 1
-            if(this.value === '1') {
-                return -1 // вернем от больш к меньш
-            }
-            // если выбранный селект = 2 ( или что-то другое, не 1:) )
-            else {
-                return 1 //вернем наоборот
-            }
-        } 
-        
-        // по убыв
-        if (a.price > b.price) {
-            if(this.value === '1') {
-                return 1
-            }
-            else {
-                return -1
-            }
-        }
-
-        if (a.price === b.price) return 0
-    })
-    renderHolderPizzasList(newArr);
-}

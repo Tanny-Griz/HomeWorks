@@ -183,10 +183,17 @@ main {
   }
 }
 
-.hold-filter {
+.holder-filters {
   .btn {
     border-color: #495057;
-  }
+  }  
+    @media screen and (min-width: 768px) {
+    .btn, select, input {
+      font-size: 0.9rem;
+      padding: 0;
+      padding: 0.18rem .75rem;
+    }  
+    }
 }
 
 .holder-pizzas-list {
@@ -204,12 +211,11 @@ main {
   }
 
   @media screen and (min-width: 768px) {
-
     padding: 0 15px;
   }
 
   @media screen and (min-width: 992px) {
-    width: 25%;
+    width: 33%;
   }
 }
 
@@ -257,6 +263,9 @@ main {
       }
 
       @media screen and (min-width: 768px) {
+        font-size: 0.9rem;
+      }
+      @media screen and (min-width: 1024px) {
         font-size: 1rem;
       }
     }
@@ -327,7 +336,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 1rem;
+  padding: 1rem 0;
   .slider {
     display: flex;
     justify-content: center;

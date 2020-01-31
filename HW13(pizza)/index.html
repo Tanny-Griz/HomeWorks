@@ -83,8 +83,8 @@
             <div class="slider"></div>
           </div>
         </div>
-
         <!-- end banner -->
+
         <!-- modal -->
         <div class="pizza-info">
             <div class="pizza-info__card" id="modal-content">
@@ -92,58 +92,63 @@
             </div>
         </div>
         <!-- end modal -->
+
         <!-- filters -->
         <div class="container">
-         <div class="holder-filters mt-3 mb-3">
-          <div class="row d-flex justify-content-between align-items-center">
-            <div class="col-sm-12 col-sm-text-center md-12 col-lg-2">
-              <h1>Pizza</h1>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-5">
-              <div class="hold-filter d-flex">
-                <select class="custom-select mr-2" id="select-filter">
-                  <option selected>Диапазон:</option>
-                  <option value="1">По Каллориям</option>
-                  <option value="2">По Цене</option>
-                </select>
-                <input
-                  class="form-control"
-                  id="inputFrom"
-                  type="text"
-                  placeholder="От"
-                />
-                <span> - </span>
-                <input
-                  class="form-control"
-                  id="inputTo"
-                  type="text"
-                  placeholder="До"
-                />
-                <button class="btn ml-2" id="btn-find">OK</button>
-                <button class="btn ml-2" id="btn-reset">Сброс</button>
+          <div class="row justify-content-center">
+            <aside class="col-sm-12 col-md-2 col-lg-3">
+              <div class="holder-filters mt-3 mb-3">
+                <div class="row d-flex justify-content-between align-items-center">
+                  <div class="col-sm-12 col-sm-text-center">
+                    <h1>Pizza</h1>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="row hold-filter d-flex">
+                      <div class="col-12">
+                        <select class="custom-select mr-2" id="select-filter">
+                        <option selected>Диапазон:</option>
+                        <option value="1">По Каллориям</option>
+                        <option value="2">По Цене</option>
+                      </select>
+                      <input
+                        class="form-control"
+                        id="inputFrom"
+                        type="text"
+                        placeholder="От"/>
+                      <span> - </span>
+                      <input
+                        class="form-control"
+                        id="inputTo"
+                        type="text"
+                        placeholder="До"/>
+                      </div>
+                      <div class="col-12 my-1">
+                        <button class="btn" id="btn-find">OK</button>
+                        <button class="btn" id="btn-reset">Сброс</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="d-flex">
+                      <select class="custom-select" id="select">
+                        <option selected>Сортировать:</option>
+                        <option value="1">По возрастанию цены</option>
+                        <option value="2">По убыванию цены</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-5">
-              <div class="d-flex">
-                <select class="custom-select" id="select">
-                  <option selected>Сортировать:</option>
-                  <option value="1">По возрастанию цены</option>
-                  <option value="2">По убыванию цены</option>
-                </select>
-              </div>
+            </aside>
+          <!-- end filters -->
+          <!-- card -->
+            <div class="holder-pizzas-list d-flex flex-wrap justify-content-center col-sm-12 col-md-10 col-lg-9">
+              <div class="hold-card"></div>
             </div>
           </div>
-        </div> 
+          <!-- end card -->
         </div>
-        
-        <!-- end filters -->
-        <!-- card -->
-        <div class="container">
-          <div class="holder-pizzas-list d-flex flex-wrap justify-content-center">
-          <div class="hold-card"></div>
-        </div>
-        </div>
-        <!-- end card -->
+          
       <footer>
         <div class="holder-contacts">
           <div class="container-fluid">
