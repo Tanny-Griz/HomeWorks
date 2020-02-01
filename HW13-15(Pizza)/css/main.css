@@ -239,7 +239,6 @@ main h1 {
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 13rem;
     padding: 0.8rem;
     background: #ffffff; }
     .holder-banner .slider .holder-slider-item {
@@ -250,6 +249,9 @@ main h1 {
       @media screen and (min-width: 992px) {
         .holder-banner .slider .holder-slider-item {
           width: 40%; } }
+      .holder-banner .slider .holder-slider-item .slide-img img {
+        width: auto;
+        height: 140px; }
       .holder-banner .slider .holder-slider-item .slide-text {
         display: flex;
         justify-content: center;
@@ -298,8 +300,6 @@ main h1 {
     font-weight: bold;
     border-radius: 12px;
     box-shadow: 1px 1px 3px #000; }
-    .pizza-info__close:hover {
-      background: #091a0a; }
   .pizza-info__composition {
     padding-bottom: 1rem; }
   .pizza-info__price {

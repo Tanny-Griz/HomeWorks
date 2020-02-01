@@ -362,7 +362,7 @@ main {
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 13rem;
+    // min-height: 13rem;
     padding: 0.8rem;
     background: #ffffff;
     .holder-slider-item {
@@ -372,6 +372,10 @@ main {
       }
       @media screen and (min-width: 992px) {
         width: 40%;
+      }
+      .slide-img img {
+        width: auto;
+        height: 140px;
       }
       .slide-text {
         display: flex;
@@ -434,7 +438,7 @@ main {
     font-weight: bold;
     border-radius: 12px;
     box-shadow: 1px 1px 3px #000;
-    &:hover { background: rgb(9, 26, 10); }
+    &:hover { }
   }
   &__composition {
     padding-bottom: 1rem;
