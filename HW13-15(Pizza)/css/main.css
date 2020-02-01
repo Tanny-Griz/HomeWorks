@@ -231,7 +231,9 @@ main h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0; }
+  padding: 1rem 0;
+  border: 1px solid #CCC;
+  margin-bottom: 1rem; }
   .holder-banner .slider {
     display: flex;
     justify-content: center;
@@ -239,8 +241,6 @@ main h1 {
     width: 100%;
     min-height: 13rem;
     padding: 0.8rem;
-    border: 1px solid #CCC;
-    border-radius: 0.2rem;
     background: #ffffff; }
     .holder-banner .slider .holder-slider-item {
       width: 100%; }
@@ -257,11 +257,17 @@ main h1 {
         flex-direction: column; }
 
 .pizza-info {
-  display: none;
-  position: relative;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 3;
-  top: 10%;
-  left: 30%; }
+  left: 0;
+  top: 0;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  display: none; }
   .pizza-info__card {
     width: 25rem;
     position: absolute;
@@ -300,6 +306,9 @@ main h1 {
     color: #2f882f;
     font-size: 1.2rem;
     font-weight: bold; }
+  .pizza-info .form-check-input {
+    position: static;
+    display: block; }
 
 footer h2 {
   font-size: 1.3rem; }

@@ -78,11 +78,13 @@
     </header>
     <main>
       <!-- banner -->
+      <div class="holder-banner">
       <div class="container-fluid">
-        <div class="holder-banner">
+        
           <div class="slider"></div>
         </div>
       </div>
+
       <!-- end banner -->
 
       <!-- modal -->
@@ -94,7 +96,7 @@
       <!-- filters -->
       <div class="container">
         <div class="row justify-content-center">
-          <aside class="col-sm-12 col-md-2 col-lg-3">
+          <aside class="col-sm-12 col-md-3 col-lg-3">
             <div class="holder-filters mt-3 mb-3">
               <div
                 class="row d-flex justify-content-between align-items-center"
@@ -102,10 +104,10 @@
                 <div class="col-sm-12 col-sm-text-center">
                   <h1>Pizza</h1>
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-12 mb-1">
                   <div class="row hold-filter d-flex">
                     <div class="col-12">
-                      <select class="custom-select mr-2" id="select-filter">
+                      <select class="custom-select mb-1" id="select-filter">
                         <option selected>Диапазон:</option>
                         <option value="1">По Каллориям</option>
                         <option value="2">По Цене</option>
@@ -130,7 +132,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-12 mb-1">
                   <div class="d-flex">
                     <select class="custom-select" id="select">
                       <option selected>Сортировать:</option>
@@ -139,13 +141,15 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-sm-12 py-2">
-                  <button class="btn create-pizza">Создай свою Пиццу</button>
+                <div class="col-sm-12 mb-1 py-2">
+                  <button class="btn create-pizza" id="create-pizza-btn">
+                    Создай свою Пиццу
+                  </button>
                 </div>
                 <!-- create modal -->
-                <div class="pizza-info">
+                <div class="pizza-info" id="create-pizza">
                   <div class="pizza-info__card" id="modal-content-create"></div>
-                  </div>
+                </div>
                 <!-- create end modal -->
               </div>
             </div>
@@ -153,7 +157,7 @@
           <!-- end filters -->
           <!-- card -->
           <div
-            class="holder-pizzas-list d-flex flex-wrap justify-content-center col-sm-12 col-md-10 col-lg-9"
+            class="holder-pizzas-list d-flex flex-wrap justify-content-center col-sm-12 col-md-9 col-lg-9"
           >
             <div class="hold-card"></div>
           </div>
@@ -163,9 +167,9 @@
 
       <footer>
         <div class="holder-contacts">
-          <div class="container-fluid">
+          <div class="container">
             <div class="row justify-content-center">
-              <div class="col-lg-4 md-6 md-center py-4">
+              <div class="col-sm-12 col-md-6 md-center py-4">
                 <h2>Меню доставки</h2>
                 <div class="row">
                   <ul class="col-6">
@@ -192,7 +196,7 @@
                   </ul>
                 </div>
               </div>
-              <div class="col-lg-4 md-6 py-4">
+              <div class="col-sm-12 col-md-6 py-4">
                 <h2>Основное</h2>
                 <ul>
                   <li><a href="#">Акции</a></li>
@@ -200,9 +204,6 @@
                   <li><a href="#">Политика конфиденцияльности</a></li>
                 </ul>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-12"></div>
             </div>
           </div>
         </div>
