@@ -119,7 +119,9 @@ main h1 {
     color: #ffffff;
     border-color: #ffffff; }
 @media screen and (min-width: 768px) {
-  .holder-filters .btn, .holder-filters select, .holder-filters input {
+  .holder-filters .btn,
+  .holder-filters select,
+  .holder-filters input {
     font-size: 0.9rem;
     padding: 0;
     padding: 0.18rem .75rem; } }
@@ -306,9 +308,34 @@ main h1 {
     color: #2f882f;
     font-size: 1.2rem;
     font-weight: bold; }
-  .pizza-info .form-check-input {
-    position: static;
-    display: block; }
+  .pizza-info .checkbox-item {
+    display: inline-block;
+    width: 50%; }
+    .pizza-info .checkbox-item input[type="checkbox"] {
+      display: none; }
+    .pizza-info .checkbox-item input[type="checkbox"] + p {
+      position: relative;
+      padding-left: 32px;
+      display: inline-block;
+      margin-bottom: 25px;
+      font-size: 17px;
+      font-family: 'Roboto', sans-serif;
+      cursor: pointer; }
+    .pizza-info .checkbox-item p:before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+      border: 2px solid #eeebe6;
+      border-radius: 1px;
+      vertical-align: text-bottom; }
+    .pizza-info .checkbox-item input[type="checkbox"]:checked + p:before {
+      content: "\2714";
+      text-align: center;
+      border: 2px solid #eca22e;
+      color: #eca22e;
+      border-radius: 2px; }
 
 footer h2 {
   font-size: 1.3rem; }

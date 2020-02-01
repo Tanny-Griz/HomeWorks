@@ -4,21 +4,21 @@ window.cElem = (tagName, className = "") => {
     return element
 }
 
-// ----- modal-----
+// МОДАЛЬНОЕ ОКНО
 const pizzaCardContainer = document.querySelector('.pizza-info');
-const modal = document.getElementById('pizzaInfo');
+const card = document.querySelector('.pizza-info__card');
 
-// ф-я закрытия модалки
+// закрытие модалки
 function hendlerClose(e) {
     // считываем класс у эл-та
     const elemClassName = e.target.className;
     console.log(elemClassName)
     // если он = pizza-info'
-    if(
+    if (
         elemClassName === 'pizza-info' ||
         elemClassName === 'pizza-info__hide' ||
         elemClassName === 'pizza-info__close'
-       ) {
+    ) {
         // прячем и на оборот
         this.style.display = 'none'
     }
@@ -37,10 +37,10 @@ const renderPizzaCard = (pizza) => {
                     <div class="pizza-info__composition">
                         <ul>
                             ${
-                                pizza.composition.map(composition => {
-                                    return `<li class="d-inline-flex">${composition}, </li>`
-                                }).join('')
-                            }
+        pizza.composition.map(composition => {
+            return `<li class="d-inline-flex">${composition}, </li>`
+        }).join('')
+        }
                         </ul>
                     </div>
                     <p>Каллории: ${pizza.caloricity}</p>
@@ -54,122 +54,179 @@ const renderPizzaCard = (pizza) => {
                 <button class="pizza-info__hide">Hide</button>
             </div>
     `
-    modal.innerHTML = template;
+    card.innerHTML = template;
 }
-// ----- end modal-----
+// ---------------------------------------------------
 
-// ----- create pizza modal---
 
+// СОЗДАЕМ МОДАЛЬНОЕ ОКНО С СОЗДАНИЕМ СВОЕЙ ПИЦЦЫ
 const createPizza = document.getElementById('create-pizza');
 const modalCreate = document.getElementById('modal-content-create');
 createPizza.addEventListener('click', hendlerClose);
 
+// ДУБЛИКАТ МАССИВА С КОМПОНЕНТАМИ
+let newCompositionList = [...compositionList];
+
+
+// МАССИВ ИЗ АЙДИШНИКОВ и нового свойство isChecked
+let createPizzaIds = newCompositionList.map(item => {
+    return { 
+        id: item.id, 
+        isChecked: false 
+    }
+})
+console.log(createPizzaIds);
+
+
+// МОДАЛЬНОЕ ОКНО CREATE
 const renderMyPizzaCreateModal = () => {
     const pizzaInfoCard = cElem('div', 'pizza-info__card');
 
+    const pizzaInfoHeader = cElem('div', 'pizza-info__header');
 
-    const pizzaInfoHeader = document.createElement('div');
-    pizzaInfoHeader.className = 'pizza-info__header';
-
-    const aClose =  document.createElement('a');
-    aClose.className = 'pizza-info__close';
+    const aClose = cElem('a', 'pizza-info__close');
     aClose.innerText = 'X';
     aClose.href = '#'
 
-    let h2 = document.createElement('h2');
+    let h3 = cElem('h3');
+    h3.innerText = 'Имя пиццы';
 
-    const inputPizzaName = document.createElement('input');
-    inputPizzaName.className = 'form-control';
-    inputPizzaName.placeholder = 'Введите название'
+    // Create input name
+    const inputPizzaName = cElem('input', 'form-control');
+    inputPizzaName.placeholder = 'Введите название';
 
-    const pizzaInfoBody = document.createElement('div');
-    pizzaInfoBody.className = 'row pizza-info__body';
+    const pizzaInfoBody = cElem('div', 'pizza-info__body');
+    pizzaInfoBody.innerHTML = `
+        <div class="col-12 mb-2">
+            <span>Добавить компоненты: </span>
+        </div>
+    `
 
-    const col12 = document.createElement('div');
-    col12.className = 'col-12';
-    col12.innerHTML = '<span>Добавить: </span>';
+    const pizzaInfoComposition = cElem('div', 'col-12 pizza-info__composition');
 
-    const pizzaInfoComposition = document.createElement('div');
-    pizzaInfoComposition.className = 'pizza-info__composition';
+    const formCheck = cElem('div', 'form-check');
 
-    const formCheck = document.createElement('div');
-    formCheck.className = 'form-check';
-
+    //Create checkboxes
     /// Добавили все состовляющие в виде инпутов и лейблов
-    for (let comp of compositionList){
-        const formCheckInput = document.createElement('input');
-        formCheckInput.className = 'form-check-input';
-        formCheckInput.id = `exampleCheck${comp.id}`;
-        formCheckInput.type = 'checkbox';
-        formCheck.onchange = function(){
-            console.log(this.checked)
-            console.log({...comp})
+    for (let comp of newCompositionList) {
+        const checkboxItem = cElem('div', 'checkbox-item');
+        // input
+        const nameInput = cElem('input', 'input');
+        nameInput.id = `exampleCheck${comp.id}`;
+        nameInput.type = 'checkbox';
+        // label
+        const labelForNameInput = cElem('label', 'label');
+        labelForNameInput.htmlFor = `exampleCheck${comp.id}`;
+        labelForNameInput.innerHTML = `<p>${comp.name}</p>`;
+
+        nameInput.onchange = function () {
+            // массив айди и isChecked
+            createPizzaIds = createPizzaIds.map(elem => {
+                // 
+                if (elem.id === comp.id) {
+                    return { 
+                        id: elem.id, 
+                        isChecked: this.checked
+                    }
+                }
+                return elem
+            })
+
+            // console.log(createPizzaIds);
+            // console.log({ ...comp });
         }
 
-        const formCheckLabel = document.createElement('label');
-        formCheckLabel.className = 'form-check-input';
-        formCheckLabel.htmlFor = `exampleCheck${comp.id}`;
-        formCheckLabel.innerHTML = `<p>${comp.name}</p>` 
-
-        formCheck.appendChild(formCheckLabel);
-        formCheck.appendChild(formCheckInput);
+        labelForNameInput.append(nameInput);
+        checkboxItem.append(labelForNameInput);
+        // checkboxItem.append(nameInput);
+        formCheck.appendChild(checkboxItem);
     }
 
+    // Create info elems
     const p1 = document.createElement('p');
+    p1.id = 'price-info'
     p1.innerText = `Каллории: ${'ccal'}`;
 
-    const p2 = document.createElement('p');
-    p2.className = 'pizza-info__price'
+    const p2 = cElem('p', 'pizza-info__price');
     p2.innerText = `Цена: ${'price'} грн.`;
 
-    const pizzaInfoFooter = document.createElement('div');
-    pizzaInfoFooter.className = 'pizza-info__footer';
+    const pizzaInfoFooter = cElem('div', 'col-12 d-flex justify-content-between pizza-info__footer');
 
-    const pizzaInfoCreate = document.createElement('button');
-    pizzaInfoCreate.className = 'pizza-info__Create';
-    pizzaInfoCreate.innerText = 'Create';
+    const pizzaBtnCreate = cElem('button', 'btn pizza-info__Create');
+    pizzaBtnCreate.innerText = 'Create';
 
-    const pizzaInfoHide = document.createElement('button');
-    pizzaInfoHide.className = 'pizza-info__hide';
+    pizzaBtnCreate.onclick = function () {
+        const nameOfPizza = inputPizzaName.value;
+        // в массив Ids, если isChecked == true, добавим эти id
+
+        const ids = createPizzaIds.filter(el => el.isChecked).map(el => el.id)
+
+        function Pizza (name, arrOfIds) {
+            this.id = pizzaList.length + 1;
+            this.name = nameOfPizza || 'My Pizza';
+            this.caloricity = 100;
+            this.price = 50;
+            this.composition = [];
+            this.img = "19.png";
+
+            for (let id of arrOfIds) {
+                for (let comp of newCompositionList) {
+                    if (id == comp.id) {
+                        this.composition.push(comp.name);
+                        this.price += comp.price;
+                        this.caloricity += comp.caloricity;
+                    }
+                }
+            }
+            this.isCustom = true;
+            pizzaList.push(this);
+        }
+
+        const MyPizza = new Pizza(nameOfPizza, ids);
+        console.log(MyPizza);
+        newArrPizzaList.push(MyPizza);
+        renderHolderPizzasList(newArrPizzaList);
+    }
+
+
+    const pizzaInfoHide = cElem('button', 'btn pizza-info__hide');
     pizzaInfoHide.innerText = 'Hide';
 
     pizzaInfoCard.appendChild(pizzaInfoHeader);
     pizzaInfoHeader.appendChild(aClose);
-    pizzaInfoHeader.appendChild(h2);
+    pizzaInfoHeader.appendChild(h3);
     pizzaInfoHeader.appendChild(inputPizzaName);
     pizzaInfoCard.appendChild(pizzaInfoBody);
-    pizzaInfoBody.appendChild(col12);
-    col12.appendChild(pizzaInfoComposition);
+    pizzaInfoBody.appendChild(pizzaInfoComposition);
     pizzaInfoComposition.appendChild(formCheck);
 
     pizzaInfoComposition.appendChild(p2);
     pizzaInfoComposition.appendChild(p1);
 
-    pizzaInfoFooter.appendChild(pizzaInfoCreate);
+    pizzaInfoFooter.appendChild(pizzaBtnCreate);
     pizzaInfoFooter.appendChild(pizzaInfoHide);
     pizzaInfoCard.appendChild(pizzaInfoFooter);
 
     return pizzaInfoCard
 }
 
-const renderNewPizza = (pizza) => {
-    pizza.onclick = function() {
-        renderMyPizzaCreate(pizza);
-        pizzaCardContainer.style.display = 'flex';
-    }
-}
-
+// РЕНДЕР В МОДАЛЬНОЕ ОКНО
 const renderСompositionList = (arrayOfСomposition) => {
     const createPizzaBox = document.getElementById('create-pizza');
     createPizzaBox.innerHTML = '';
     createPizzaBox.style.display = 'flex'
 
-    createPizzaBox.appendChild(renderMyPizzaCreateModal())
+    createPizzaBox.append(renderMyPizzaCreateModal())
 }
 
 const createPizzaBtn = document.getElementById('create-pizza-btn');
-createPizzaBtn.onclick = () => renderСompositionList(compositionList);
+// запуск рендера при нажатии кнопки
+createPizzaBtn.onclick = () => renderСompositionList(newCompositionList);
+//-------------------------------------------------------
 
+
+
+//---------------------------------------------------------
 
 // СОЗДАЕМ КАРТОЧКУ ТОВАРА
 const renderCard = (pizza) => {
@@ -178,7 +235,7 @@ const renderCard = (pizza) => {
     const card = cElem('div', 'card');
     card.id = `pizza${pizza.id}`;
     // ПОКАЗ МОДАЛЬНОГО ОКНА
-    card.onclick = function() {
+    card.onclick = function () {
         renderPizzaCard(pizza);
         pizzaCardContainer.style.display = 'flex';
     }
@@ -220,7 +277,7 @@ const renderCard = (pizza) => {
     return holdCard;
 }
 
-// ---- end КАРТОЧКА ТОВАРА ----
+// -----------------------------------------------------
 
 
 // ОТРИСОВКА НА СТРАНИЦУ
@@ -273,7 +330,7 @@ input.addEventListener('input', function (e) {
             }
             return comp
         })
-        return {...pizza, composition}
+        return { ...pizza, composition }
     })
     renderHolderPizzasList(newArr);
 })

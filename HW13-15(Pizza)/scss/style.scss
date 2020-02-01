@@ -188,24 +188,31 @@ main {
 .holder-filters {
   .btn {
     border-color: #495057;
+
     &:hover {
       background-color: #7aa14d;
       color: #ffffff;
       border-color: #ffffff;
     }
-  }  
-    @media screen and (min-width: 768px) {
-    .btn, select, input {
+  }
+
+  @media screen and (min-width: 768px) {
+
+    .btn,
+    select,
+    input {
       font-size: 0.9rem;
       padding: 0;
       padding: 0.18rem .75rem;
-    }  
+    }
   }
+
   .create-pizza {
     padding: 0.6rem;
     text-transform: uppercase;
     font-size: 1.3rem;
     background-color: #f5f5f5;
+
     &:hover {
       color: #ffffff;
       background-color: #7aa14d;
@@ -283,6 +290,7 @@ main {
       @media screen and (min-width: 768px) {
         font-size: 0.9rem;
       }
+
       @media screen and (min-width: 1024px) {
         font-size: 1rem;
       }
@@ -357,6 +365,7 @@ main {
   padding: 1rem 0;
   border: 1px solid #CCC;
   margin-bottom: 1rem;
+
   .slider {
     display: flex;
     justify-content: center;
@@ -365,18 +374,23 @@ main {
     // min-height: 13rem;
     padding: 0.8rem;
     background: #ffffff;
+
     .holder-slider-item {
       width: 100%;
+
       @media screen and (min-width: 768px) {
         width: 70%;
       }
+
       @media screen and (min-width: 992px) {
         width: 40%;
       }
+
       .slide-img img {
         width: auto;
         height: 140px;
       }
+
       .slide-text {
         display: flex;
         justify-content: center;
@@ -402,6 +416,7 @@ main {
   justify-content: center;
   align-items: center;
   display: none;
+
   &__card {
     width: 25rem;
     position: absolute;
@@ -410,13 +425,16 @@ main {
     background: rgb(255, 254, 254);
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.7), 0 4px 10px rgba(0, 0, 0, 0);
   }
+
   &__header {
     padding: 1rem 0;
+
     h3 {
       text-align: center;
       font-size: 2rem;
     }
   }
+
   &__body {
     span {
       font-size: 1.3rem;
@@ -425,6 +443,7 @@ main {
       margin-bottom: 1rem;
     }
   }
+
   &__close {
     background: #606061;
     color: #FFFFFF;
@@ -438,21 +457,56 @@ main {
     font-weight: bold;
     border-radius: 12px;
     box-shadow: 1px 1px 3px #000;
-    &:hover { }
   }
+
   &__composition {
     padding-bottom: 1rem;
   }
+
   &__price {
     color: #2f882f;
     font-size: 1.2rem;
     font-weight: bold;
   }
-  .form-check-input {
-    position: static;
-    display: block;
-  }
 
+  .checkbox-item {
+    display: inline-block;
+    width: 50%;
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    input[type="checkbox"]+p {
+      position: relative;
+      padding-left: 32px;
+      display: inline-block;
+      margin-bottom: 25px;
+      font-size: 17px;
+      font-family: 'Roboto', sans-serif;
+      cursor: pointer;
+
+    }
+
+    p:before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+      border: 2px solid #eeebe6;
+      border-radius: 1px;
+      vertical-align: text-bottom;
+    }
+
+    input[type="checkbox"]:checked+p:before {
+      content: "\2714";
+      text-align: center;
+      border: 2px solid #eca22e;
+      color: #eca22e;
+      border-radius: 2px;
+    }
+  }
 }
 
 // end modal
