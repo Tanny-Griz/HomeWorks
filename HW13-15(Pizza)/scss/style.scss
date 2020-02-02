@@ -420,7 +420,7 @@ main {
   &__card {
     width: 25rem;
     position: absolute;
-    padding: 5px 20px 13px 20px;
+    padding: 20px;
     border-radius: 10px;
     background: rgb(255, 254, 254);
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.7), 0 4px 10px rgba(0, 0, 0, 0);
@@ -479,7 +479,6 @@ main {
 
     input[type="checkbox"]+p {
       position: relative;
-      padding-left: 32px;
       display: inline-block;
       margin-bottom: 25px;
       font-size: 17px;
@@ -508,7 +507,6 @@ main {
     }
   }
 }
-
 // end modal
 
 

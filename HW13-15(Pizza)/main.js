@@ -97,14 +97,14 @@ const renderMyPizzaCreateModal = () => {
 
     const pizzaInfoBody = cElem('div', 'pizza-info__body');
     pizzaInfoBody.innerHTML = `
-        <div class="col-12 mb-2">
+        <div class="col-12 mb-3">
             <span>Добавить компоненты: </span>
         </div>
     `
 
     const pizzaInfoComposition = cElem('div', 'col-12 pizza-info__composition');
 
-    const formCheck = cElem('div', 'form-check');
+    const formCheck = cElem('div', 'holder-form');
 
     //Create checkboxes
     /// Добавили все состовляющие в виде инпутов и лейблов
@@ -114,10 +114,14 @@ const renderMyPizzaCreateModal = () => {
         const nameInput = cElem('input', 'input');
         nameInput.id = `exampleCheck${comp.id}`;
         nameInput.type = 'checkbox';
+        const p = document.createElement('p');
+        p.innerText = comp.name;
+        
         // label
         const labelForNameInput = cElem('label', 'label');
         labelForNameInput.htmlFor = `exampleCheck${comp.id}`;
-        labelForNameInput.innerHTML = `<p>${comp.name}</p>`;
+        // labelForNameInput.innerHTML = `<p>${}</p>`;
+
 
         nameInput.onchange = function () {
             // массив айди и isChecked
@@ -135,8 +139,9 @@ const renderMyPizzaCreateModal = () => {
             // console.log(createPizzaIds);
             // console.log({ ...comp });
         }
-
+        
         labelForNameInput.append(nameInput);
+        labelForNameInput.appendChild(p);
         checkboxItem.append(labelForNameInput);
         // checkboxItem.append(nameInput);
         formCheck.appendChild(checkboxItem);
