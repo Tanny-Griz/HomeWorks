@@ -255,19 +255,23 @@ main h1 {
     .hold-card .card li {
       display: inline-block; }
     .hold-card .card .visual {
-      height: 170px;
+      height: 11.43rem;
       display: flex;
       justify-content: center;
-      align-items: center; }
+      align-items: center;
+      margin-bottom: 0.8rem; }
+    .hold-card .card .addToFavor {
+      position: absolute;
+      right: 1.25rem;
+      background: none;
+      border: none; }
+    .hold-card .card .text {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      flex-grow: 1;
+      margin-bottom: 0.5rem; }
 
-.pizza-card__name {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem 0; }
-.pizza-card__favor {
-  position: absolute;
-  right: 20px; }
 .pizza-card__composition {
   font-size: 0.7rem;
   color: #686868;
@@ -326,20 +330,20 @@ main h1 {
     background: #ffffff; }
     .holder-banner .slider .holder-slider-item {
       width: 100%; }
-      @media screen and (min-width: 768px) {
-        .holder-banner .slider .holder-slider-item {
-          width: 70%; } }
-      @media screen and (min-width: 992px) {
-        .holder-banner .slider .holder-slider-item {
-          width: 40%; } }
       .holder-banner .slider .holder-slider-item .slide-img img {
         width: auto;
-        height: 140px; }
+        height: 8.75rem; }
       .holder-banner .slider .holder-slider-item .slide-text {
+        position: relative;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-start;
+        align-items: flex-start;
         flex-direction: column; }
+      .holder-banner .slider .holder-slider-item .action {
+        position: absolute;
+        right: 0;
+        width: 27%;
+        bottom: 0; }
 
 .pizza-info {
   width: 100%;
@@ -356,7 +360,7 @@ main h1 {
   .pizza-info__card {
     width: 25rem;
     position: absolute;
-    padding: 20px;
+    padding: 1.25rem;
     border-radius: 10px;
     background: #fffefe;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.7), 0 4px 10px rgba(0, 0, 0, 0); }
@@ -373,7 +377,7 @@ main h1 {
   .pizza-info__close {
     background: #606061;
     color: #FFFFFF;
-    line-height: 25px;
+    line-height: 1.56rem;
     position: absolute;
     right: -12px;
     text-align: center;

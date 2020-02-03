@@ -70,9 +70,9 @@ let newCompositionList = [...compositionList];
 
 // МАССИВ ИЗ АЙДИШНИКОВ и нового свойство isChecked
 let createPizzaIds = newCompositionList.map(item => {
-    return { 
-        id: item.id, 
-        isChecked: false 
+    return {
+        id: item.id,
+        isChecked: false
     }
 })
 
@@ -115,7 +115,7 @@ const renderMyPizzaCreateModal = () => {
         nameInput.type = 'checkbox';
         const p = document.createElement('p');
         p.innerText = comp.name;
-        
+
         // label
         const labelForNameInput = cElem('label', 'label');
         labelForNameInput.htmlFor = `exampleCheck${comp.id}`;
@@ -127,8 +127,8 @@ const renderMyPizzaCreateModal = () => {
             createPizzaIds = createPizzaIds.map(elem => {
                 // 
                 if (elem.id === comp.id) {
-                    return { 
-                        id: elem.id, 
+                    return {
+                        id: elem.id,
                         isChecked: this.checked
                     }
                 }
@@ -138,7 +138,7 @@ const renderMyPizzaCreateModal = () => {
             // console.log(createPizzaIds);
             // console.log({ ...comp });
         }
-        
+
         labelForNameInput.append(nameInput);
         labelForNameInput.appendChild(p);
         checkboxItem.append(labelForNameInput);
@@ -164,7 +164,7 @@ const renderMyPizzaCreateModal = () => {
         // в массив Ids, если isChecked == true, добавим эти id
         const ids = createPizzaIds.filter(el => el.isChecked).map(el => el.id)
 
-        function Pizza (name, arrOfIds) {
+        function Pizza(name, arrOfIds) {
             this.id = newArrPizzaList.length + 1;
             this.name = nameOfPizza || 'My Pizza';
             this.caloricity = 100;
@@ -186,7 +186,7 @@ const renderMyPizzaCreateModal = () => {
 
             // сохраняем в локалстор наш массив
             localStorage.setItem('pizzas', JSON.stringify(newArrPizzaList));
-            
+
             // достаем из сторэджа массив
             let parsePizza = localStorage.getItem('pizzas');
             parsePizza = JSON.parse(parsePizza);
@@ -260,36 +260,39 @@ const renderCard = (pizza) => {
     }
     holdCard.appendChild(card);
     // img
-    const img = cElem('div', 'visual');
-    img.innerHTML = `<img src="img/${pizza.img}" alt="icon">`;
-    card.appendChild(img);
+    const visual = cElem('div', 'visual');
+    visual.innerHTML = `<img src="img/${pizza.img}" alt="icon">`;
+    card.appendChild(visual);
     // В ИЗБРАННОЕ
-    const pizzaFavorite = cElem('div', 'pizza-card__favor');
-    pizzaFavorite.innerHTML = `<button class="addToFavor"><span class="heart">&#10084;</span></button>`;
-    pizzaFavorite.onclick = function () {
+    const buttonFavorite = cElem('button', 'addToFavor');
+    buttonFavorite.innerHTML = `<span class="heart">&#10084;</span>`;
+    buttonFavorite.onclick = function (e) {
+        e.stopPropagation();
         pizza.isFavourite = true;
     }
-    card.appendChild(pizzaFavorite);
+    card.appendChild(buttonFavorite);
+    // text 
+    const text = cElem('div', 'text');
     // h3
-    const pizzaName = cElem('div', 'pizza-card__name');
-    pizzaName.innerHTML = `<h3>${pizza.name}</h3>`;
-    card.appendChild(pizzaName);
+    const pizzaName = document.createElement('h3');
+    pizzaName.innerHTML = pizza.name;
+    text.appendChild(pizzaName);
     // p composition
-    const composition = cElem('div', 'pizza-card__composition');
-    composition.innerHTML = '<ul>' + 'Состав: ' + pizza.composition.map(c => `<li>${c},</li>`).join(' ') + '</ul>';
-    card.appendChild(composition);
+    const composition = cElem('ul', 'pizza-card__composition');
+    composition.innerHTML = 'Состав: ' + pizza.composition.map(c => `<li>${c},</li>`).join(' ');
+    text.appendChild(composition);
     // p caloricity
     const caloricity = cElem('p', 'pizza-card__caloricity');
     caloricity.innerText = `Ккал: ${pizza.caloricity}`;
-    card.appendChild(caloricity);
+    text.appendChild(caloricity);
     // p price
     const price = cElem('p', 'pizza-card__price');
     price.innerText = `Цена: ${pizza.price} грн.`;
-    card.appendChild(price);
+    text.appendChild(price);
     // button
     const button = cElem('button', 'pizza-card__button')
     button.innerText = 'Заказать';
-    card.appendChild(button);
+    
     button.onclick = function (e) {
         e.stopPropagation();
         // положила в локалстор заказанную пиццу
@@ -298,10 +301,13 @@ const renderCard = (pizza) => {
         const pizzaForCart = localStorage.getItem(n);
         parsePizzaForCart = JSON.parse(pizzaForCart);
         arrOfPizzaForCart.push(parsePizzaForCart);
-        
+
 
         console.log(arrOfPizzaForCart);
     }
+    text.appendChild(button);
+    card.appendChild(text);
+
     return holdCard;
 }
 
@@ -441,28 +447,32 @@ const addToFavor = document.getElementById('addToFavor');
 const renderSlide = (pizza) => {
     const holderSlider = cElem('div', 'row holder-slider-item text-center');
     // img
-    const slideImg = cElem('div', 'col-sm-12 col-md-6 slide-img');
+    const slideImg = cElem('div', 'col-sm-6 col-md-4 slide-img');
     const img = cElem('img', 'simg');
     img.alt = 'icon';
     img.src = 'img/' + pizza.img;
+    // const action = cElem('div', 'action');
+    
     // text
-    const slideText = cElem('div', 'col-sm-12 col-md-6 slide-text');
+    const slideText = cElem('div', 'col-sm-6 col-md-8 slide-text');
+
     slideText.innerHTML = `
-                        <div class="pizza-card__name">
-                            <h3>${pizza.name}</h3>
-                        </div>
-                        <div class="pizza-card__composition">
-                        <ul class="d-flex flex-wrap">Состав: ${pizza.composition.map(c => ` <li>${c}, </li>`).join(' ')} </ul>
-                        </div>
-                        <div class="pizza-card__caloricity">
+                        <h3>${pizza.name}</h3>
+                        <ul class="d-flex flex-wrap pizza-card__composition">Состав: ${pizza.composition.map(c => ` <li>${c}, </li>`).join(' ')} </ul>
+                        <p class="pizza-card__caloricity">
                             Каллорийность: ${pizza.caloricity}
-                        </div>
-                        <div class="pizza-card__price">
+                        </p>
+                        <p class="pizza-card__price">
                             Цена: ${pizza.price} грн.
-                            <button class="pizza-card__button px-3">Заказать</button>
+                        </p>
+                        <button class="pizza-card__button px-3">Заказать</button>
+                        <div class="action">
+                            <img src="img/act.png" alt="action"/>
                         </div>
+                        
                         `;
     slideImg.appendChild(img);
+    // slideText.appendChild(action);
     holderSlider.appendChild(slideImg);
     holderSlider.appendChild(slideText);
 
