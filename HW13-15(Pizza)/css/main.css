@@ -1,3 +1,90 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline; }
+
 @font-face {
   font-family: 'icomoon';
   src: url("../fonts/icomoon.eot?ke09ed");
@@ -141,93 +228,87 @@ main h1 {
 .hold-card {
   position: relative;
   width: 50%;
-  padding: 0 7px;
+  padding: 0.8rem;
   margin-bottom: 1.5rem; }
   @media screen and (min-width: 575px) {
     .hold-card {
       width: 50%; } }
   @media screen and (min-width: 768px) {
     .hold-card {
-      padding: 0 15px; } }
+      padding: 1rem; } }
   @media screen and (min-width: 992px) {
     .hold-card {
       width: 33%; } }
+  .hold-card .card {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 0.8rem;
+    transition: box-shadow 0.3s ease-in-out; }
+    .hold-card .card:hover {
+      box-shadow: 0 0px 10px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0); }
+    .hold-card .card h3 {
+      font-size: 1.35rem; }
+      @media screen and (min-width: 768px) {
+        .hold-card .card h3 {
+          font-size: 1.8rem; } }
+    .hold-card .card li {
+      display: inline-block; }
+    .hold-card .card .visual {
+      height: 170px;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
 
-.card {
-  text-align: center;
-  padding: 0.8rem;
-  width: 100%;
-  min-height: 100%;
-  transition: box-shadow 0.3s ease-in-out; }
-  .card:hover {
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0); }
-  .card h3 {
-    font-size: 1.35rem; }
-    @media screen and (min-width: 768px) {
-      .card h3 {
-        font-size: 1.8rem; } }
-  .card .pizza-card__name {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem 0; }
-  .card .pizza-card__favor {
-    position: absolute;
-    right: 20px; }
-  .card .pizza-card__composition {
-    font-size: 0.7rem;
-    color: #686868;
-    flex-grow: 1;
-    font-style: italic;
-    height: auto !important; }
-    @media screen and (min-width: 575px) {
-      .card .pizza-card__composition {
-        font-size: 0.8rem; } }
-    @media screen and (min-width: 768px) {
-      .card .pizza-card__composition {
-        font-size: 0.9rem; } }
-    @media screen and (min-width: 1024px) {
-      .card .pizza-card__composition {
-        font-size: 1rem; } }
-  .card .pizza-card__caloricity {
-    font-weight: bold; }
-  .card .pizza-card__price {
-    font-weight: bold;
-    font-size: 1rem;
-    color: green; }
-    @media screen and (min-width: 768px) {
-      .card .pizza-card__price {
-        font-size: 1.2rem; } }
-  .card .pizza-card__button {
-    background-color: #7aa14d;
-    text-transform: uppercase;
-    font-weight: bold;
-    border: none;
-    color: #fff;
-    padding: 0.2rem 0;
-    font-size: 0.8rem; }
-    @media screen and (min-width: 768px) {
-      .card .pizza-card__button {
-        padding: 0.5rem 0;
-        font-size: 1rem; } }
-    .card .pizza-card__button:hover {
-      background-color: #88a863; }
-  .card .pizza-card__favor button {
-    border: none;
-    background-color: inherit; }
-  .card li {
-    display: inline-block; }
-  .card .card-img-top {
-    min-height: 138px;
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-    @media screen and (min-width: 400px) {
-      .card .card-img-top {
-        min-height: 163px; } }
-    @media screen and (min-width: 768px) {
-      .card .card-img-top {
-        min-height: 182.41px; } }
+.pizza-card__name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0; }
+.pizza-card__favor {
+  position: absolute;
+  right: 20px; }
+.pizza-card__composition {
+  font-size: 0.7rem;
+  color: #686868;
+  flex-grow: 1;
+  font-style: italic;
+  height: auto !important; }
+  @media screen and (min-width: 575px) {
+    .pizza-card__composition {
+      font-size: 0.8rem; } }
+  @media screen and (min-width: 768px) {
+    .pizza-card__composition {
+      font-size: 0.9rem; } }
+  @media screen and (min-width: 1024px) {
+    .pizza-card__composition {
+      font-size: 1rem; } }
+.pizza-card__caloricity {
+  font-weight: bold; }
+.pizza-card__price {
+  font-weight: bold;
+  font-size: 1rem;
+  color: green; }
+  @media screen and (min-width: 768px) {
+    .pizza-card__price {
+      font-size: 1.2rem; } }
+.pizza-card__button {
+  background-color: #7aa14d;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  color: #fff;
+  padding: 0.2rem 0;
+  font-size: 0.8rem; }
+  @media screen and (min-width: 768px) {
+    .pizza-card__button {
+      padding: 0.5rem 0;
+      font-size: 1rem; } }
+  .pizza-card__button:hover {
+    background-color: #88a863; }
+.pizza-card__favor button {
+  border: none;
+  background-color: inherit; }
 
 .holder-banner {
   display: flex;
@@ -356,5 +437,37 @@ footer a {
 .pink {
   color: #225e45;
   font-weight: bold; }
+
+.basket {
+  padding: 1rem 0; }
+  .basket .item {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 1.5rem;
+    margin-bottom: 1rem; }
+    @media screen and (min-width: 575px) {
+      .basket .item {
+        max-width: 90%; } }
+    @media screen and (min-width: 768px) {
+      .basket .item {
+        max-width: 80%; } }
+    .basket .item h4 {
+      font-size: 0.9rem;
+      color: grey; }
+      @media screen and (min-width: 575px) {
+        .basket .item h4 {
+          font-size: 1.2rem; } }
+      @media screen and (min-width: 768px) {
+        .basket .item h4 {
+          font-size: 1.3rem; } }
+    .basket .item .item-price .price {
+      color: green;
+      font-size: 1rem;
+      font-weight: bold;
+      display: inline-block; }
+      @media screen and (min-width: 768px) {
+        .basket .item .item-price .price {
+          font-size: 1.2rem; } }
+    .basket .item .inputValue {
+      width: 3rem; }
 
 /*# sourceMappingURL=main.css.map */

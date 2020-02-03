@@ -75,7 +75,6 @@ let createPizzaIds = newCompositionList.map(item => {
         isChecked: false 
     }
 })
-console.log(createPizzaIds);
 
 
 // МОДАЛЬНОЕ ОКНО CREATE
@@ -106,7 +105,7 @@ const renderMyPizzaCreateModal = () => {
 
     const formCheck = cElem('div', 'holder-form');
 
-    //Create checkboxes
+    // Create checkboxes
     /// Добавили все состовляющие в виде инпутов и лейблов
     for (let comp of newCompositionList) {
         const checkboxItem = cElem('div', 'checkbox-item');
@@ -163,11 +162,10 @@ const renderMyPizzaCreateModal = () => {
     pizzaBtnCreate.onclick = function () {
         const nameOfPizza = inputPizzaName.value;
         // в массив Ids, если isChecked == true, добавим эти id
-
         const ids = createPizzaIds.filter(el => el.isChecked).map(el => el.id)
 
         function Pizza (name, arrOfIds) {
-            this.id = pizzaList.length + 1;
+            this.id = newArrPizzaList.length + 1;
             this.name = nameOfPizza || 'My Pizza';
             this.caloricity = 100;
             this.price = 50;
@@ -184,13 +182,26 @@ const renderMyPizzaCreateModal = () => {
                 }
             }
             this.isCustom = true;
-            pizzaList.push(this);
+            newArrPizzaList.push(this);
+
+            // сохраняем в локалстор наш массив
+            localStorage.setItem('pizzas', JSON.stringify(newArrPizzaList));
+            
+            // достаем из сторэджа массив
+            let parsePizza = localStorage.getItem('pizzas');
+            parsePizza = JSON.parse(parsePizza);
+            console.log(parsePizza);
+            renderHolderPizzasList(parsePizza);
+
+            // пушим в массив распаршеную пиццу
+            // newArrPizzaList.push(parsePizza);
         }
 
+
         const MyPizza = new Pizza(nameOfPizza, ids);
-        console.log(MyPizza);
         newArrPizzaList.push(MyPizza);
-        renderHolderPizzasList(newArrPizzaList);
+        // renderHolderPizzasList(newArrPizzaList);
+        createPizza.style.display = 'none';
     }
 
 
@@ -233,6 +244,9 @@ createPizzaBtn.onclick = () => renderСompositionList(newCompositionList);
 
 //---------------------------------------------------------
 
+// МАССИВ ДЛЯ КОРЗИНЫ
+const arrOfPizzaForCart = [];
+
 // СОЗДАЕМ КАРТОЧКУ ТОВАРА
 const renderCard = (pizza) => {
     const holdCard = cElem('div', 'hold-card');
@@ -246,7 +260,7 @@ const renderCard = (pizza) => {
     }
     holdCard.appendChild(card);
     // img
-    const img = cElem('div', 'card-img-top');
+    const img = cElem('div', 'visual');
     img.innerHTML = `<img src="img/${pizza.img}" alt="icon">`;
     card.appendChild(img);
     // В ИЗБРАННОЕ
@@ -277,13 +291,23 @@ const renderCard = (pizza) => {
     button.innerText = 'Заказать';
     card.appendChild(button);
     button.onclick = function (e) {
-        console.log(this);
+        e.stopPropagation();
+        // положила в локалстор заказанную пиццу
+        let n = pizza.name;
+        localStorage.setItem(n, JSON.stringify(pizza));
+        const pizzaForCart = localStorage.getItem(n);
+        parsePizzaForCart = JSON.parse(pizzaForCart);
+        arrOfPizzaForCart.push(parsePizzaForCart);
+        
+
+        console.log(arrOfPizzaForCart);
     }
     return holdCard;
 }
 
-// -----------------------------------------------------
+// localStorage.setItem('pizzas', JSON.stringify(arrOfPizzaForCart));
 
+// -----------------------------------------------------
 
 // ОТРИСОВКА НА СТРАНИЦУ
 // создаем копию массива
@@ -300,8 +324,21 @@ const renderHolderPizzasList = (arrayOfPizza) => {
         mainElement.appendChild(card);
     }
 }
-renderHolderPizzasList(newArrPizzaList)
+renderHolderPizzasList(newArrPizzaList);
 
+
+// Пиццы из LOCALSTORAGE
+// function pizzasFromLocalStorage() {
+//     // достаем из сторэджа пиццу 
+//     const pizzas = localStorage.getItem('pizzas');
+//     // парсим ее
+//     let parsepizza = JSON.parse(pizzas);
+//     // пушим в общий массив
+//     newArrPizzaList.push(parsepizza);
+//     // вызываем рендер 
+//     renderHolderPizzasList(newArrPizzaList);
+// }
+// pizzasFromLocalStorage()
 
 // СЕЛЕКТ по возрастанию, по убыванию
 const select = document.getElementById('select');
@@ -409,10 +446,21 @@ const renderSlide = (pizza) => {
     img.alt = 'icon';
     img.src = 'img/' + pizza.img;
     // text
-    const slideText = document.createElement('div', 'col-sm-12 col-md-6 slide-text');
+    const slideText = cElem('div', 'col-sm-12 col-md-6 slide-text');
     slideText.innerHTML = `
-                        <p>Предложение дня!</p>
-                        <p>3 по цене 2</p>
+                        <div class="pizza-card__name">
+                            <h3>${pizza.name}</h3>
+                        </div>
+                        <div class="pizza-card__composition">
+                        <ul class="d-flex flex-wrap">Состав: ${pizza.composition.map(c => ` <li>${c}, </li>`).join(' ')} </ul>
+                        </div>
+                        <div class="pizza-card__caloricity">
+                            Каллорийность: ${pizza.caloricity}
+                        </div>
+                        <div class="pizza-card__price">
+                            Цена: ${pizza.price} грн.
+                            <button class="pizza-card__button px-3">Заказать</button>
+                        </div>
                         `;
     slideImg.appendChild(img);
     holderSlider.appendChild(slideImg);

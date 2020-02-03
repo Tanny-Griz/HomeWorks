@@ -1,4 +1,92 @@
 // sass --watch scss/style.scss:css/main.css
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 
 @font-face {
   font-family: 'icomoon';
@@ -226,9 +314,9 @@ main {
 }
 
 .hold-card {
-  position: relative;
+  position: relative; ///
   width: 50%;
-  padding: 0 7px;
+  padding: 0.8rem;
   margin-bottom: 1.5rem;
 
   @media screen and (min-width: 575px) {
@@ -236,123 +324,127 @@ main {
   }
 
   @media screen and (min-width: 768px) {
-    padding: 0 15px;
+    padding: 1rem;
   }
 
   @media screen and (min-width: 992px) {
     width: 33%;
   }
-}
 
-.card {
-  text-align: center;
-  padding: 0.8rem;
-  width: 100%;
-  min-height: 100%;
-  transition: box-shadow 0.3s ease-in-out;
+  .card {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 0.8rem;
+    transition: box-shadow 0.3s ease-in-out;
 
-  &:hover {
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0);
-  }
-
-  h3 {
-    font-size: 1.35rem;
-
-    @media screen and (min-width: 768px) {
-      font-size: 1.8rem;
+    &:hover {
+      box-shadow: 0 0px 10px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0);
     }
-  }
 
-  .pizza-card {
-    &__name {
+    h3 {
+      font-size: 1.35rem;
+
+      @media screen and (min-width: 768px) {
+        font-size: 1.8rem;
+      }
+    }
+
+    li {
+      display: inline-block;
+    }
+
+    .visual {
+      height: 170px;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 0.5rem 0;
-    }
 
-    &__favor {
-      position: absolute;
-      right: 20px;
-    }
-
-    &__composition {
-      font-size: 0.7rem;
-      color: #686868;
-      flex-grow: 1;
-      font-style: italic;
-      height: auto !important;
-
-      @media screen and (min-width: 575px) {
-        font-size: 0.8rem;
+      @media screen and (min-width: 400px) {
+        
       }
 
       @media screen and (min-width: 768px) {
-        font-size: 0.9rem;
-      }
-
-      @media screen and (min-width: 1024px) {
-        font-size: 1rem;
-      }
-    }
-
-    &__caloricity {
-      font-weight: bold;
-    }
-
-    &__price {
-      font-weight: bold;
-      font-size: 1rem;
-      color: green;
-
-      @media screen and (min-width: 768px) {
-        font-size: 1.2rem;
-      }
-    }
-
-    &__button {
-      background-color: #7aa14d;
-      text-transform: uppercase;
-      font-weight: bold;
-      border: none;
-      color: #fff;
-      padding: 0.2rem 0;
-      font-size: 0.8rem;
-
-      @media screen and (min-width: 768px) {
-        padding: 0.5rem 0;
-        font-size: 1rem;
-      }
-
-      &:hover {
-        background-color: #88a863;
-      }
-    }
-
-    &__favor {
-      button {
-        border: none;
-        background-color: inherit;
+        
       }
     }
   }
 
-  li {
-    display: inline-block;
-  }
 
-  .card-img-top {
-    min-height: 138px;
+}
+
+
+
+.pizza-card {
+  &__name {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0.5rem 0;
+  }
 
-    @media screen and (min-width: 400px) {
-      min-height: 163px;
+  &__favor {
+    position: absolute;
+    right: 20px;
+  }
+
+  &__composition {
+    font-size: 0.7rem;
+    color: #686868;
+    flex-grow: 1;
+    font-style: italic;
+    height: auto !important;
+
+    @media screen and (min-width: 575px) {
+      font-size: 0.8rem;
     }
 
     @media screen and (min-width: 768px) {
-      min-height: 182.41px;
+      font-size: 0.9rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+      font-size: 1rem;
+    }
+  }
+
+  &__caloricity {
+    font-weight: bold;
+  }
+
+  &__price {
+    font-weight: bold;
+    font-size: 1rem;
+    color: green;
+
+    @media screen and (min-width: 768px) {
+      font-size: 1.2rem;
+    }
+  }
+
+  &__button {
+    background-color: #7aa14d;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    color: #fff;
+    padding: 0.2rem 0;
+    font-size: 0.8rem;
+
+    @media screen and (min-width: 768px) {
+      padding: 0.5rem 0;
+      font-size: 1rem;
+    }
+
+    &:hover {
+      background-color: #88a863;
+    }
+  }
+
+  &__favor {
+    button {
+      border: none;
+      background-color: inherit;
     }
   }
 }
@@ -507,6 +599,7 @@ main {
     }
   }
 }
+
 // end modal
 
 
@@ -540,4 +633,54 @@ footer {
 .pink {
   color: #225e45;
   font-weight: bold;
+}
+
+
+// CART
+.basket {
+  padding: 1rem 0;
+
+  .item {
+    border: 1px solid rgba(0, 0, 0, .125);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+
+    @media screen and (min-width: 575px) {
+      max-width: 90%;
+    }
+
+    @media screen and (min-width: 768px) {
+      max-width: 80%;
+    }
+
+    h4 {
+      font-size: 0.9rem;
+      color: grey;
+
+      @media screen and (min-width: 575px) {
+        font-size: 1.2rem;
+      }
+
+      @media screen and (min-width: 768px) {
+        font-size: 1.3rem;
+      }
+    }
+
+    .item-price {
+      .price {
+        color: green;
+        font-size: 1rem;
+        font-weight: bold;
+        display: inline-block;
+
+        @media screen and (min-width: 768px) {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .inputValue {
+      width: 3rem;
+    }
+  }
 }
