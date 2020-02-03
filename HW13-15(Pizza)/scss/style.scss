@@ -298,7 +298,7 @@ main {
   .create-pizza {
     padding: 0.6rem;
     text-transform: uppercase;
-    font-size: 1.3rem;
+    font-size: 1rem;
     background-color: #f5f5f5;
 
     &:hover {
@@ -356,7 +356,7 @@ main {
     }
 
     .visual {
-      height: 11.43rem;
+      height: 13rem;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -412,7 +412,8 @@ main {
   }
 
   &__caloricity {
-    font-weight: bold;
+    font-weight: 300;
+    font-style: italic;
   }
 
   &__price {
