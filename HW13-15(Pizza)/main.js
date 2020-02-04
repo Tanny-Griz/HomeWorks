@@ -460,13 +460,22 @@ const renderSlide = (pizza) => {
                         <p class="pizza-card__price">
                             Цена: ${pizza.price} грн.
                         </p>
-                        <button class="pizza-card__button px-3">Заказать</button>
-                        <div class="action">
-                            <img src="img/act.png" alt="action"/>
-                        </div>
-                        
                         `;
-    const buttonOrder;
+
+    const buttonOrder = cElem('button', 'pizza-card__button px-3');
+    buttonOrder.innerText = 'Заказать';
+
+    // заказ на слайдере
+    buttonOrder.onclick = function() {
+        arrOfPizzaBasket.push(pizza);
+        localStorage.setItem('pizzaBasket', JSON.stringify(arrOfPizzaBasket));
+        // console.log(arrOfPizzaBasket);
+    }
+
+    const action = cElem('div', 'action');
+    action.innerHTML = '<img src="img/act.png" alt="action"/>';
+    slideText.appendChild(buttonOrder);
+    slideText.appendChild(action);
     slideImg.appendChild(img);
     // slideText.appendChild(action);
     holderSlider.appendChild(slideImg);
