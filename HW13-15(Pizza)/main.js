@@ -24,7 +24,8 @@ function hendlerClose(e) {
         elemClassName === 'pizza-info__close'
     ) {
         // прячем и на оборот
-        this.style.display = 'none'
+        this.style.display = 'none';
+        body.classList.remove('open-modal');
     }
 }
 pizzaCardContainer.addEventListener('click', hendlerClose);
@@ -221,24 +222,27 @@ const renderMyPizzaCreateModal = () => {
     return pizzaInfoCard
 }
 
-// РЕНДЕР В МОДАЛЬНОГО ОКНА
+// РЕНДЕР МОДАЛЬНОГО ОКНА
 const renderСompositionList = (arrayOfСomposition) => {
     const createPizzaBox = document.getElementById('create-pizza');
     createPizzaBox.innerHTML = '';
-    createPizzaBox.style.display = 'flex'
+    createPizzaBox.style.display = 'flex';
 
     createPizzaBox.append(renderMyPizzaCreateModal())
 }
 
 const createPizzaBtn = document.getElementById('create-pizza-btn');
 // запуск рендера при нажатии кнопки
-createPizzaBtn.onclick = () => renderСompositionList(newCompositionList);
+createPizzaBtn.onclick = function() {
+    body.classList.add('open-modal');
+    renderСompositionList(newCompositionList);
+}
 //-------------------------------------------------------
 
 
 
 //---------------------------------------------------------
-
+const body = document.querySelector('body');
 // СОЗДАЕМ КАРТОЧКУ ТОВАРА
 const renderCard = (pizza) => {
     const holdCard = cElem('div', 'hold-card');
@@ -249,6 +253,7 @@ const renderCard = (pizza) => {
     card.onclick = function () {
         renderPizzaCard(pizza);
         pizzaCardContainer.style.display = 'flex';
+        body.classList.add('open-modal');
     }
     holdCard.appendChild(card);
     // img
@@ -461,6 +466,7 @@ const renderSlide = (pizza) => {
                         </div>
                         
                         `;
+    
     slideImg.appendChild(img);
     // slideText.appendChild(action);
     holderSlider.appendChild(slideImg);
@@ -489,8 +495,8 @@ const renderSlideContainer = (pizza) => {
 }
 renderSlideContainer(pizzaOfTheDay[indexOfName]); // отрисовываем первую, без интервала
 
-setInterval(() => {
-    // если индекс = последнему (концу) массива, то индексу снова присваиваем 0, иначе +1
-    indexOfName = indexOfName === pizzaOfTheDay.length - 1 ? 0 : indexOfName + 1
-    renderSlideContainer(pizzaOfTheDay[indexOfName]); // через каждые 2 сек отрысов по очереди 
-}, 3000);
+// setInterval(() => {
+//     // если индекс = последнему (концу) массива, то индексу снова присваиваем 0, иначе +1
+//     indexOfName = indexOfName === pizzaOfTheDay.length - 1 ? 0 : indexOfName + 1
+//     renderSlideContainer(pizzaOfTheDay[indexOfName]); // через каждые 2 сек отрысов по очереди 
+// }, 3000);

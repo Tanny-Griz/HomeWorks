@@ -276,13 +276,15 @@ main h1 {
   color: #686868;
   flex-grow: 1;
   font-style: italic;
-  height: auto !important; }
+  height: auto !important;
+  min-height: 52px; }
   @media screen and (min-width: 575px) {
     .pizza-card__composition {
       font-size: 0.8rem; } }
   @media screen and (min-width: 768px) {
     .pizza-card__composition {
-      font-size: 0.9rem; } }
+      font-size: 0.9rem;
+      min-height: 32px; } }
   @media screen and (min-width: 1024px) {
     .pizza-card__composition {
       font-size: 1rem; } }
@@ -473,5 +475,12 @@ footer a {
           font-size: 1.2rem; } }
     .basket .item .inputValue {
       width: 3rem; }
+
+.open-modal {
+  overflow: hidden; }
+  .open-modal .banner {
+    padding-right: 17px; }
+  .open-modal .products {
+    padding-right: 17px; }
 
 /*# sourceMappingURL=main.css.map */

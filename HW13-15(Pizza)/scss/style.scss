@@ -393,6 +393,7 @@ main {
     flex-grow: 1;
     font-style: italic;
     height: auto !important;
+    min-height: 52px;
 
     @media screen and (min-width: 575px) {
       font-size: 0.8rem;
@@ -400,6 +401,7 @@ main {
 
     @media screen and (min-width: 768px) {
       font-size: 0.9rem;
+      min-height: 32px;
     }
 
     @media screen and (min-width: 1024px) {
@@ -690,5 +692,16 @@ footer {
     .inputValue {
       width: 3rem;
     }
+  }
+}
+
+.open-modal {
+  overflow: hidden;
+  // padding-right: 17px;
+  .banner {
+    padding-right: 17px;
+  }
+  .products {
+    padding-right: 17px;
   }
 }

@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="shortcut icon" href="img/Avo.png" type="image/x-icon" />
-    <link rel="stylesheet"
+    <link
+      rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"/>
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="css/main.css" />
     <title>Pizza Store</title>
   </head>
@@ -65,7 +67,9 @@
                     </div>
                   </li>
                   <li>
-                    <a href="cart.html" class="basket"><i class="icon-shopping-cart_216477"></i></a>
+                    <a href="cart.html" class="basket"
+                      ><i class="icon-shopping-cart_216477"></i
+                    ></a>
                   </li>
                 </ul>
               </nav>
@@ -76,89 +80,87 @@
     </header>
     <main>
       <!-- banner -->
-      <div class="holder-banner">
-      <div class="container-fluid">
-        <div class="slider"></div>
+      <section class="banner">
+        <div class="container-fluid">
+          <div class="slider"></div>
         </div>
-      </div>
+      </section>
       <!-- end banner -->
 
-      <!-- modal -->
-      <div class="pizza-info">
-        <div class="pizza-info__card" id="pizzaInfo"></div>
-      </div>
-      <!-- end modal -->
-
       <!-- filters -->
-      <div class="container">
-        <div class="row justify-content-center">
-          <aside class="col-sm-12 col-md-3 col-lg-3">
-            <div class="holder-filters mt-3 mb-3">
-              <div
-                class="row d-flex justify-content-between align-items-center"
-              >
-                <div class="col-sm-12 col-sm-text-center">
-                  <h1>Pizza</h1>
-                </div>
-                <div class="col-sm-12 mb-2">
-                  <div class="row hold-filter d-flex">
-                    <div class="col-12">
-                      <select class="custom-select mb-2" id="select-filter">
-                        <option selected>Диапазон:</option>
-                        <option value="1">По Каллориям</option>
-                        <option value="2">По Цене</option>
+      <section class="products">
+        <div class="container">
+          <div class="row justify-content-center">
+            <aside class="col-sm-12 col-md-3 col-lg-3">
+              <div class="holder-filters mt-3 mb-3">
+                <div
+                  class="row d-flex justify-content-between align-items-center"
+                >
+                  <div class="col-sm-12 col-sm-text-center">
+                    <h1>Pizza</h1>
+                  </div>
+                  <div class="col-sm-12 mb-2">
+                    <div class="row hold-filter d-flex">
+                      <div class="col-12">
+                        <select class="custom-select mb-2" id="select-filter">
+                          <option selected>Диапазон:</option>
+                          <option value="1">По Каллориям</option>
+                          <option value="2">По Цене</option>
+                        </select>
+                        <input
+                          class="form-control"
+                          id="inputFrom"
+                          type="text"
+                          placeholder="От"
+                        />
+                        <span> - </span>
+                        <input
+                          class="form-control"
+                          id="inputTo"
+                          type="text"
+                          placeholder="До"
+                        />
+                      </div>
+                      <div class="col-12 my-2">
+                        <button class="btn" id="btn-find">OK</button>
+                        <button class="btn" id="btn-reset">Сброс</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 mb-2">
+                    <div class="d-flex">
+                      <select class="custom-select" id="select">
+                        <option selected>Сортировать:</option>
+                        <option value="1">По возрастанию цены</option>
+                        <option value="2">По убыванию цены</option>
                       </select>
-                      <input
-                        class="form-control"
-                        id="inputFrom"
-                        type="text"
-                        placeholder="От"
-                      />
-                      <span> - </span>
-                      <input
-                        class="form-control"
-                        id="inputTo"
-                        type="text"
-                        placeholder="До"
-                      />
-                    </div>
-                    <div class="col-12 my-2">
-                      <button class="btn" id="btn-find">OK</button>
-                      <button class="btn" id="btn-reset">Сброс</button>
                     </div>
                   </div>
-                </div>
-                <div class="col-sm-12 mb-2">
-                  <div class="d-flex">
-                    <select class="custom-select" id="select">
-                      <option selected>Сортировать:</option>
-                      <option value="1">По возрастанию цены</option>
-                      <option value="2">По убыванию цены</option>
-                    </select>
+                  <div class="col-sm-12 mb-2 py-2">
+                    <button class="btn create-pizza" id="create-pizza-btn">
+                      Создай свою Пиццу
+                    </button>
                   </div>
+                  <!-- create modal -->
+                  <div class="pizza-info" id="create-pizza">
+                    <div
+                      class="pizza-info__card"
+                      id="modal-content-create"
+                    ></div>
+                  </div>
+                  <!-- create end modal -->
                 </div>
-                <div class="col-sm-12 mb-2 py-2">
-                  <button class="btn create-pizza" id="create-pizza-btn">
-                    Создай свою Пиццу
-                  </button>
-                </div>
-                <!-- create modal -->
-                <div class="pizza-info" id="create-pizza">
-                  <div class="pizza-info__card" id="modal-content-create"></div>
-                </div>
-                <!-- create end modal -->
               </div>
+            </aside>
+            <!-- end filters -->
+            <!-- card -->
+            <div class="holder-pizzas-list d-flex flex-wrap justify-content-center col-sm-12 col-md-9 col-lg-9">
+              <div class="hold-card"></div>
             </div>
-          </aside>
-          <!-- end filters -->
-          <!-- card -->
-          <div
-            class="holder-pizzas-list d-flex flex-wrap justify-content-center col-sm-12 col-md-9 col-lg-9">
-            <div class="hold-card"></div>
           </div>
+          <!-- end card -->
         </div>
-        <!-- end card -->
-      </div>
+      </section>
 
       <footer>
         <div class="holder-contacts">
@@ -204,6 +206,13 @@
         </div>
       </footer>
     </main>
+
+    <!-- modal -->
+    <div class="pizza-info">
+      <div class="pizza-info__card" id="pizzaInfo"></div>
+    </div>
+    <!-- end modal -->
+
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
