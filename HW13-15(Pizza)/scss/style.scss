@@ -83,7 +83,6 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
   vertical-align: baseline;
 }
 
@@ -361,13 +360,10 @@ main {
       justify-content: center;
       align-items: center;
       margin-bottom: 0.8rem;
-      @media screen and (min-width: 400px) {
-        
-      }
 
-      @media screen and (min-width: 768px) {
-        
-      }
+      @media screen and (min-width: 400px) {}
+
+      @media screen and (min-width: 768px) {}
     }
 
     .addToFavor {
@@ -494,6 +490,7 @@ main {
         align-items: flex-start;
         flex-direction: column;
       }
+
       .action {
         position: absolute;
         right: 0;
@@ -503,6 +500,7 @@ main {
     }
   }
 }
+
 // end slider
 
 // modal
@@ -609,6 +607,7 @@ main {
     }
   }
 }
+
 // end modal
 
 

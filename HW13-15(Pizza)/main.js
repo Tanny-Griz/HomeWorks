@@ -3,16 +3,20 @@ window.cElem = (tagName, className = "") => {
     element.className = className;
     return element
 }
+// ДУБЛИКАТ МАССИВА
+let newArrPizzaList = [];
+
+// ДУБЛИКАТ МАССИВА С КОМПОНЕНТАМИ
+let newCompositionList = [...compositionList];
 
 // МОДАЛЬНОЕ ОКНО
 const pizzaCardContainer = document.querySelector('.pizza-info');
 const card = document.querySelector('.pizza-info__card');
 
-// закрытие модалки
+// ЗАКРЫТИЕ МОДАЛКИ
 function hendlerClose(e) {
     // считываем класс у эл-та
     const elemClassName = e.target.className;
-    console.log(elemClassName)
     // если он = pizza-info'
     if (
         elemClassName === 'pizza-info' ||
@@ -23,8 +27,10 @@ function hendlerClose(e) {
         this.style.display = 'none'
     }
 }
-pizzaCardContainer.addEventListener('click', hendlerClose)
-// рендер модалки карты
+pizzaCardContainer.addEventListener('click', hendlerClose);
+
+
+//РЕНДЕР МОДАЛЬНОЙ КАРТЫ
 const renderPizzaCard = (pizza) => {
     const template = `
             <div class="pizza-info__header">
@@ -63,9 +69,6 @@ const renderPizzaCard = (pizza) => {
 const createPizza = document.getElementById('create-pizza');
 const modalCreate = document.getElementById('modal-content-create');
 createPizza.addEventListener('click', hendlerClose);
-
-// ДУБЛИКАТ МАССИВА С КОМПОНЕНТАМИ
-let newCompositionList = [...compositionList];
 
 
 // МАССИВ ИЗ АЙДИШНИКОВ и нового свойство isChecked
@@ -159,48 +162,40 @@ const renderMyPizzaCreateModal = () => {
     const pizzaBtnCreate = cElem('button', 'btn pizza-info__Create');
     pizzaBtnCreate.innerText = 'Create';
 
-    pizzaBtnCreate.onclick = function () {
-        const nameOfPizza = inputPizzaName.value;
-        // в массив Ids, если isChecked == true, добавим эти id
-        const ids = createPizzaIds.filter(el => el.isChecked).map(el => el.id)
 
-        function Pizza(name, arrOfIds) {
-            this.id = newArrPizzaList.length + 1;
-            this.name = nameOfPizza || 'My Pizza';
-            this.caloricity = 100;
-            this.price = 50;
-            this.composition = [];
-            this.img = "19.png";
+    // НОВУЮ ФУНКЦИЮ Pizza
+    function Pizza(name, arrOfIds) {
+        this.id = newArrPizzaList.length + 1;
+        this.name = inputPizzaName.value || 'My Pizza';
+        this.caloricity = 100;
+        this.price = 50;
+        this.composition = [];
+        this.img = "19.png";
 
-            for (let id of arrOfIds) {
-                for (let comp of newCompositionList) {
-                    if (id == comp.id) {
-                        this.composition.push(comp.name);
-                        this.price += comp.price;
-                        this.caloricity += comp.caloricity;
-                    }
+        for (let id of arrOfIds) {
+            for (let comp of newCompositionList) {
+                if (id == comp.id) {
+                    this.composition.push(comp.name);
+                    this.price += comp.price;
+                    this.caloricity += comp.caloricity;
                 }
             }
-            this.isCustom = true;
-            newArrPizzaList.push(this);
-
-            // сохраняем в локалстор наш массив
-            localStorage.setItem('pizzas', JSON.stringify(newArrPizzaList));
-
-            // достаем из сторэджа массив
-            let parsePizza = localStorage.getItem('pizzas');
-            parsePizza = JSON.parse(parsePizza);
-            console.log(parsePizza);
-            renderHolderPizzasList(parsePizza);
-
-            // пушим в массив распаршеную пиццу
-            // newArrPizzaList.push(parsePizza);
         }
+        this.isCustom = true;
+        newCompositionList.push(this);
+    }
 
-
-        const MyPizza = new Pizza(nameOfPizza, ids);
+    pizzaBtnCreate.onclick = function () {
+        // в массив Ids, если isChecked == true, добавим эти id
+        const ids = createPizzaIds.filter(el => el.isChecked).map(el => el.id)
+        const MyPizza = new Pizza(inputPizzaName.value, ids);
         newArrPizzaList.push(MyPizza);
-        // renderHolderPizzasList(newArrPizzaList);
+
+        // залили наш массив с новой пиццей в локалстор
+        localStorage.setItem('pizzas', JSON.stringify(newArrPizzaList));
+
+        // отрисовали
+        renderHolderPizzasList(newArrPizzaList);
         createPizza.style.display = 'none';
     }
 
@@ -226,7 +221,7 @@ const renderMyPizzaCreateModal = () => {
     return pizzaInfoCard
 }
 
-// РЕНДЕР В МОДАЛЬНОЕ ОКНО
+// РЕНДЕР В МОДАЛЬНОГО ОКНА
 const renderСompositionList = (arrayOfСomposition) => {
     const createPizzaBox = document.getElementById('create-pizza');
     createPizzaBox.innerHTML = '';
@@ -243,9 +238,6 @@ createPizzaBtn.onclick = () => renderСompositionList(newCompositionList);
 
 
 //---------------------------------------------------------
-
-// МАССИВ ДЛЯ КОРЗИНЫ
-const arrOfPizzaForCart = [];
 
 // СОЗДАЕМ КАРТОЧКУ ТОВАРА
 const renderCard = (pizza) => {
@@ -290,61 +282,59 @@ const renderCard = (pizza) => {
     price.innerText = `Цена: ${pizza.price} грн.`;
     text.appendChild(price);
     // button
-    const button = cElem('button', 'pizza-card__button')
-    button.innerText = 'Заказать';
-    
-    button.onclick = function (e) {
+    const buttonOrder = cElem('button', 'pizza-card__button')
+    buttonOrder.innerText = 'Заказать';
+
+    buttonOrder.onclick = function (e) {
         e.stopPropagation();
-        // положила в локалстор заказанную пиццу
-        let n = pizza.name;
-        localStorage.setItem(n, JSON.stringify(pizza));
-        const pizzaForCart = localStorage.getItem(n);
-        parsePizzaForCart = JSON.parse(pizzaForCart);
-        arrOfPizzaForCart.push(parsePizzaForCart);
 
+        // пушим в массив для корзины
+        arrOfPizzaBasket.push(pizza);
+        console.log(arrOfPizzaBasket);
 
-        console.log(arrOfPizzaForCart);
+        // отправляем в локал заказанные пицы
+        localStorage.setItem('pizzaBasket', JSON.stringify(arrOfPizzaBasket));
+        console.log(arrOfPizzaBasket);
     }
-    text.appendChild(button);
+    text.appendChild(buttonOrder);
     card.appendChild(text);
 
     return holdCard;
 }
-
-// localStorage.setItem('pizzas', JSON.stringify(arrOfPizzaForCart));
+// МАССИВ ДЛЯ КОРЗИНЫ ЛОКАЛ
+const arrOfPizzaBasket = [];
 
 // -----------------------------------------------------
 
-// ОТРИСОВКА НА СТРАНИЦУ
+// ОТРИСОВКА НА СТРАНИЦУ КАРТОЧКИ
 // создаем копию массива
-let newArrPizzaList = [...pizzaList];
+
 
 // куда отрисуем
 const mainElement = document.querySelector('.holder-pizzas-list');
 
+// РЕНДЕР ПИЦЦ НА СТРАНИЦУ
 const renderHolderPizzasList = (arrayOfPizza) => {
-    mainElement.innerHTML = ''
+    mainElement.innerHTML = '';
+
     for (let pizza of arrayOfPizza) {
         // каждая пицца залетает в renderCard(pizza)
         const card = renderCard(pizza);
         mainElement.appendChild(card);
     }
 }
-renderHolderPizzasList(newArrPizzaList);
 
+// РЕНДЕР С ЛОКАЛСТОРЭДЖ ЛИБО наш массив
+const getArrFronmStorage = () => {
+    // достаем из локала
+    const arr = localStorage.getItem('pizzas')
+    arrParse = JSON.parse(arr)
+    // записываем в наш массив либо с локала, либо возвращаем наш
+    newArrPizzaList = arrParse || [...pizzaList]
+    return newArrPizzaList
+}
+renderHolderPizzasList(getArrFronmStorage());
 
-// Пиццы из LOCALSTORAGE
-// function pizzasFromLocalStorage() {
-//     // достаем из сторэджа пиццу 
-//     const pizzas = localStorage.getItem('pizzas');
-//     // парсим ее
-//     let parsepizza = JSON.parse(pizzas);
-//     // пушим в общий массив
-//     newArrPizzaList.push(parsepizza);
-//     // вызываем рендер 
-//     renderHolderPizzasList(newArrPizzaList);
-// }
-// pizzasFromLocalStorage()
 
 // СЕЛЕКТ по возрастанию, по убыванию
 const select = document.getElementById('select');
@@ -452,7 +442,7 @@ const renderSlide = (pizza) => {
     img.alt = 'icon';
     img.src = 'img/' + pizza.img;
     // const action = cElem('div', 'action');
-    
+
     // text
     const slideText = cElem('div', 'col-sm-6 col-md-8 slide-text');
 
@@ -504,4 +494,3 @@ setInterval(() => {
     indexOfName = indexOfName === pizzaOfTheDay.length - 1 ? 0 : indexOfName + 1
     renderSlideContainer(pizzaOfTheDay[indexOfName]); // через каждые 2 сек отрысов по очереди 
 }, 3000);
-
