@@ -170,6 +170,7 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  line-height: 1.2em;
 }
 
 a {
@@ -394,6 +395,7 @@ main {
     font-style: italic;
     height: auto !important;
     min-height: 52px;
+    align-content: flex-start;
 
     @media screen and (min-width: 575px) {
       font-size: 0.8rem;

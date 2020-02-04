@@ -466,7 +466,7 @@ const renderSlide = (pizza) => {
                         </div>
                         
                         `;
-    
+    const buttonOrder;
     slideImg.appendChild(img);
     // slideText.appendChild(action);
     holderSlider.appendChild(slideImg);
