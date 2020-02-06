@@ -170,8 +170,6 @@ btnOrder.onclick = function() {
     // let surnameValue = document.getElementById('inputSurname').value;
     // let telephoneValue = document.getElementById('telephone').value;
 
-    console.log(name.value)
-
     let form = new FormCart('Eva', 'Iokina', '+380333333333');
     localStorage.setItem('form', JSON.stringify(form))
     console.log(form);

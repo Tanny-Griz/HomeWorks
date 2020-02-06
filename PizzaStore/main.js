@@ -527,7 +527,7 @@ const setToLocalStorage = () => {
         totalPrice: Cart.totalPrice,
         totalCount: Cart.totalCount,
     }
-    // const objLS = JSON.parse(localStorage.getItem('cart') || []);
+    const objLS = JSON.parse(localStorage.getItem('cart'))  || [];
     // console.log(objLS)
     // objLS.push(obj)
     localStorage.setItem('cart', JSON.stringify(obj))
@@ -561,12 +561,8 @@ class Cart {
                 pizza.totalPrice += pizzaModel.price;
                 Cart.totalPrice += pizzaModel.price;
                 Cart.totalCount++;
-                // console.log(Cart.cartArr);
-                // const objLS = JSON.parse(localStorage.getItem('cart') || {});
-                // objLS += pizza;
-                // localStorage.setItem('cart', JSON.stringify(objLS));
+
                 setToLocalStorage();
-                
                 break;
             }
         }
