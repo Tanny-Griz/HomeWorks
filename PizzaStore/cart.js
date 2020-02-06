@@ -125,3 +125,58 @@ class CartComponent {
 }
 
 CartComponent.renderHolderItem()
+
+
+///---------------- FORM ----------------------
+// const name = document.getElementById('inputName').value;
+// const surname = document.getElementById('inputSurname').value;
+// const telephone = document.getElementById('telephone').value;
+// const telephone = document.getElementById('#telephone');
+const btnOrder = document.querySelector('.order');
+
+class FormCart {
+    constructor(name, surname, tel, street, house, float) {
+        this.name = name;
+        this.surname = surname;
+        this.tel = tel;
+        this.street = street || 'street';
+        this.house = house || 'house';;
+        this.float = float || 'float';;
+    }
+    render(x) {
+        let out = '';
+        out += `<div class="container">
+                    <p>${this.name}</p>
+                    <p>${this.surname}</p>
+                    <p>${this.tel}</p>
+                    <p>${this.street}</p>
+                    <p>${this.house}</p>
+                    <p>${this.float}</p>
+                </div>`;
+        document.getElementById(x).innerHTML = out;
+    }
+}
+
+const name = document.getElementById('inputName');
+const surname = document.getElementById('inputSurname');
+const telephone = document.getElementById('telephone');
+
+btnOrder.onclick = function() {
+    // let nameValue = name.value;
+    // let surnameValue = surname.value;
+    // let telephoneValue = telephone.value;
+
+    // let nameValue = document.getElementById('inputName').value;
+    // let surnameValue = document.getElementById('inputSurname').value;
+    // let telephoneValue = document.getElementById('telephone').value;
+
+    console.log(name.value)
+
+    let form = new FormCart('Eva', 'Iokina', '+380333333333');
+    localStorage.setItem('form', JSON.stringify(form))
+    console.log(form);
+}
+
+
+
+

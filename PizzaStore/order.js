@@ -18,3 +18,18 @@ const random = ()=> {
 
 //  numOrder()
 numOrder.innerHTML = random();
+
+
+//------FORM-------
+let name = document.querySelector('.name');
+let surname = document.querySelector('.surname');
+let tel = document.querySelector('.tel');
+let street = document.querySelector('.street');
+
+const formFromLS = JSON.parse(localStorage.getItem('form')) || [];
+console.log(formFromLS.name);
+
+name.innerText = 'На имя: ' + formFromLS.name + ' ';
+surname.innerText = formFromLS.surname;
+tel.innerText = 'Телефон для связи: ' + formFromLS.tel;
+street.innerText = 'Адресс: ' + formFromLS.street;
