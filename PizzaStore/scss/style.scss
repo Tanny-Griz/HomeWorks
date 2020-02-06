@@ -1,90 +1,4 @@
 // sass --watch scss/style.scss:css/main.css
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  vertical-align: baseline;
-}
 
 
 @font-face {
@@ -147,9 +61,29 @@ video {
   content: "\e902";
 }
 
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex: 0 0 auto;
+}
+
 .icon-fb:before {
   content: "\e905";
 }
+
 
 img {
   max-width: 100%;
@@ -241,19 +175,6 @@ a {
     box-shadow: inherit;
   }
 }
-
-// input[type=search]::-ms-clear {
-//   display: none;
-//   width: 0;
-//   height: 0;
-// }
-
-// input[type=search]::-ms-reveal {
-//   display: none;
-//   width: 0;
-//   height: 0;
-// }
-
 
 input::-webkit-search-decoration,
 input::-webkit-search-cancel-button,
@@ -381,10 +302,7 @@ main {
       flex-grow: 1;
       margin-bottom: 0.5rem;
     }
-
   }
-
-
 }
 
 .pizza-card {
@@ -656,13 +574,16 @@ footer {
     border: 1px solid rgba(0, 0, 0, .125);
     padding: 1.5rem;
     margin-bottom: 1rem;
+    max-width: 100%;
 
     @media screen and (min-width: 575px) {
-      max-width: 90%;
+      h4 {
+        font-size: 1rem;
+      }
     }
 
     @media screen and (min-width: 768px) {
-      max-width: 80%;
+
     }
 
     h4 {
@@ -679,6 +600,11 @@ footer {
     }
 
     .item-price {
+      .result {
+        border: none;
+        display: flex;
+        width: 50px;
+      }
       .price {
         color: green;
         font-size: 1rem;
@@ -694,7 +620,23 @@ footer {
     .inputValue {
       width: 3rem;
     }
+
+    img {
+      height: 75px;
+    }
   }
+}
+
+.order {
+  padding: .375rem .75rem;
+  text-transform: uppercase;
+  border: 1px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
 }
 
 .open-modal {

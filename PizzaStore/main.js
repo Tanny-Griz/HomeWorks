@@ -13,8 +13,6 @@ let newCompositionList = [...compositionList];
 const pizzaCardContainer = document.querySelector('.pizza-info');
 const card = document.querySelector('.pizza-info__card');
 
-const body = document.querySelector('body');
-
 // ЗАКРЫТИЕ МОДАЛКИ
 function hendlerClose(e) {
     // считываем класс у эл-та
@@ -26,9 +24,8 @@ function hendlerClose(e) {
         elemClassName === 'pizza-info__close'
     ) {
         // прячем и на оборот
-        body.classList.remove('open-modal');
         this.style.display = 'none';
-        
+        body.classList.remove('open-modal');
     }
 }
 pizzaCardContainer.addEventListener('click', hendlerClose);
@@ -201,7 +198,6 @@ const renderMyPizzaCreateModal = () => {
         // отрисовали
         renderHolderPizzasList(newArrPizzaList);
         createPizza.style.display = 'none';
-        body.classList.remove('open-modal');
     }
 
 
@@ -246,6 +242,9 @@ createPizzaBtn.onclick = function() {
 
 
 //---------------------------------------------------------
+const body = document.querySelector('body');
+
+
 
 // СОЗДАЕМ КАРТОЧКУ ТОВАРА
 const renderCard = (pizza) => {
@@ -296,10 +295,9 @@ const renderCard = (pizza) => {
 
     buttonOrder.onclick = function (e) {
         e.stopPropagation();
-
+        Cart.setPizza(pizza.id);
         // пушим в массив для корзины
         arrOfPizzaBasket.push(pizza);
-        console.log(arrOfPizzaBasket);
 
         // отправляем в локал заказанные пицы
         localStorage.setItem('pizzaBasket', JSON.stringify(arrOfPizzaBasket));
@@ -471,9 +469,14 @@ const renderSlide = (pizza) => {
 
     // заказ на слайдере
     buttonOrder.onclick = function() {
-        arrOfPizzaBasket.push(pizza);
         localStorage.setItem('pizzaBasket', JSON.stringify(arrOfPizzaBasket));
-        // console.log(arrOfPizzaBasket);
+
+        Cart.setPizza(pizza.id);
+        // пушим в массив для корзины
+        arrOfPizzaBasket.push(pizza);
+
+        // отправляем в локал заказанные пицы
+        localStorage.setItem('pizzaBasket', JSON.stringify(arrOfPizzaBasket));
     }
 
     const action = cElem('div', 'action');
@@ -513,3 +516,59 @@ renderSlideContainer(pizzaOfTheDay[indexOfName]); // отрисовываем п
 //     indexOfName = indexOfName === pizzaOfTheDay.length - 1 ? 0 : indexOfName + 1
 //     renderSlideContainer(pizzaOfTheDay[indexOfName]); // через каждые 2 сек отрысов по очереди 
 // }, 3000);
+
+
+// ---------------------
+// посылаем в локал обьеккт
+const setToLocalStorage = () => {
+    const obj = {
+        // который содержит массив, сумму и кол-во
+        cartArr: Cart.cartArr,
+        totalPrice: Cart.totalPrice,
+        totalCount: Cart.totalCount,
+    }
+    // const objLS = JSON.parse(localStorage.getItem('cart') || []);
+    // console.log(objLS)
+    // objLS.push(obj)
+    localStorage.setItem('cart', JSON.stringify(obj))
+}
+
+class Cart {
+    static cartArr = newArrPizzaList.map(pizza => {
+        return {
+            id: pizza.id,
+            img: pizza.img,
+            name: pizza.name,
+            count: 0,
+            price: pizza.price,
+            totalPrice: 0,
+        }
+    })
+
+    static totalPrice = 0 // общая цена
+
+    static totalCount = 0 // кол-во всего пицц
+
+    // сюда передаем id 
+    static setPizza(idOfCurrentPizza) {
+        const pizzaModel = newArrPizzaList.find(p => p.id === idOfCurrentPizza);
+
+        for (let pizza of Cart.cartArr){
+            if (pizza.id === idOfCurrentPizza){
+                pizza.count += 1;
+                pizza.img = pizzaModel.img;
+                pizza.price = pizzaModel.price;
+                pizza.totalPrice += pizzaModel.price;
+                Cart.totalPrice += pizzaModel.price;
+                Cart.totalCount++;
+                // console.log(Cart.cartArr);
+                // const objLS = JSON.parse(localStorage.getItem('cart') || {});
+                // objLS += pizza;
+                // localStorage.setItem('cart', JSON.stringify(objLS));
+                setToLocalStorage();
+                
+                break;
+            }
+        }
+    }
+}
