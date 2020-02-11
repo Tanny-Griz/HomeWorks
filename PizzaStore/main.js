@@ -68,7 +68,7 @@ const renderPizzaCard = (pizza) => {
 
 // СОЗДАЕМ МОДАЛЬНОЕ ОКНО С СОЗДАНИЕМ СВОЕЙ ПИЦЦЫ
 const createPizza = document.getElementById('create-pizza');
-const modalCreate = document.getElementById('modal-content-create');
+// const modalCreate = document.getElementById('modal-content-create');
 createPizza.addEventListener('click', hendlerClose);
 
 
@@ -191,6 +191,7 @@ const renderMyPizzaCreateModal = () => {
         const ids = createPizzaIds.filter(el => el.isChecked).map(el => el.id)
         const MyPizza = new Pizza(inputPizzaName.value, ids);
         newArrPizzaList.push(MyPizza);
+        Cart.setPizza(pizza.id);
 
         // залили наш массив с новой пиццей в локалстор
         localStorage.setItem('pizzas', JSON.stringify(newArrPizzaList));
@@ -519,22 +520,33 @@ renderSlideContainer(pizzaOfTheDay[indexOfName]); // отрисовываем п
 
 
 // ---------------------
-// посылаем в локал обьеккт
+// посылаем в локал обьект
 const setToLocalStorage = () => {
     const obj = {
         // который содержит массив, сумму и кол-во
-        cartArr: Cart.cartArr,
+        cartArr: Cart.cartArrLS,
         totalPrice: Cart.totalPrice,
         totalCount: Cart.totalCount,
     }
     const objLS = JSON.parse(localStorage.getItem('cart'))  || [];
-    // console.log(objLS)
-    // objLS.push(obj)
+    // console.log(objLS) 
+    // objLS.push(obj) 
     localStorage.setItem('cart', JSON.stringify(obj))
 }
 
+
+
+const arr = () => {
+    const cartObj = JSON.parse(localStorage.getItem('cart'));
+    const { cartArr } = cartObj;
+    return cartObj
+    console.log(cartArr);
+}
+
+
 class Cart {
-    static cartArr = newArrPizzaList.map(pizza => {
+    // static cartArr = Cart.getCartObjFromLS()
+    static cartArrLS = newArrPizzaList.map(pizza => {
         return {
             id: pizza.id,
             img: pizza.img,
@@ -542,7 +554,7 @@ class Cart {
             count: 0,
             price: pizza.price,
             totalPrice: 0,
-        }
+            }
     })
 
     static totalPrice = 0 // общая цена
@@ -553,7 +565,7 @@ class Cart {
     static setPizza(idOfCurrentPizza) {
         const pizzaModel = newArrPizzaList.find(p => p.id === idOfCurrentPizza);
 
-        for (let pizza of Cart.cartArr){
+        for (let pizza of Cart.cartArrLS){
             if (pizza.id === idOfCurrentPizza){
                 pizza.count += 1;
                 pizza.img = pizzaModel.img;
