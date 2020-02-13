@@ -1,0 +1,103 @@
+.App {
+  text-align: center;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.header {
+  background-color: #282c34;
+  padding: 2rem 0;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin); */
+  color: white;
+  margin-bottom: 2rem;
+}
+
+input {
+  padding: 0.5rem;
+  margin-right: 1rem;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hold-card {
+  padding: 0 15px;
+}
+
+.card {
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid #c0c0c0;
+    margin-bottom: 1rem;
+}
+
+.card:hover{
+  transition: box-shadow 0.3s;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.7), 0 4px 10px rgba(0, 0, 0, 0);
+}
+
+.visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+.text span {
+  color: #b1b1b1;
+}
+
+.user-info {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 3;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.hold-modal {
+  width: 25rem;
+  position: absolute;
+  padding: 1.25rem;
+  background: #fffefe;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.7), 0 4px 10px rgba(0, 0, 0, 0);
+}
+
+.info {
+  font-size: 12px;
+}
