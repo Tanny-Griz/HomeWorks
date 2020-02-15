@@ -5,7 +5,7 @@ const Modal = (props) => {
         props.setModal({id: null, isShow: false})
     }
     return (
-        <div className="user-info" onClick={hendleHideModal}>
+        <div className="user-info">
             <div className="hold-modal">
                 <div className="visual">
                     <img src={props.user.picture} alt="img"/>
