@@ -72,7 +72,7 @@ input {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .text span {
@@ -88,6 +88,7 @@ input {
   left: 0;
   top: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center; 
 }
@@ -102,4 +103,21 @@ input {
 
 .info {
   font-size: 12px;
+}
+
+.hide {
+  padding: 0.5rem 2rem;
+  text-transform: uppercase;
+  background-color: #282c34;
+  color: white;
+  border: none;
+}
+
+.size {
+  font-size: 60px;
+  color: #fff;
+}
+
+.btn-size {
+  margin-left: 1rem;
 }

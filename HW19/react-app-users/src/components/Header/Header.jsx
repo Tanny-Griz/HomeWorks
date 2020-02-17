@@ -29,6 +29,10 @@ const Header = (props) => {
       props.setUserData(sortedArr);
     }
 
+    const hendleOpenModalSize = () => {
+      props.setModalSizeState({isShow: true})
+  }
+
     return (
         <header className="header">
             <div className="container">
@@ -37,7 +41,7 @@ const Header = (props) => {
                 <Select
                 onChange={handleFilterByAge} 
                 options={sortSelectData} />
-                <Button>size</Button>
+                <Button className="btn-size" onClick={hendleOpenModalSize}>Screen width</Button>
             </div>
         </header>
     )

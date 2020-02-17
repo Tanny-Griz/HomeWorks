@@ -18,14 +18,12 @@ const App = () => {
     isShow: false
   })
 
-
-
   return (
     <>
-      <Header userArr={userArr} setUserData={setUserData} userData={userData} />
+      <Header userArr={userArr} setUserData={setUserData} userData={userData} setModalSizeState={setModalSizeState} />
       <Main userArr={userArr} setModalState={setModalState}/>
       {modalState.isShow && <Modal userArr={userArr} modalState={modalState} setModalState={setModalState}/>}
-      <ModalSize />
+      {modalSizeState.isShow && <ModalSize setModalSizeState={setModalSizeState}/>}
     </>
   );
 }
