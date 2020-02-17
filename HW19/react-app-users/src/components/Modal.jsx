@@ -1,23 +1,37 @@
 import React from 'react';
+import { useEffect } from 'react';
 
 const Modal = (props) => {
+    // console.log(props.user)
+
+    const { setModalState, modalState, userArr } = props;
+
+    const user = userArr.find(u => u._id === modalState.id);
+
+    useEffect(() => {
+        console.log('Modal didMount' + user)
+        return() => { // раб как willUnMount
+            console.log('Modal destroyed' + user)
+        }
+    }, []);
+
     const hendleHideModal = () => {
-        props.setModal({id: null, isShow: false})
+        setModalState({id: null, isShow: false})
     }
     return (
         <div className="user-info">
             <div className="hold-modal">
                 <div className="visual">
-                    <img src={props.user.picture} alt="img"/>
+                    <img src={user.picture} alt="img"/>
                 </div>
                 <div className="text">
-                    <h3>{props.user.name}</h3>
-                    {Object.entries(props.user).map(([title, value]) => {
+                    <h3>{user.name}</h3>
+                    {Object.entries(user).map(([title, value]) => {
                         if(title == 'name') {
                             return false
                         }
                         if(title == 'friends') {
-                            console.log(value)
+                            // console.log(value)
                             value.map(elem => {
                                 return <span className="info">{`${title} : ${elem.name}`}</span>
                             }) // не работает перебор друзей

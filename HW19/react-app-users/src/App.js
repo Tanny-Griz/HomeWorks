@@ -4,20 +4,28 @@ import { userData } from './data/userData';
 import Modal from './components/Modal'; //
 import Header from './components/Header';
 import Main from './components/Main';
+import ModalSize from './components/ModalSize';
 
 const App = () => {
   // console.log(userData)
   const [userArr, setUserData] = useState([...userData]);
-  const [modal, setModal] = useState({
+  const [modalState, setModalState] = useState({
     id: null,
     isShow: false,
   });
 
+  const [modalSizeState, setModalSizeState] = useState({
+    isShow: false
+  })
+
+
+
   return (
     <>
-      <Header arr={userArr} setUserData={setUserData} />
-      <Main userArr={userArr}/>
-      {modal.isShow && <Modal user={userArr.find(u => u._id === modal.id)} setModal={setModal}/>}
+      <Header userArr={userArr} setUserData={setUserData} userData={userData} />
+      <Main userArr={userArr} setModalState={setModalState}/>
+      {modalState.isShow && <Modal userArr={userArr} modalState={modalState} setModalState={setModalState}/>}
+      <ModalSize />
     </>
   );
 }

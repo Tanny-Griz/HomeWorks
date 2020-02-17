@@ -2,22 +2,24 @@ import React from 'react';
 
 const UserCard = (props) => {
 
+    const { user, setModalState } = props;
+
     const hendleOpenModal = (id) => {
-        props.setModal({id, isShow: true})
+        setModalState({id, isShow: true})
     }
 
     return (
         <div className="hold-card">
-            <div className="card" onClick={() => hendleOpenModal(props.user._id)}>
+            <div className="card">
                 <div className="visual">
-                    {/* <img src="https://cdn2.iconfinder.com/data/icons/green-2/32/expand-color-web2-23-128.png" alt="img"/> */}
-                    <img src={props.user.picture} alt=""/>
+                    <img src={user.picture} alt=""/>
                 </div>
                 <div className="text">
-                    <h3>{props.user.name}</h3>
-                    <p>Age: {props.user.age}</p>
-                    <span>Sex: {props.user.gender}</span>
-                    <p><em>Balance: {props.user.balance}</em></p>
+                    <h3>{user.name}</h3>
+                    <p>Age: {user.age}</p>
+                    <span>Sex: {user.gender}</span>
+                    <p><em>Balance: {user.balance}</em></p>
+                    <button onClick={() => hendleOpenModal(user._id)}>Show info</button>
                 </div>
             </div>
         </div>
