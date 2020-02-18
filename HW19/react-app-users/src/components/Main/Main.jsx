@@ -10,8 +10,8 @@ const Main = (props) => {
             <div className="container">
                 {userArr.map(userObj => {
                     const generateKey = `UserCard${userObj._id}`;
-                    return <UserCard 
-                            user={userObj} 
+                    return <UserCard
+                            user={userObj}
                             key={generateKey}
                             // передаем пропс в UserCard
                             setModalState={setModalState}

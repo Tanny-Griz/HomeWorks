@@ -1,0 +1,30 @@
+.hold-create-form {
+    padding: 0 1rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 150px;
+    padding: 0.3rem 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.container {
+    display: flex;
+    flex: 1 0 auto;
+    padding: 0 15px;
+}
+
+.hold-create-form {
+    width: 30%;
+}
+
+.btn {
+    width: 100px;
+    padding: 0.3rem 0.5rem;
+    margin-bottom: 1rem;
+}
