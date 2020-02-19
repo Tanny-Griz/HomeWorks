@@ -1,43 +1,37 @@
 import React from 'react';
 import './Main.css';
 import { useState } from 'react';
-import UsersComponent from '../UsersComponent';
+import UsersComponent from '../UsersComponent/UsersComponent';
+import Input from '../Input/Input'
+import { useEffect } from 'react';
+import Button from '../Button/Button';
 
 const Main = (props) => {
     const { userArr, setUserArr } = props;
 
-    const [valueName, setValueName] = useState('');
-    const [valueSurname, setValueSurname] = useState('');
-    const [valueAge, setValueAge] = useState('');
+    const [form, setForm] = useState({
+        name: '',
+        surname: '',
+        age: 0
+    })
 
-    const getValueName = (e) => {
-        let value = e.target.value;
-        setValueName(value);
-    }
-    const getValueSurname = (e) => {
-        let value = e.target.value;
-        setValueSurname(value);
-    }
-    const getValueAge = (e) => {
-        let value = e.target.value;
-        setValueAge(value);
+    useEffect(()=> {
+        console.log(form)
+    })
+
+    const handleChange = e => {
+        const {name, value} = e.target;
+        const newForm = {...form, [name]: value};
+        setForm(newForm);
     }
 
-    const addUser = () => {
-        const newArr = [...userArr];
-        if (valueName === '' || valueSurname === '' || valueAge === '') {
-            return false
-        }
-        const obj = {
-            name: valueName,
-            surname: valueSurname,
-            age: valueAge
-        }
-        newArr.push(obj)
-        setUserArr(newArr);
-        setValueName('');
-        setValueAge('');
-        setValueSurname('');
+    const handleCreate = () => {
+        setUserArr([...userArr, form]);
+        setForm({
+            name: '',
+            surname: '',
+            age: 0
+        })
     }
 
     return (
@@ -48,27 +42,28 @@ const Main = (props) => {
                       <h3>Создать User</h3>
                     <div className="form">
                         <p>Введите имя:</p>
-                        <input
-                            type="text"
-                            placeholder="name"
-                            value={valueName}
-                            onChange={getValueName}
-                        />
+                        <Input type="text"
+                               value={form.name}
+                               onChange={handleChange}
+                               name="name"
+                               placeholder="name" />
+
                         <p>Введите фамилию:</p>
-                        <input
-                            type="text"
-                            placeholder="surname"
-                            value={valueSurname}
-                            onChange={getValueSurname}
-                        />
+                        <Input type="text"
+                               value={form.surname}
+                               onChange={handleChange}
+                               name="surname"
+                               placeholder="surname" />
+
                         <p>Введите возраст:</p>
-                        <input
-                            type="text"
-                            value={valueAge}
-                            placeholder="age"
-                            onChange={getValueAge}
-                        />
-                        <button className="btn" onClick={addUser} >Create User</button>
+                        <Input type="number"
+                               value={form.age}
+                               onChange={handleChange}
+                               name="age"
+                               placeholder="age" 
+                               />
+
+                        <Button className="btn" onClick={handleCreate}>Create User</Button>
                     </div>
                 </div>
                 <UsersComponent userArr={userArr} setUserArr={setUserArr} />  
