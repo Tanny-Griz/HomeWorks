@@ -9,6 +9,13 @@ import Button from '../Button/Button';
 const Main = (props) => {
     const { userArr, setUserArr } = props;
 
+    if(userArr) {
+        let count = 0
+        userArr.map(user => {
+          user.id = user.name + count++
+        })
+    }
+
     const [form, setForm] = useState({
         name: '',
         surname: '',
@@ -16,7 +23,7 @@ const Main = (props) => {
     })
 
     useEffect(()=> {
-        console.log(form)
+        console.log(form);
     })
 
     const handleChange = e => {

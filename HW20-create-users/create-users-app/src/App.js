@@ -10,6 +10,8 @@ function App() {
 
   const [userArr, setUserArr] = useState(arrayOfUsersFromLS);
 
+  console.log(userArr);
+
   return (
       <>
         <Header />

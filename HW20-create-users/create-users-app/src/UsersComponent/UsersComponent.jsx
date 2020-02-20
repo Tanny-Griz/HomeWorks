@@ -9,49 +9,53 @@ import { useState } from 'react';
 const UsersComponent = (props) => {
 
     const { userArr, setUserArr } = props;
-    console.log(userArr)
-    const [ arr, setArr ] = useState([]);
 
+    // const [ searchValue, setsearchValue ] = useState('');
+    const [ filtredUsers, setfiltredUsers ] = useState([]);
 
     useEffect(() => {
-        setArr(userArr);
-
-
+        setfiltredUsers(userArr);
     }, [userArr]);
 
-    const handleRemoveUser = (indexOfUser) => {
+    const handleRemoveUser = (id) => {
         return () => {
             const arrLS = JSON.parse(localStorage.getItem('arrOfUsersLS'));
-            arrLS.splice(indexOfUser, 1);
-            localStorage.setItem('arrOfUsersLS', JSON.stringify(arrLS));
-            const newArr = userArr.filter((_, i) => i !== indexOfUser);
+            // arrLS.splice(indexOfUser, 1);
+            // localStorage.setItem('arrOfUsersLS', JSON.stringify(arrLS));
+            const newArr = userArr.filter(user => user.id !== id);
             setUserArr(newArr);
+            console.log(id);
         }
     }
 
     const handleSearchUsers = (e) => {
-        let newUsersArr = userArr.filter((user => {
+        let result = userArr.filter((user => {
             let eTargetValue = e.target.value.toLowerCase();
             let userNameIncludes = user.name.toLowerCase().includes(eTargetValue);
             return userNameIncludes;
         }))
-        setUserArr(newUsersArr);
+        setfiltredUsers(result);
+        console.log(result);
+        // setsearchValue(value);
     }
 
     return (
         <>
             <div className="wrapper">
                 <div className="hold-search">
-                    <Search onChange={handleSearchUsers}>Search</Search>
+                    <Search 
+                        onChange={handleSearchUsers}>
+                        Search
+                    </Search>
                 </div>
                 
-                    {userArr.map((obj, i) => {
+                    {filtredUsers.map((obj, i) => {
                         const generateKey = `UserCard${obj.name}`;
                         return <UserCard
                                     {...obj}
                                     index={i}
                                     key={generateKey}
-                                    handleRemoveUser={handleRemoveUser(i)}
+                                    handleRemoveUser={handleRemoveUser(obj.id)}
                                     setUserArr={setUserArr}
                         />
                     })}

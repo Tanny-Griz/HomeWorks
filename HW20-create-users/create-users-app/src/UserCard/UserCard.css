@@ -7,11 +7,11 @@
   
   .card {
     padding: 0.5rem 1rem;
-    border: 1px solid gray;
+    border: 1px solid #d6d6d6;
     margin-bottom: 1rem;
   }
   
   .card:hover{
     transition: box-shadow 0.3s;
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.6), 0 4px 10px rgba(0, 0, 0, 0);
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.6), 0 4px 6px rgba(0, 0, 0, 0);
   }
