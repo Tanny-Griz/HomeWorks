@@ -15,17 +15,14 @@ const card = document.querySelector('.pizza-info__card');
 
 // ЗАКРЫТИЕ МОДАЛКИ
 function hendlerClose(e) {
-    // считываем класс у эл-та
     const elemClassName = e.target.className;
-    // если он = pizza-info'
     if (
         elemClassName === 'pizza-info' ||
         elemClassName === 'pizza-info__hide' ||
         elemClassName === 'pizza-info__close'
     ) {
-        // прячем и на оборот
         this.style.display = 'none';
-        body.classList.remove('open-modal');
+        // body.classList.remove('open-modal');
     }
 }
 pizzaCardContainer.addEventListener('click', hendlerClose);
@@ -68,7 +65,6 @@ const renderPizzaCard = (pizza) => {
 
 // СОЗДАЕМ МОДАЛЬНОЕ ОКНО С СОЗДАНИЕМ СВОЕЙ ПИЦЦЫ
 const createPizza = document.getElementById('create-pizza');
-// const modalCreate = document.getElementById('modal-content-create');
 createPizza.addEventListener('click', hendlerClose);
 
 
@@ -110,7 +106,6 @@ const renderMyPizzaCreateModal = () => {
     const formCheck = cElem('div', 'holder-form');
 
     // Create checkboxes
-    /// Добавили все состовляющие в виде инпутов и лейблов
     for (let comp of newCompositionList) {
         const checkboxItem = cElem('div', 'checkbox-item');
         // input
@@ -123,13 +118,11 @@ const renderMyPizzaCreateModal = () => {
         // label
         const labelForNameInput = cElem('label', 'label');
         labelForNameInput.htmlFor = `exampleCheck${comp.id}`;
-        // labelForNameInput.innerHTML = `<p>${}</p>`;
 
 
         nameInput.onchange = function () {
             // массив айди и isChecked
             createPizzaIds = createPizzaIds.map(elem => {
-                // 
                 if (elem.id === comp.id) {
                     return {
                         id: elem.id,
@@ -138,15 +131,11 @@ const renderMyPizzaCreateModal = () => {
                 }
                 return elem
             })
-
-            // console.log(createPizzaIds);
-            // console.log({ ...comp });
         }
 
         labelForNameInput.append(nameInput);
         labelForNameInput.appendChild(p);
         checkboxItem.append(labelForNameInput);
-        // checkboxItem.append(nameInput);
         formCheck.appendChild(checkboxItem);
     }
 
@@ -191,9 +180,8 @@ const renderMyPizzaCreateModal = () => {
         const ids = createPizzaIds.filter(el => el.isChecked).map(el => el.id)
         const MyPizza = new Pizza(inputPizzaName.value, ids);
         newArrPizzaList.push(MyPizza);
-        Cart.setPizza(pizza.id);
+        // Cart.setPizza(pizza.id);
 
-        // залили наш массив с новой пиццей в локалстор
         localStorage.setItem('pizzas', JSON.stringify(newArrPizzaList));
 
         // отрисовали
@@ -235,7 +223,7 @@ const renderСompositionList = (arrayOfСomposition) => {
 const createPizzaBtn = document.getElementById('create-pizza-btn');
 // запуск рендера при нажатии кнопки
 createPizzaBtn.onclick = function() {
-    body.classList.add('open-modal');
+    // body.classList.add('open-modal');
     renderСompositionList(newCompositionList);
 }
 //-------------------------------------------------------
@@ -257,7 +245,7 @@ const renderCard = (pizza) => {
     card.onclick = function () {
         renderPizzaCard(pizza);
         pizzaCardContainer.style.display = 'flex';
-        body.classList.add('open-modal');
+        // body.classList.add('open-modal');
     }
     holdCard.appendChild(card);
     // img
@@ -313,10 +301,6 @@ const renderCard = (pizza) => {
 const arrOfPizzaBasket = [];
 
 // -----------------------------------------------------
-
-// ОТРИСОВКА НА СТРАНИЦУ КАРТОЧКИ
-// создаем копию массива
-
 
 // куда отрисуем
 const mainElement = document.querySelector('.holder-pizzas-list');
@@ -528,12 +512,8 @@ const setToLocalStorage = () => {
         totalPrice: Cart.totalPrice,
         totalCount: Cart.totalCount,
     }
-    const objLS = JSON.parse(localStorage.getItem('cart'))  || [];
-    // console.log(objLS) 
-    // objLS.push(obj) 
     localStorage.setItem('cart', JSON.stringify(obj))
 }
-
 
 
 const arr = () => {
@@ -542,7 +522,6 @@ const arr = () => {
     return cartObj
     console.log(cartArr);
 }
-
 
 class Cart {
     // static cartArr = Cart.getCartObjFromLS()

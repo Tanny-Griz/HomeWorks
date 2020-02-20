@@ -19,10 +19,8 @@ const UsersComponent = (props) => {
 
     const handleRemoveUser = (id) => {
         return () => {
-            const arrLS = JSON.parse(localStorage.getItem('arrOfUsersLS'));
-            // arrLS.splice(indexOfUser, 1);
-            // localStorage.setItem('arrOfUsersLS', JSON.stringify(arrLS));
             const newArr = userArr.filter(user => user.id !== id);
+            localStorage.setItem('arrOfUsersLS', JSON.stringify(newArr));
             setUserArr(newArr);
             console.log(id);
         }
