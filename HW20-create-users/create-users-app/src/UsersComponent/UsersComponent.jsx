@@ -9,12 +9,14 @@ import { useState } from 'react';
 const UsersComponent = (props) => {
 
     const { userArr, setUserArr } = props;
-
-    const { arr, setArr } = useState([]);
+    console.log(userArr)
+    const [ arr, setArr ] = useState([]);
 
 
     useEffect(() => {
-        setArr(arr);
+        setArr(userArr);
+
+
     }, [userArr]);
 
     const handleRemoveUser = (indexOfUser) => {
