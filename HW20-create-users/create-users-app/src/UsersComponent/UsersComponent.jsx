@@ -10,16 +10,18 @@ const UsersComponent = (props) => {
 
     const { userArr, setUserArr } = props;
 
-    const [arr, setArr] = useState([...userArr])
-    // console.log(arr)
+    const { arr, setArr } = useState([]);
+
 
     useEffect(() => {
-        console.log(userArr)
-    })
+        setArr(arr);
+    }, [userArr]);
 
     const handleRemoveUser = (indexOfUser) => {
-        // return console.log(indexOfUser)
         return () => {
+            const arrLS = JSON.parse(localStorage.getItem('arrOfUsersLS'));
+            arrLS.splice(indexOfUser, 1);
+            localStorage.setItem('arrOfUsersLS', JSON.stringify(arrLS));
             const newArr = userArr.filter((_, i) => i !== indexOfUser);
             setUserArr(newArr);
         }

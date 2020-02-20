@@ -6,7 +6,9 @@ import Footer from './Footer/Footer'
 
 function App() {
 
-  const [userArr, setUserArr] = useState([]);
+  const arrayOfUsersFromLS = JSON.parse(localStorage.getItem('arrOfUsersLS')) || [];
+
+  const [userArr, setUserArr] = useState(arrayOfUsersFromLS);
 
   return (
       <>

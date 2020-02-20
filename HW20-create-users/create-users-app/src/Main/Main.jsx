@@ -26,7 +26,12 @@ const Main = (props) => {
     }
 
     const handleCreate = () => {
-        setUserArr([...userArr, form]);
+        let arr = [...userArr, form];
+        setUserArr(arr);
+        console.log(arr);
+        
+        localStorage.setItem('arrOfUsersLS', JSON.stringify(arr));
+
         setForm({
             name: '',
             surname: '',

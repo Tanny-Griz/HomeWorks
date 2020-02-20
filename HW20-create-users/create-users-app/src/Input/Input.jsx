@@ -13,7 +13,6 @@ const Input = (props) => {
             value={value}
         />
     )
-    // почему ты меня злишь?
 }
 
 export default Input
